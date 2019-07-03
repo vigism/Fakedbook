@@ -1,0 +1,79 @@
+
+ .signup-main-logo {
+    margin-left: 300px;
+    height:55px;
+    width: 270px;
+    border-width:0px;
+    background-image: url('login_logo.png');
+    background-size: 270px 55px;
+    background-repeat: no-repeat;
+ }
+
+ .signup-logo-photos {
+    content: url('photos_logo.png');
+   
+ }
+
+ .signup-logo-share {
+    content: url('share_logo.png');
+   
+ }
+
+ .signup-logo-find-more {
+    content: url('find_more_logo.png');
+   
+ }
+ .signup-nav-bar {
+     width: 100%;
+     height: 80px;
+     background: #3C5A98;
+     display: flex;
+     align-items: flex-end;
+     justify-content: space-between;
+     color: white;
+ }
+ 
+ 
+ 
+ .signup-main-content {
+     width: 100%;
+     
+ }
+ 
+ .signup-main-content-mid {
+     display: flex;
+     justify-content: center;
+     margin-top: 80px;
+ }
+ 
+ .signup-left-bar {
+     width: 565px;
+     
+ }
+ 
+ .left-bar-list > * {
+     margin-top: 30px;
+ }
+ 
+ 
+ 
+ .left-bar-list-element {
+     display:flex;
+     align-items: center;
+ }
+ 
+ .signup-right-bar {
+     margin-left:75px;
+ }
+ 
+ .sign-up-button{
+     width:150px;
+     height:50px;
+     border-radius: 10px;
+     background:linear-gradient(#79bc64, #578843);
+     color: white;
+ }
+ 
+ .signup-form > * {
+     margin-top:15px;
+ }
