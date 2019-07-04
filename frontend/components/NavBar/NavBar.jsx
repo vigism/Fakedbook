@@ -33,6 +33,29 @@ class NavBar extends React.Component {
                             <div className="main-nav-bar-user-profile-pic"></div>
                             <div className="main-nav-bar-user-name">{this.props.user.email}</div>
                         </div>
+                        <div className="main-nav-bar-links">
+                            <button className="home-button">Home</button>
+                            <button className="friends-button">Find Friends</button>
+                            <button className="create-button">Create</button>
+                        </div>
+
+                        <div className="main-nav-bar-icons">
+                            <button className="nav-friends-button" >
+                                <i className="nav-friends-button-icon"></i>
+                            </button>
+                            <button className="nav-message-button" >
+                                <i className="nav-message-button-icon"></i>
+                            </button>
+                            <button className="nav-notification-button" >
+                                <i className="nav-notification-button-icon"></i>
+                            </button>
+                            <button className="nav-help-button" >
+                                <i className="nav-help-button-icon"></i>
+                            </button>
+                            <button className="nav-drop-down-button" >
+                                <i className="nav-drop-down-button-icon"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 {/* <button onClick={this.handleLogout}>Logout</button> */}

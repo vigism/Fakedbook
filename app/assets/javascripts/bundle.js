@@ -276,7 +276,37 @@ function (_React$Component) {
         className: "main-nav-bar-user-profile-pic"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-user-name"
-      }, this.props.user.email)))));
+      }, this.props.user.email)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-nav-bar-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "home-button"
+      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "friends-button"
+      }, "Find Friends"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "create-button"
+      }, "Create")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-nav-bar-icons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "nav-friends-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-friends-button-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "nav-message-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-message-button-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "nav-notification-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-notification-button-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "nav-help-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-help-button-icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "nav-drop-down-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-drop-down-button-icon"
+      }))))));
     }
   }]);
 
