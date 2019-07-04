@@ -8,7 +8,7 @@ class SignUpForm extends React.Component {
             first_name: "",
             last_name: "",
             email: "",
-            birthday: "",
+            birthday: "January 1 1998",
             password: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,7 +39,7 @@ class SignUpForm extends React.Component {
                 </div>
                 <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')} />
                 <br/>
-                <input type="text" value={this.state.password} placeholder="Password" onChange={this.update('password')}/><br/>
+                <input type="password" value={this.state.password} placeholder="Password" onChange={this.update('password')}/><br/>
                 <label>Birthday
                     <select name="month" value={this.state.birthday} onChange={this.update('birthday')}>
                         <option value="January">January</option>

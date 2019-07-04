@@ -37,7 +37,8 @@ import * as APIUtil from '../util/session_api_util';
   );
   
   export const logout = () => dispatch => (
-    APIUtil.logout().then(user => (
+    
+    APIUtil.logout().then(() => (
       dispatch(logoutCurrentUser())
     ))
   );
