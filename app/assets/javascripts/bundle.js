@@ -284,9 +284,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/SignUp/SignUpMain.jsx":
+/***/ "./frontend/components/SignUp/SignUpForm.jsx":
 /*!***************************************************!*\
-  !*** ./frontend/components/SignUp/SignUpMain.jsx ***!
+  !*** ./frontend/components/SignUp/SignUpForm.jsx ***!
   \***************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -315,44 +315,22 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var SignUpMain =
+var SignUpForm =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(SignUpMain, _React$Component);
+  _inherits(SignUpForm, _React$Component);
 
-  function SignUpMain(props) {
-    _classCallCheck(this, SignUpMain);
+  function SignUpForm(props) {
+    _classCallCheck(this, SignUpForm);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SignUpMain).call(this, props));
+    return _possibleConstructorReturn(this, _getPrototypeOf(SignUpForm).call(this, props));
   }
 
-  _createClass(SignUpMain, [{
+  _createClass(SignUpForm, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-main-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-main-content-mid"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-left-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Connect with friends and the world around you on FakedBook."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "left-bar-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "left-bar-list-element"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-logo-photos"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "See photos and updates"), " from friends in News Feed.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "left-bar-list-element"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-logo-share"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Share what's new"), " in your life on Timeline.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "left-bar-list-element"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-logo-find-more"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Find more"), " of what you're looking for with Facebook Search")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        "class": "signup-right-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        "class": "signup-form"
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "signup-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "It's free and always will be."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: "First Name"
@@ -478,8 +456,90 @@ function (_React$Component) {
       }), " Female"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Sign Up",
-        "class": "sign-up-button"
-      })))));
+        className: "sign-up-button"
+      }));
+    }
+  }]);
+
+  return SignUpForm;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SignUpForm);
+
+/***/ }),
+
+/***/ "./frontend/components/SignUp/SignUpMain.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/SignUp/SignUpMain.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SignUpForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SignUpForm */ "./frontend/components/SignUp/SignUpForm.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var SignUpMain =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SignUpMain, _React$Component);
+
+  function SignUpMain(props) {
+    _classCallCheck(this, SignUpMain);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SignUpMain).call(this, props));
+  }
+
+  _createClass(SignUpMain, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-main-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-main-content-mid"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-left-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Connect with friends and the world around you on FakedBook."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-bar-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-bar-list-element"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-logo-photos"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "See photos and updates"), " from friends in News Feed.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-bar-list-element"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-logo-share"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Share what's new"), " in your life on Timeline.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left-bar-list-element"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-logo-find-more"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "Find more"), " of what you're looking for with Facebook Search")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "signup-right-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        signup: this.props.signup
+      }))));
     }
   }]);
 
@@ -503,6 +563,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -511,9 +573,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -527,12 +589,35 @@ function (_React$Component) {
   _inherits(SignUpNav, _React$Component);
 
   function SignUpNav(props) {
+    var _this;
+
     _classCallCheck(this, SignUpNav);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SignUpNav).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SignUpNav).call(this, props));
+    _this.state = {
+      email: "",
+      password: ""
+    };
+    _this.submitLogin = _this.submitLogin.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(SignUpNav, [{
+    key: "submitLogin",
+    value: function submitLogin(e) {
+      // e.preventDefault();
+      this.props.login(this.state);
+    }
+  }, {
+    key: "update",
+    value: function update(value) {
+      var _this2 = this;
+
+      return function (e) {
+        return _this2.setState(_defineProperty({}, value, e.currentTarget.value));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -541,10 +626,16 @@ function (_React$Component) {
         className: "signup-main-logo"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email or phone", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.submitLogin
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Email or phone", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.email,
+        onChange: this.update('email')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text"
+        type: "password",
+        value: this.state.password,
+        onChange: this.update('password')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "Log In"
