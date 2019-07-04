@@ -297,6 +297,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -305,9 +307,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -321,30 +323,67 @@ function (_React$Component) {
   _inherits(SignUpForm, _React$Component);
 
   function SignUpForm(props) {
+    var _this;
+
     _classCallCheck(this, SignUpForm);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SignUpForm).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SignUpForm).call(this, props));
+    _this.state = {
+      first_name: "",
+      last_name: "",
+      email: "",
+      birthday: "",
+      password: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(SignUpForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit(e) {
+      e.preventDefault();
+      this.props.signup(this.state);
+    }
+  }, {
+    key: "update",
+    value: function update(field) {
+      var _this2 = this;
+
+      return function (e) {
+        _this2.setState(_defineProperty({}, field, e.currentTarget.value));
+      };
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        className: "signup-form"
+        className: "signup-form",
+        onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sign Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "It's free and always will be."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: "First Name"
+        value: this.state.first_name,
+        placeholder: "First Name",
+        onChange: this.update('first_name')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: "Last Name"
+        value: this.state.last_name,
+        placeholder: "Last Name",
+        onChange: this.update('last_name')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: "Mobile Number or email"
+        value: this.state.email,
+        placeholder: "Email",
+        onChange: this.update('email')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        value: "New Password"
+        value: this.state.password,
+        placeholder: "Password",
+        onChange: this.update('password')
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Birthday", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        name: "month"
+        name: "month",
+        value: this.state.birthday,
+        onChange: this.update('birthday')
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "January"
       }, "January"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -446,6 +485,7 @@ function (_React$Component) {
       }, "2002"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "2003"
       }, "2003"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Gender", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        checked: true,
         type: "radio",
         name: "gender",
         value: "male"
@@ -815,14 +855,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var _nullUser = Object.freeze({
-  id: null
-});
 
 var sessionReducer = function sessionReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullUser;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+    id: null
+  };
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
 
@@ -834,6 +875,9 @@ var sessionReducer = function sessionReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
       return _nullUser;
+
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_SESSION_ERRORS"]:
+      return state;
 
     default:
       return state;

@@ -4,22 +4,44 @@ class SignUpForm extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            first_name: "",
+            last_name: "",
+            email: "",
+            birthday: "",
+            password: "",
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.signup(this.state);
+    }
+
+    update(field) {
+        return e => {
+            this.setState({[field]:e.currentTarget.value});
+        }
     }
 
     render() {
+        
+       
+
         return (
-            <form className="signup-form">
+            <form className="signup-form" onSubmit={this.handleSubmit}>
                 <h2>Sign Up</h2>
                 <p>It's free and always will be.</p>
                 <div>
-                    <input type="text" value="First Name"/>
-                    <input type="text" value="Last Name"/>
+                    <input type="text" value={this.state.first_name} placeholder="First Name" onChange={this.update('first_name')}/>
+                    <input type="text" value={this.state.last_name} placeholder="Last Name" onChange={this.update('last_name')} />
                 </div>
-                <input type="text" value="Mobile Number or email" />
+                <input type="text" value={this.state.email} placeholder="Email" onChange={this.update('email')} />
                 <br/>
-                <input type="text" value="New Password"/><br/>
+                <input type="text" value={this.state.password} placeholder="Password" onChange={this.update('password')}/><br/>
                 <label>Birthday
-                    <select name="month">
+                    <select name="month" value={this.state.birthday} onChange={this.update('birthday')}>
                         <option value="January">January</option>
                         <option value="February">February</option>
                         <option value="March">March</option>
@@ -77,7 +99,7 @@ class SignUpForm extends React.Component {
                             </select>
                     </label><br/>
                     <label>Gender
-                            <input type="radio" name="gender" value="male"/> Male 
+                            <input checked type="radio" name="gender" value="male"/> Male 
                             <input type="radio" name="gender" value="female"/> Female
                     </label><br />
 
