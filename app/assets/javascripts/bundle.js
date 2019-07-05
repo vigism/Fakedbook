@@ -559,7 +559,11 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "search-res-list-el"
-      }, this.props.user.first_name, " ", this.props.user.last_name);
+      }, this.props.user.first_name, " ", this.props.user.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "add-friend-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "add-friend-icon"
+      }), "Add Friend"));
     }
   }]);
 
