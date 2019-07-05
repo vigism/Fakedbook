@@ -12,6 +12,7 @@ class SignUpForm extends React.Component {
             password: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demo = this.demo = this.demo.bind(this);
     }
 
     handleSubmit(e) {
@@ -23,6 +24,14 @@ class SignUpForm extends React.Component {
         return e => {
             this.setState({[field]:e.currentTarget.value});
         }
+    }
+
+    demo(){
+        let credentials = {
+            email:"test@test.com",
+            password:"tester",
+        }
+        this.props.login(credentials);
     }
 
     render() {
@@ -104,7 +113,9 @@ class SignUpForm extends React.Component {
                     </label><br />
 
                     <input type="submit" value="Sign Up" className="sign-up-button" />
-            </form>
+                    <button className="sign-up-button" onClick={() => this.demo()}>Demo Login</button>
+                    </form>
+            
         )
     }
 }

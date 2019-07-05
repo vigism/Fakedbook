@@ -32,7 +32,7 @@ class SignUpMain extends React.Component {
                 </div>
     
                 <div className="signup-right-bar">
-                   <SignUpForm signup={this.props.signup} />
+                   <SignUpForm signup={this.props.signup} login={this.props.login} />
                 </div>
             </div>
             </div>
