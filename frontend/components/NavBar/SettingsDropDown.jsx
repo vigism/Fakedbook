@@ -9,7 +9,7 @@ class SettingsDropDown extends React.Component {
 
     render() {
         return (
-            <button className="nav-drop-down-button" onClick={() => this.props.toggleDropDown()}>
+            <button className="nav-drop-down-button" onClick={() => this.props.logout()}>
             <i className="nav-drop-down-button-icon"></i>
             </button>
         )

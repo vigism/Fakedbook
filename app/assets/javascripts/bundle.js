@@ -189,6 +189,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SignUp_SignUpContainer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SignUp/SignUpContainer */ "./frontend/components/SignUp/SignUpContainer.js");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util/route_util */ "./frontend/util/route_util.jsx");
 /* harmony import */ var _NavBar_NavBarContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBar/NavBarContainer */ "./frontend/components/NavBar/NavBarContainer.js");
+/* harmony import */ var _NewsFeed_NewsFeedContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NewsFeed/NewsFeedContainer */ "./frontend/components/NewsFeed/NewsFeedContainer.js");
+
 
 
 
@@ -201,6 +203,9 @@ var App = function App() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/newsfeed",
     component: _NavBar_NavBarContainer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+    path: "/newsfeed",
+    component: _NewsFeed_NewsFeedContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["AuthRoute"], {
     exact: true,
     path: "/",
@@ -325,7 +330,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-help-button-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        toggleDropDown: this.props.toggleDropDown
+        logout: this.props.logout
       })))));
     }
   }]);
@@ -428,7 +433,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "nav-drop-down-button",
         onClick: function onClick() {
-          return _this.props.toggleDropDown();
+          return _this.props.logout();
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-drop-down-button-icon"
@@ -508,6 +513,188 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SettingsDropDownMenu);
+
+/***/ }),
+
+/***/ "./frontend/components/NewsFeed/NewsFeed.jsx":
+/*!***************************************************!*\
+  !*** ./frontend/components/NewsFeed/NewsFeed.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SidePanel_SidePanel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SidePanel/SidePanel */ "./frontend/components/NewsFeed/SidePanel/SidePanel.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var NewsFeed =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(NewsFeed, _React$Component);
+
+  function NewsFeed(props) {
+    _classCallCheck(this, NewsFeed);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(NewsFeed).call(this, props));
+  }
+
+  _createClass(NewsFeed, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SidePanel_SidePanel__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        first_name: this.props.first_name,
+        last_name: this.props.last_name
+      }));
+    }
+  }]);
+
+  return NewsFeed;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (NewsFeed);
+
+/***/ }),
+
+/***/ "./frontend/components/NewsFeed/NewsFeedContainer.js":
+/*!***********************************************************!*\
+  !*** ./frontend/components/NewsFeed/NewsFeedContainer.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _NewsFeed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewsFeed */ "./frontend/components/NewsFeed/NewsFeed.jsx");
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    first_name: state.entities.users[state.session.id].first_name,
+    last_name: state.entities.users[state.session.id].last_name
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_NewsFeed__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/NewsFeed/SidePanel/SidePanel.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/NewsFeed/SidePanel/SidePanel.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var SidePanel =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(SidePanel, _React$Component);
+
+  function SidePanel(props) {
+    _classCallCheck(this, SidePanel);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(SidePanel).call(this, props));
+  }
+
+  _createClass(SidePanel, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-button  newsfeed-sidepanel-user"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-profile-pic"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-text"
+      }, this.props.first_name, " ", this.props.last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-text"
+      }, "Newsfeed")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "messenger-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-text"
+      }, "Messenger")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "watch-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-text"
+      }, "Watch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "marketplace-icon"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "newsfeed-sidepanel-text"
+      }, "Marketplace"))));
+    }
+  }]);
+
+  return SidePanel;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (SidePanel);
 
 /***/ }),
 
@@ -1208,9 +1395,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
-/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_1__);
-
 
 
 var sessionReducer = function sessionReducer() {
@@ -1218,7 +1402,6 @@ var sessionReducer = function sessionReducer() {
     id: null
   };
   var action = arguments.length > 1 ? arguments[1] : undefined;
-  // debugger;
   Object.freeze(state);
 
   switch (action.type) {

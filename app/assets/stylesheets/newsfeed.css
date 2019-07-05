@@ -1,0 +1,101 @@
+.newsfeed-sidepanel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-left: thick solid rgba(0, 0, 0, 0);
+}
+
+.newsfeed-sidepanel-profile-pic {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-image: url('default_profile.png');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.newsfeed-sidepanel-text {
+    margin-left: 5px;
+    font-size: 12px; 
+}
+
+.newsfeed-main {
+
+}
+
+.newsfeed-sidepanel-user {
+    margin-bottom: 15px;
+}
+
+.newsfeed-sidepanel {
+    position: absolute;
+    margin-left: 260px;
+    margin-top: 20px;
+    width: 184px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.newsfeed-sidepanel-button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+}
+
+
+
+.newsfeed-sidepanel-button:hover{
+    background: white;
+    border-width: 1px;
+    border-color: rgb(160,160,255);
+}
+
+.newsfeed-icon {
+    background-image: url('icons.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: -21px -477px;
+    width:20px;
+    height:20px;
+    z-index: 2;
+    display: block;
+}
+
+.messenger-icon {
+    background-image: url('icons.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: -113px -369px;
+    width:20px;
+    height:20px;
+    z-index: 2;
+    display: block;
+}
+
+.marketplace-icon {
+    background-image: url('icons.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 0 -477px;
+    width:20px;
+    height:20px;
+    z-index: 2;
+    display: block;
+}
+
+.watch-icon {
+    background-image: url('icons.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: -63px -540px;
+    width:20px;
+    height:20px;
+    z-index: 2;
+    display: block;
+}
+
