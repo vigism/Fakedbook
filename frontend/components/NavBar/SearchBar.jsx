@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
         }
         this.update = this.update.bind(this);
         this.submitSearch = this.submitSearch.bind(this);
+        this.keyPress = this.keyPress.bind(this);
     }
 
 
@@ -17,6 +18,15 @@ class SearchBar extends React.Component {
             search: e.currentTarget.value
         })
     } 
+
+    
+    keyPress(e){
+        if(e.keyCode == 13){
+            this.submitSearch();
+         }
+    }
+      
+    
 
     submitSearch() {
         this.props.fetchUsers(this.state);
@@ -27,7 +37,7 @@ class SearchBar extends React.Component {
     render() {
         return (
             <div className="search-bar">
-            <input className="nav-search" type="text" placeholder="Search " onChange={(e)=>this.update(e)}/>
+            <input className="nav-search" type="text" onKeyDown={this.keyPress} placeholder="Search " onChange={(e)=>this.update(e)}/>
                     <button className="nav-search-button" onClick={() => this.submitSearch()}>
                         <i className="nav-search-button-icon"></i>
                     </button>

@@ -86,6 +86,7 @@
     background-repeat: no-repeat;
 }
 
+
 .main-nav-bar-user-name {
     color: white;
     margin-left: 5px;
@@ -123,13 +124,20 @@
     justify-content: center;
     align-items: center;
     background-color: transparent;
+    position:relative;
 }
 
 .nav-friends-button-icon-notification {
     color:white;
     background: red;
     border-radius: 50%;
-    padding: 1px;
+    width:18px;
+    height:18px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 3;
+    font-weight: bold;
 }
 
 .nav-friends-button-icon {
@@ -236,6 +244,17 @@
     justify-content: center;
     align-items: center;
 }
+.search-res-profile-pic {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin-right: 30px;
+    background-image: url('default_profile.png');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
 
 .search-res-list {
     background: white;
@@ -250,6 +269,8 @@
 .add-friend-button {
     margin-left: 10%;
     display:flex;
+    justify-content: space-between;
+    align-items: center;
     border-radius: 0;
     border-width: 0;
     padding:4px;

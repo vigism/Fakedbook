@@ -19,6 +19,7 @@ class SearchResult extends React.Component {
     render() {
         return (
             <li className="search-res-list-el">
+            <div className="search-res-profile-pic"></div>
             {this.props.user.first_name} {this.props.user.last_name}
             <button onClick= {() => this.handleFriend()} className="add-friend-button"><i className="add-friend-icon"></i>Add Friend</button>
             </li>

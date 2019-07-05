@@ -560,13 +560,21 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var notification;
+
+      if (Object.keys(this.props.incomingRequests).length > 0) {
+        notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "nav-friends-button-icon-notification"
+        }, Object.keys(this.props.incomingRequests).length);
+      } else {
+        notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "nav-friends-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-friends-button-icon"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "nav-friends-button-icon-notification"
-      }, Object.keys(this.props.incomingRequests).length));
+      }), notification);
     }
   }]);
 
@@ -624,6 +632,7 @@ function (_React$Component) {
     };
     _this.update = _this.update.bind(_assertThisInitialized(_this));
     _this.submitSearch = _this.submitSearch.bind(_assertThisInitialized(_this));
+    _this.keyPress = _this.keyPress.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -633,6 +642,13 @@ function (_React$Component) {
       this.setState({
         search: e.currentTarget.value
       });
+    }
+  }, {
+    key: "keyPress",
+    value: function keyPress(e) {
+      if (e.keyCode == 13) {
+        this.submitSearch();
+      }
     }
   }, {
     key: "submitSearch",
@@ -651,6 +667,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         className: "nav-search",
         type: "text",
+        onKeyDown: this.keyPress,
         placeholder: "Search ",
         onChange: function onChange(e) {
           return _this2.update(e);
@@ -736,7 +753,9 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "search-res-list-el"
-      }, this.props.user.first_name, " ", this.props.user.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-res-profile-pic"
+      }), this.props.user.first_name, " ", this.props.user.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.handleFriend();
         },
