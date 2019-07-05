@@ -1,5 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
+import SettingsDropDown from './SettingsDropDown';
 
 class NavBar extends React.Component {
 
@@ -31,7 +32,7 @@ class NavBar extends React.Component {
                     <div className="main-nav-bar-content-mid">
                         <div className="main-nav-bar-user">
                             <div className="main-nav-bar-user-profile-pic"></div>
-                            <div className="main-nav-bar-user-name">{this.props.user.email}</div>
+                            <div className="main-nav-bar-user-name">{this.props.user.first_name}</div>
                         </div>
                         <div className="main-nav-bar-links">
                             <button className="home-button">Home</button>
@@ -52,9 +53,7 @@ class NavBar extends React.Component {
                             <button className="nav-help-button" >
                                 <i className="nav-help-button-icon"></i>
                             </button>
-                            <button className="nav-drop-down-button" >
-                                <i className="nav-drop-down-button-icon"></i>
-                            </button>
+                           <SettingsDropDown />
                         </div>
                     </div>
                 </div>

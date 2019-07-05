@@ -204,6 +204,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsDropDown */ "./frontend/components/NavBar/SettingsDropDown.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -221,6 +222,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -276,7 +278,7 @@ function (_React$Component) {
         className: "main-nav-bar-user-profile-pic"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-user-name"
-      }, this.props.user.email)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.user.first_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-links"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "home-button"
@@ -302,11 +304,7 @@ function (_React$Component) {
         className: "nav-help-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-help-button-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "nav-drop-down-button"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "nav-drop-down-button-icon"
-      }))))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__["default"], null)))));
     }
   }]);
 
@@ -348,6 +346,17 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(mapStateToProps, mapDispatchToProps)(_NavBar__WEBPACK_IMPORTED_MODULE_0__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/NavBar/SettingsDropDown.jsx":
+/*!*********************************************************!*\
+  !*** ./frontend/components/NavBar/SettingsDropDown.jsx ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/rushil/Documents/FakedBook/Fakedbook/FakedBook/frontend/components/NavBar/SettingsDropDown.jsx: Identifier 'SettingsDropDown' has already been declared (4:6)\n\n\u001b[0m \u001b[90m 2 | \u001b[39m\u001b[36mimport\u001b[39m \u001b[33mSettingsDropDown\u001b[39m from \u001b[32m'./SettingsDropDownMenu'\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4 | \u001b[39m\u001b[36mclass\u001b[39m \u001b[33mSettingsDropDown\u001b[39m \u001b[36mextends\u001b[39m \u001b[33mReact\u001b[39m\u001b[33m.\u001b[39m\u001b[33mComponent\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m   | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5 | \u001b[39m    \u001b[0m\n\u001b[0m \u001b[90m 6 | \u001b[39m    constructor(props) {\u001b[0m\n\u001b[0m \u001b[90m 7 | \u001b[39m        \u001b[36msuper\u001b[39m(props)\u001b[33m;\u001b[39m\u001b[0m\n    at Object.raise (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:6344:17)\n    at ScopeHandler.checkRedeclarationInScope (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:3757:12)\n    at ScopeHandler.declareName (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:3723:12)\n    at Object.checkLVal (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:8034:22)\n    at Object.parseClassId (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:10818:14)\n    at Object.parseClass (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:10535:10)\n    at Object.parseStatementContent (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:9830:21)\n    at Object.parseStatement (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:9788:17)\n    at Object.parseBlockOrModuleBlockBody (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:10364:25)\n    at Object.parseBlockBody (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:10351:10)\n    at Object.parseTopLevel (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:9717:10)\n    at Object.parse (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:11233:17)\n    at parse (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/parser/lib/index.js:11269:38)\n    at parser (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at /home/rushil/Documents/FakedBook/Fakedbook/FakedBook/node_modules/@babel/core/lib/transform.js:34:34\n    at processTicksAndRejections (internal/process/task_queues.js:72:11)");
 
 /***/ }),
 
