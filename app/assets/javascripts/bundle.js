@@ -1430,7 +1430,9 @@ var sessionReducer = function sessionReducer() {
       };
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
-      return state;
+      return {
+        id: null
+      };
 
     default:
       return state;
