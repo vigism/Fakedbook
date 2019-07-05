@@ -9,7 +9,7 @@ const userReducer = (state={}, action) => {
             for(let i =0; i<keys.length;i++){
                 newState[keys[i]] = action.users[keys[i]];
             }
-            return merge({},state,newState);
+            return merge({},newState);
         default:
             return state;
     }

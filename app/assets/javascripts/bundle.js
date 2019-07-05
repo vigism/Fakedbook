@@ -563,8 +563,8 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, _this.props.res[el].first_name);
       });
 
-      if (this.props.res === undefined) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Loading");
+      if (Array.isArray(this.props.res)) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found");
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, results);
       }
@@ -1736,7 +1736,7 @@ var userReducer = function userReducer() {
         newState[keys[i]] = action.users[keys[i]];
       }
 
-      return merge({}, state, newState);
+      return merge({}, newState);
 
     default:
       return state;
