@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchResult from './SearchResult';
 
 class SearchResults extends React.Component {
 
@@ -7,7 +8,7 @@ class SearchResults extends React.Component {
     }
 
     render() {
-        let results =  Object.keys(this.props.res).map(el => <li>{this.props.res[el].first_name}</li>)
+        let results =  Object.keys(this.props.res).map(el => <SearchResult user={this.props.res[el]} /> )
         
         if(Array.isArray(this.props.res) ) {
             return (
@@ -15,7 +16,7 @@ class SearchResults extends React.Component {
             )
         } else{
         return(
-            <ul>
+            <ul className="search-res-list">
                 {results}
              </ul>
         )
