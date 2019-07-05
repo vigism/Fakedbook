@@ -9,18 +9,15 @@ class SearchResults extends React.Component {
 
     render() {
         let results =  Object.keys(this.props.res).map(el => <SearchResult user={this.props.res[el]} /> )
-        
-        if(Array.isArray(this.props.res) ) {
-            return (
-             <h1>No results found</h1>
-            )
-        } else{
+        if(this.props.res[0] === "No users found") {
+            results = <li className="search-res-list-el">No users found</li>
+        }
         return(
             <ul className="search-res-list">
                 {results}
              </ul>
         )
-        }
+        
     }
 
 }

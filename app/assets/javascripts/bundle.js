@@ -559,7 +559,7 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "search-res-list-el"
-      }, this.props.user.first_name);
+      }, this.props.user.first_name, " ", this.props.user.last_name);
     }
   }]);
 
@@ -625,13 +625,15 @@ function (_React$Component) {
         });
       });
 
-      if (Array.isArray(this.props.res)) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "No results found");
-      } else {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-          className: "search-res-list"
-        }, results);
+      if (this.props.res[0] === "No users found") {
+        results = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "search-res-list-el"
+        }, "No users found");
       }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "search-res-list"
+      }, results);
     }
   }]);
 

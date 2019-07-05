@@ -220,3 +220,22 @@
     z-index: 2;
     display: block;
 }
+
+.search-res-list-el {
+    height: 150px;
+    border-bottom: 1px solid #dddfe2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-res-list {
+    background: white;
+    width: 600px;
+    border:1px solid #dddfe2;
+    border-radius: 5px;
+    margin-top: 50px;
+    margin-left: 400px;
+    list-style: none;
+}

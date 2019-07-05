@@ -8,7 +8,9 @@ class SearchResult extends React.Component {
 
     render() {
         return (
-            <li className="search-res-list-el">{this.props.user.first_name}</li>
+            <li className="search-res-list-el">
+            {this.props.user.first_name} {this.props.user.last_name}
+            </li>
         )
 
     }
