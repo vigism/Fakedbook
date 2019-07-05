@@ -4,11 +4,13 @@ import SignUpContainer from './SignUp/SignUpContainer';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import NavBarContainer from './NavBar/NavBarContainer';
 import NewsFeedContainer from './NewsFeed/NewsFeedContainer'
+import SearchResultsContainer from './NavBar/SearchResultsContainer';
 
 const App = () => (
     <div className="app-container">
-        <ProtectedRoute path='/newsfeed' component={NavBarContainer} />
+        <ProtectedRoute path='/' component={NavBarContainer} />
         <ProtectedRoute path='/newsfeed' component={NewsFeedContainer} /> 
+        <ProtectedRoute path='/searchResults' component={SearchResultsContainer} />
         <Switch>
             
             <AuthRoute exact path ='/' component={SignUpContainer} />

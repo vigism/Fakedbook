@@ -23,7 +23,7 @@ class NavBar extends React.Component {
                     <div className="main-nav-bar-content-left">
                         <div className="logo-button"></div>
                         
-                        <SearchBar />
+                        <SearchBar fetchUsers={this.props.fetchUsers}/>
                        
                     </div>
 

@@ -11,9 +11,10 @@ class Api::UsersController < ApplicationController
       end
     
       def search
-        search = params[:search].split(" ")
+        search = params[:search]["search"].split(" ")
         first_name = search.first
         last_name = search[1]
+        
         unless last_name == nil
           last_name = last_name.capitalize
           @res = User.where(first_name: first_name, last_name:last_name).to_a

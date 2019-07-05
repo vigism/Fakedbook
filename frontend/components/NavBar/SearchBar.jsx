@@ -19,7 +19,9 @@ class SearchBar extends React.Component {
     } 
 
     submitSearch() {
-        
+        this.props.fetchUsers(this.state);
+        let path = '/searchResults';
+        window.location.hash = path;
     }
 
     render() {
