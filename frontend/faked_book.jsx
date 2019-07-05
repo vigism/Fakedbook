@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import {logout} from './actions/session_actions';
-
+import {merge} from 'lodash'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
+  window.merge = merge;
   if (window.currentUser) {
     const preloadedState = {
       entities: {

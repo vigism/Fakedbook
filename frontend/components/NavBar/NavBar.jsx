@@ -53,7 +53,7 @@ class NavBar extends React.Component {
                             <button className="nav-help-button" >
                                 <i className="nav-help-button-icon"></i>
                             </button>
-                           <SettingsDropDown />
+                           <SettingsDropDown toggleDropDown={this.props.toggleDropDown} />
                         </div>
                     </div>
                 </div>

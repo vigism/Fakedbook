@@ -1,5 +1,5 @@
 import React from 'react';
-import SettingsDropDown from './SettingsDropDownMenu'
+import SettingsDropDownMenu from './SettingsDropDownMenu';
 
 class SettingsDropDown extends React.Component {
     
@@ -9,7 +9,7 @@ class SettingsDropDown extends React.Component {
 
     render() {
         return (
-            <button className="nav-drop-down-button" >
+            <button className="nav-drop-down-button" onClick={() => this.props.toggleDropDown()}>
             <i className="nav-drop-down-button-icon"></i>
             </button>
         )

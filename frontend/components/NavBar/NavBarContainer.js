@@ -1,6 +1,7 @@
 import NavBar from './NavBar';
 import {logout} from '../../actions/session_actions';
 import {connect} from 'react-redux'
+import {toggleDropDown} from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
     return {
@@ -10,7 +11,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
+        toggleDropDown: () => dispatch(toggleDropDown())
     }
 }
 
