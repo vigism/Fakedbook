@@ -10,6 +10,25 @@ class Api::UsersController < ApplicationController
         end
       end
     
+      def search
+        search = params[:search].split(" ")
+        first_name = search.first
+        last_name = search[1]
+        unless last_name == nil
+          last_name = last_name.capitalize
+          @res = User.where(first_name: first_name, last_name:last_name).to_a
+        else 
+          @res = User.where(first_name: first_name).to_a
+        end
+        
+        if @res.size>0
+          render "api/users/search"
+        else
+          render json: ["No users found"], status:200
+        end
+      end
+
+      
       private
     
       def user_params
