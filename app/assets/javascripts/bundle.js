@@ -322,7 +322,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-content-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "logo-button"
+        className: "logo-button",
+        onClick: function onClick() {
+          window.location.hash = '/newsfeed';
+        }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchBar__WEBPACK_IMPORTED_MODULE_3__["default"], {
         fetchUsers: this.props.fetchUsers
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

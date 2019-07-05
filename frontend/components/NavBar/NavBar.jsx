@@ -21,7 +21,7 @@ class NavBar extends React.Component {
             <div className="main-nav-bar">
                 <div className="main-nav-bar-content">
                     <div className="main-nav-bar-content-left">
-                        <div className="logo-button"></div>
+                        <div className="logo-button" onClick = {() => {window.location.hash='/newsfeed'}}></div>
                         
                         <SearchBar fetchUsers={this.props.fetchUsers}/>
                        

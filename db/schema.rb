@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_210050) do
+ActiveRecord::Schema.define(version: 2019_07_05_185245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friends", force: :cascade do |t|
+    t.integer "user_one_id"
+    t.integer "user_two_id"
+    t.boolean "status"
+    t.index ["user_one_id"], name: "index_friends_on_user_one_id"
+    t.index ["user_two_id"], name: "index_friends_on_user_two_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false

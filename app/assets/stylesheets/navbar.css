@@ -241,6 +241,7 @@
 }
 
 .add-friend-button {
+    margin-left: 10%;
     display:flex;
     border-radius: 0;
     border-width: 0;
