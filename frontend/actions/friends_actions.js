@@ -3,6 +3,7 @@ import * as APIUtil from '../util/friend_api_util';
 export const DELETE_FRIEND = "DELETE_FRIEND";
 export const UPDATE_FRIEND = "UPDATE_FRIEND";
 export const NEW_FRIEND = "NEW_FRIEND";
+export const GET_FRIENDS = "GET_FRIENDS";
 
 export const newFriend = friend => ({
     type: NEW_FRIEND,
@@ -17,6 +18,11 @@ export const updateFriend = friend => ({
 export const deleteFriend = friend => ({
     type: DELETE_FRIEND,
     friend
+})
+
+export const getFriends = friends => ({
+    type: GET_FRIENDS,
+    friends
 })
 
 export const newFriendRequest = friend => dispatch => (
@@ -34,6 +40,12 @@ export const updateFriendRequest = friend => dispatch => (
 export const deleteFriendRequest = friend => dispatch => (
     APIUtil.deleteFriend(friend).then(friend => (
         dispatch(deleteFriend(friend))
+    ))
+)
+
+export const getAllFriends = () => dispatch => (
+    APIUtil.getFriends().then(friends => (
+        dispatch(getFriends(friends))
     ))
 )
 

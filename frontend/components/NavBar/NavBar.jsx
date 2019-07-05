@@ -2,6 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom'
 import SettingsDropDown from './SettingsDropDown';
 import SearchBar from './SearchBar';
+import NavBarFriends from './NavBarFriends';
 
 class NavBar extends React.Component {
 
@@ -39,9 +40,7 @@ class NavBar extends React.Component {
                         </div>
 
                         <div className="main-nav-bar-icons">
-                            <button className="nav-friends-button" >
-                                <i className="nav-friends-button-icon"></i>
-                            </button>
+                            <NavBarFriends incomingRequests={this.props.incomingRequests} getAllFriends={this.props.getAllFriends}/>
                             <button className="nav-message-button" >
                                 <i className="nav-message-button-icon"></i>
                             </button>

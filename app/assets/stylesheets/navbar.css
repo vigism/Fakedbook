@@ -125,6 +125,13 @@
     background-color: transparent;
 }
 
+.nav-friends-button-icon-notification {
+    color:white;
+    background: red;
+    border-radius: 50%;
+    padding: 1px;
+}
+
 .nav-friends-button-icon {
     background-image: url('icons.png');
     background-size: auto;
