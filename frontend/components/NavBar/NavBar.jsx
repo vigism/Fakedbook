@@ -18,6 +18,8 @@ class NavBar extends React.Component {
         this.props.history.push(path);
     }
 
+   
+
     render() {
         return (
             <div className="main-nav-bar">
@@ -36,12 +38,12 @@ class NavBar extends React.Component {
                         </div>
                         <div className="main-nav-bar-links">
                             <button className="home-button">Home</button>
-                            <button className="friends-button">Find Friends</button>
+                            <button className="friends-button" >Find Friends</button>
                             <button className="create-button">Create</button>
                         </div>
 
                         <div className="main-nav-bar-icons">
-                            <NavBarFriends incomingRequests={this.props.incomingRequests} getAllFriends={this.props.getAllFriends}/>
+                            <NavBarFriends receiveUserById= {this.props.receiveUserById} toggleFriendsDropdown = {this.props.toggleFriendsDropdown} incomingRequests={this.props.incomingRequests} getAllFriends={this.props.getAllFriends}/>
                             <button className="nav-message-button" >
                                 <i className="nav-message-button-icon"></i>
                             </button>

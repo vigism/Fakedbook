@@ -261,6 +261,8 @@
     border:2px solid #dddfe2;
 }
 
+
+
 .settings-modal-component:hover {
     width: 161px;
     height: 20px;
@@ -274,6 +276,49 @@
     list-style: none;
 }
 
+.friends-modal-list {
+    width: 300px;
+    list-style: none;
+}
+
+
+.friends-modal-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+   
+}
+
+.friends-modal {
+    position: absolute;
+    top: 42px;
+    left: 1140px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.friends-modal-component {
+    width: 100%;
+    height: 20px;
+    background: white;
+    padding: 7px;
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+
+    border:2px solid #dddfe2;
+}
+
+.friends-modal-list-el {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.friend-request-button {
+ 
+}
 .search-res-list-el {
     height: 150px;
     border-bottom: 1px solid #dddfe2;

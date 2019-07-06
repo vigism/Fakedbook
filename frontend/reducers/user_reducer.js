@@ -1,4 +1,5 @@
-import {RECEIVE_USERS} from '../actions/user_actions';
+import {RECEIVE_USERS, RECEIVE_USER} from '../actions/user_actions';
+import { GET_FRIENDS } from '../actions/friends_actions';
 
 const userReducer = (state={}, action) => {
     Object.freeze(state);
@@ -10,6 +11,8 @@ const userReducer = (state={}, action) => {
                 newState[keys[i]] = action.users[keys[i]];
             }
             return merge({},newState);
+        case RECEIVE_USER:
+            return merge({}, state, {[action.user.id]:action.user})
         default:
             return state;
     }
