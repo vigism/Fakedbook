@@ -5,9 +5,11 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import NavBarContainer from './NavBar/NavBarContainer';
 import NewsFeedContainer from './NewsFeed/NewsFeedContainer'
 import SearchResultsContainer from './NavBar/SearchResultsContainer';
+import SettingsModalContainer from './NavBar/SettingsModal/SettingsModalContainer';
 
 const App = () => (
     <div className="app-container">
+        <ProtectedRoute path='/'component={SettingsModalContainer} />
         <ProtectedRoute path='/' component={NavBarContainer} />
         <ProtectedRoute path='/newsfeed' component={NewsFeedContainer} /> 
         <ProtectedRoute path='/searchResults' component={SearchResultsContainer} />

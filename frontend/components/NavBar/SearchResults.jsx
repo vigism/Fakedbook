@@ -13,9 +13,11 @@ class SearchResults extends React.Component {
             results = <li className="search-res-list-el">No users found</li>
         }
         return(
+            <div className="main-content-container">
             <ul className="search-res-list">
                 {results}
              </ul>
+             </div>
         )
         
     }

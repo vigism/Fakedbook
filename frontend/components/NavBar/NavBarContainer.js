@@ -16,7 +16,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => dispatch(logout()),
         toggleDropDown: () => dispatch(toggleDropDown()),
         fetchUsers: (search) => dispatch(fetchUsers(search)),
         getAllFriends: () => dispatch(getAllFriends())

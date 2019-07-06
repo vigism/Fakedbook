@@ -304,6 +304,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar_NavBarContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBar/NavBarContainer */ "./frontend/components/NavBar/NavBarContainer.js");
 /* harmony import */ var _NewsFeed_NewsFeedContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NewsFeed/NewsFeedContainer */ "./frontend/components/NewsFeed/NewsFeedContainer.js");
 /* harmony import */ var _NavBar_SearchResultsContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NavBar/SearchResultsContainer */ "./frontend/components/NavBar/SearchResultsContainer.js");
+/* harmony import */ var _NavBar_SettingsModal_SettingsModalContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NavBar/SettingsModal/SettingsModalContainer */ "./frontend/components/NavBar/SettingsModal/SettingsModalContainer.js");
+
 
 
 
@@ -316,6 +318,9 @@ var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "app-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
+    path: "/",
+    component: _NavBar_SettingsModal_SettingsModalContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/",
     component: _NavBar_NavBarContainer__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
@@ -350,6 +355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsDropDown */ "./frontend/components/NavBar/SettingsDropDown.jsx");
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchBar */ "./frontend/components/NavBar/SearchBar.jsx");
 /* harmony import */ var _NavBarFriends__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBarFriends */ "./frontend/components/NavBar/NavBarFriends.jsx");
+/* harmony import */ var _SettingsModal_SettingsModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SettingsModal/SettingsModal */ "./frontend/components/NavBar/SettingsModal/SettingsModal.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -367,6 +373,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -446,7 +453,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-help-button-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        logout: this.props.logout
+        toggleDropDown: this.props.toggleDropDown
       })))));
     }
   }]);
@@ -491,9 +498,6 @@ var mapStateToProps = function mapStateToProps(state) {
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])());
-    },
     toggleDropDown: function toggleDropDown() {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_5__["toggleDropDown"])());
     },
@@ -836,9 +840,11 @@ function (_React$Component) {
         }, "No users found");
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "main-content-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "search-res-list"
-      }, results);
+      }, results));
     }
   }]);
 
@@ -901,7 +907,6 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SettingsDropDownMenu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SettingsDropDownMenu */ "./frontend/components/NavBar/SettingsDropDownMenu.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -919,7 +924,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -940,9 +944,10 @@ function (_React$Component) {
       var _this = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "nav-modal-button",
         className: "nav-drop-down-button",
         onClick: function onClick() {
-          return _this.props.logout();
+          return _this.props.toggleDropDown();
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-drop-down-button-icon"
@@ -957,10 +962,10 @@ function (_React$Component) {
 
 /***/ }),
 
-/***/ "./frontend/components/NavBar/SettingsDropDownMenu.jsx":
-/*!*************************************************************!*\
-  !*** ./frontend/components/NavBar/SettingsDropDownMenu.jsx ***!
-  \*************************************************************/
+/***/ "./frontend/components/NavBar/SettingsModal/SettingsModal.jsx":
+/*!********************************************************************!*\
+  !*** ./frontend/components/NavBar/SettingsModal/SettingsModal.jsx ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -968,6 +973,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _SettingsModalComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsModalComponent */ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -988,40 +996,113 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var SettingsDropDownMenu =
+
+
+var SettingsModal =
 /*#__PURE__*/
 function (_React$Component) {
-  _inherits(SettingsDropDownMenu, _React$Component);
+  _inherits(SettingsModal, _React$Component);
 
-  function SettingsDropDownMenu(props) {
-    var _this;
+  function SettingsModal(props) {
+    _classCallCheck(this, SettingsModal);
 
-    _classCallCheck(this, SettingsDropDownMenu);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(SettingsDropDownMenu).call(this, props));
-    _this.state = {
-      listOpen: false
-    };
-    return _this;
+    return _possibleConstructorReturn(this, _getPrototypeOf(SettingsModal).call(this, props));
   }
 
-  _createClass(SettingsDropDownMenu, [{
+  _createClass(SettingsModal, [{
     key: "render",
     value: function render() {
-      var list;
+      var _this = this;
 
-      if (this.state.listOpen) {
-        list.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Logout")));
+      var JSX = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-modal",
+        onClick: function onClick() {
+          return _this.props.toggleDropDown();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "settings-modal-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        action: this.props.logout
+      })));
+
+      if (!this.props.dropDown) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);
+      } else {
+        return react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.createPortal(JSX, document.querySelector("#modal"));
       }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "DropDown");
     }
   }]);
 
-  return SettingsDropDownMenu;
+  return SettingsModal;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (SettingsDropDownMenu);
+/* harmony default export */ __webpack_exports__["default"] = (SettingsModal);
+
+/***/ }),
+
+/***/ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx":
+/*!*****************************************************************************!*\
+  !*** ./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function SettingsModalComponent(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "settings-modal-component"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    onClick: function onClick() {
+      return props.action();
+    }
+  }, "Logout"));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (SettingsModalComponent);
+
+/***/ }),
+
+/***/ "./frontend/components/NavBar/SettingsModal/SettingsModalContainer.js":
+/*!****************************************************************************!*\
+  !*** ./frontend/components/NavBar/SettingsModal/SettingsModalContainer.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _SettingsModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SettingsModal */ "./frontend/components/NavBar/SettingsModal/SettingsModal.jsx");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
+
+
+
+
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    dropDown: state.ui.dropdown
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
+    },
+    toggleDropDown: function toggleDropDown() {
+      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__["toggleDropDown"])());
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_SettingsModal__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 

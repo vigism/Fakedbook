@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import SettingsDropDown from './SettingsDropDown';
 import SearchBar from './SearchBar';
 import NavBarFriends from './NavBarFriends';
+import SettingsModal from './SettingsModal/SettingsModal';
 
 class NavBar extends React.Component {
 
@@ -50,7 +51,7 @@ class NavBar extends React.Component {
                             <button className="nav-help-button" >
                                 <i className="nav-help-button-icon"></i>
                             </button>
-                           <SettingsDropDown logout={this.props.logout} />
+                           <SettingsDropDown toggleDropDown={this.props.toggleDropDown} />
                         </div>
                     </div>
                 </div>
