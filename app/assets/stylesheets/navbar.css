@@ -233,11 +233,16 @@
     display: block;
 }
 
-.settings-modal {
+.settings-modal-container {
     position: fixed;
     width: 100%;
     height: 100%;
     background: transparent;
+   
+}
+
+.settings-modal {
+    position: absolute;
     top: 42px;
     left: 1240px;
 }

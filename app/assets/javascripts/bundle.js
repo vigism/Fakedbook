@@ -1015,15 +1015,17 @@ function (_React$Component) {
       var _this = this;
 
       var JSX = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "settings-modal",
+        className: "settings-modal-container",
         onClick: function onClick() {
           return _this.props.toggleDropDown();
         }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "settings-modal-list"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
         action: this.props.logout
-      })));
+      }))));
 
       if (!this.props.dropDown) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);

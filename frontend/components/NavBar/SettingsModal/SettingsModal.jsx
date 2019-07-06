@@ -11,10 +11,12 @@ class SettingsModal extends React.Component {
 
     render() {
      const JSX = (
-        <div  className="settings-modal" onClick={() => this.props.toggleDropDown()}>
+        <div  className="settings-modal-container" onClick={() => this.props.toggleDropDown()}>
+            <div className="settings-modal">
             <ul className="settings-modal-list">
             <SettingsModalComponent action={this.props.logout}/>
             </ul>
+            </div>
         </div>
     )
     
