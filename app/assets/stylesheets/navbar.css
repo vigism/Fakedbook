@@ -293,14 +293,14 @@
 .friends-modal {
     position: absolute;
     top: 42px;
-    left: 1140px;
+    left: 1040px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 }
 
 .friends-modal-component {
     width: 100%;
-    height: 20px;
+    height: 35px;
     background: white;
     padding: 7px;
     margin-top: 2px;
@@ -317,8 +317,17 @@
 }
 
 .friend-request-button {
- 
+    border: none;
+    padding:5px;
+    margin:2px;
+    border-radius: 2px;
 }
+
+.accept-request {
+    background: #4267B2;
+    color: white;
+}
+
 .search-res-list-el {
     height: 150px;
     border-bottom: 1px solid #dddfe2;

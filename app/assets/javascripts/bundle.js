@@ -483,7 +483,7 @@ function FriendsModalComponent(props) {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "friends-modal-list-el"
   }, " ", props.sender.first_name, " ", props.sender.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "friend-request-button"
+    className: "friend-request-button accept-request"
   }, "Confirm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "friend-request-button"
   }, "Deny"))));
