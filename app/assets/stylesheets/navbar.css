@@ -245,12 +245,28 @@
     position: absolute;
     top: 42px;
     left: 1240px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .settings-modal-component {
-    width: 175px;
+    width: 161px;
     height: 20px;
     background: white;
+    padding: 7px;
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+
+    border:2px solid #dddfe2;
+}
+
+.settings-modal-component:hover {
+    width: 161px;
+    height: 20px;
+    background: #4267B2;
+    color:white;
+    padding: 7px;
 }
 
 .settings-modal-list {

@@ -1057,12 +1057,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function SettingsModalComponent(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "settings-modal-component"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "settings-modal-component",
     onClick: function onClick() {
       return props.action();
     }
-  }, "Logout"));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Log out"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (SettingsModalComponent);
