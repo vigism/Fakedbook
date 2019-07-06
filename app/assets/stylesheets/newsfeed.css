@@ -1,9 +1,5 @@
 .newsfeed-sidepanel {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-left: thick solid rgba(0, 0, 0, 0);
+   
 }
 
 .newsfeed-sidepanel-profile-pic {
@@ -22,7 +18,8 @@
 }
 
 .newsfeed-main {
-
+    max-width: 1200px;
+    margin: auto;
 }
 
 .newsfeed-sidepanel-user {
@@ -31,11 +28,12 @@
 
 .newsfeed-sidepanel {
     position: absolute;
-    margin-left: 260px;
     margin-top: 20px;
     width: 184px;
     display: flex;
     flex-direction: column;
+
+    border-left: thick solid rgba(0, 0, 0, 0);
     
 }
 

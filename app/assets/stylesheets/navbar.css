@@ -8,11 +8,10 @@
 }
 
 .main-nav-bar-content {
-    
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     justify-content: space-around;
-    padding-left: 50px;
-    padding-right: 50px;
 }
 
 .main-nav-bar-content-left {

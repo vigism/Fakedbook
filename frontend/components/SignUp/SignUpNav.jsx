@@ -24,6 +24,7 @@ class SignUpNav extends React.Component {
     render() {
         return (    
             <div className="signup-nav-bar">
+                <div className="signup-nav-bar-content"> 
                 <div className="signup-main-logo"></div>
                 <div className="login-form">
                     <form onSubmit={this.submitLogin}>
@@ -39,6 +40,7 @@ class SignUpNav extends React.Component {
                         </label>
                         <input type="submit" value="Log In"/>
                     </form>
+                </div>
                 </div>
             </div>
         )
