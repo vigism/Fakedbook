@@ -19,6 +19,7 @@ class SearchBar extends React.Component {
         })
     } 
 
+  
     
     keyPress(e){
         if(e.keyCode == 13){
