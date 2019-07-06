@@ -1,11 +1,20 @@
 import React from 'react';
 
 function FriendsModalComponent(props) {
+    let friend = {
+                id: props.friendId,    
+                user_one_id:props.currentUser, 
+                user_two_id: props.sender.id,
+            status:true}
     return (
-        <div className="friends-modal-component" onClick= {() => props.action()} > 
+        <div className="friends-modal-component"  > 
             <li className="friends-modal-list-el"> {props.sender.first_name} {props.sender.last_name} 
-                <div><button className="friend-request-button accept-request">Confirm</button>
-                <button className="friend-request-button">Deny</button>
+                <div><button 
+                onClick = {() => props.updateFriend(friend)}
+                className="friend-request-button accept-request">Confirm</button>
+                <button
+                onClick={() => props.deleteFriend(friend)}
+                className="friend-request-button">Deny</button>
                 </div>
             </li>
         </div>

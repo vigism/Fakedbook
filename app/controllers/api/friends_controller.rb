@@ -39,6 +39,7 @@ class Api::FriendsController < ApplicationController
     def destroy
         @friend = Friend.find(params[:id])
         @friend.destroy
+        render 'api/friends/show'
     end
     
 

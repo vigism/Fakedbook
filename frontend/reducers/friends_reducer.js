@@ -9,10 +9,13 @@ const friendsReducer = (state = {}, action) => {
             let newState = {[action.friend.id]:action.friend}
             return merge({}, state, newState)
         case UPDATE_FRIEND:
-
-            return merge({},state, action.friend)
+            newState = action.friend;
+            newState.status = true;
+            return merge({},newState)
         case DELETE_FRIEND:
-            delete state[action.friend.id]
+            let updatedState = Object.assign({}, state);
+            updatedState[action.friend.id] = {}
+            return updatedState;
         case GET_FRIENDS:
              newState = {};
             let keys = Object.keys(action.friends);

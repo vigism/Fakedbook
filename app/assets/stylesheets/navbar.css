@@ -133,7 +133,7 @@
     position: absolute;
     top: 0px;
     right: 0px;
-    z-index: 3;
+    /* z-index: 3; */
     font-weight: bold;
 }
 
@@ -144,7 +144,7 @@
     background-position: -25px -319px;
     width:25px;
     height:25px;
-    z-index: 2;
+    /* z-index: 2; */
     display: block;
 }
 
@@ -165,7 +165,7 @@
     background-position: -75px -319px;
     width:25px;
     height:25px;
-    z-index: 2;
+    /* z-index: 2; */
     display: block;
 }
 
@@ -186,7 +186,7 @@
     background-position: -50px -294px;
     width:25px;
     height:25px;
-    z-index: 2;
+    /* z-index: 2; */
     display: block;
 }
 
@@ -207,7 +207,7 @@
     background-position: 0 -344px;
     width:25px;
     height:25px;
-    z-index: 2;
+    /* z-index: 2; */
     display: block;
 }
 
@@ -229,7 +229,7 @@
     background-position: -100px -294px;
     width:25px;
     height:25px;
-    z-index: 2;
+    /* z-index: 2; */
     display: block;
 }
 
@@ -321,6 +321,7 @@
     padding:5px;
     margin:2px;
     border-radius: 2px;
+    z-index: 3;
 }
 
 .accept-request {

@@ -429,6 +429,10 @@ function (_React$Component) {
         for (var i = 0; i < keys.length; i++) {
           if (this.props.users[this.props.requests[keys[i]].user_two_id] != undefined) {
             requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              updateFriend: this.props.updateFriend,
+              friendId: this.props.requests[keys[i]].id,
+              currentUser: this.props.currentUser,
+              deleteFriend: this.props.deleteFriend,
               sender: this.props.users[this.props.requests[keys[i]].user_two_id]
             }));
           }
@@ -475,16 +479,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function FriendsModalComponent(props) {
+  var friend = {
+    id: props.friendId,
+    user_one_id: props.currentUser,
+    user_two_id: props.sender.id,
+    status: true
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "friends-modal-component",
-    onClick: function onClick() {
-      return props.action();
-    }
+    className: "friends-modal-component"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "friends-modal-list-el"
   }, " ", props.sender.first_name, " ", props.sender.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return props.updateFriend(friend);
+    },
     className: "friend-request-button accept-request"
   }, "Confirm"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    onClick: function onClick() {
+      return props.deleteFriend(friend);
+    },
     className: "friend-request-button"
   }, "Deny"))));
 }
@@ -506,6 +519,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _FriendsModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FriendsModal */ "./frontend/components/NavBar/FriendsModal/FriendsModal.jsx");
 /* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
 /* harmony import */ var _selectors_friends_selectors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../selectors/friends_selectors */ "./frontend/selectors/friends_selectors.js");
+/* harmony import */ var _actions_friends_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../actions/friends_actions */ "./frontend/actions/friends_actions.js");
+
 
 
 
@@ -515,7 +530,8 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     friendsDropdown: state.ui.friendsDropdown,
     requests: Object(_selectors_friends_selectors__WEBPACK_IMPORTED_MODULE_3__["selectIncomingRequestsFromState"])(state),
-    users: state.entities.user
+    users: state.entities.user,
+    currentUser: state.session.id
   };
 };
 
@@ -523,6 +539,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     toggleDropDown: function toggleDropDown() {
       return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_2__["toggleFriendsDropdown"])());
+    },
+    updateFriend: function updateFriend(friend) {
+      return dispatch(Object(_actions_friends_actions__WEBPACK_IMPORTED_MODULE_4__["updateFriendRequest"])(friend));
+    },
+    deleteFriend: function deleteFriend(friend) {
+      return dispatch(Object(_actions_friends_actions__WEBPACK_IMPORTED_MODULE_4__["deleteFriendRequest"])(friend));
     }
   };
 };
@@ -2192,10 +2214,14 @@ var friendsReducer = function friendsReducer() {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, newState);
 
     case _actions_friends_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_FRIEND"]:
-      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, action.friend);
+      newState = action.friend;
+      newState.status = true;
+      return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, newState);
 
     case _actions_friends_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_FRIEND"]:
-      delete state[action.friend.id];
+      var updatedState = Object.assign({}, state);
+      updatedState[action.friend.id] = {};
+      return updatedState;
 
     case _actions_friends_actions__WEBPACK_IMPORTED_MODULE_0__["GET_FRIENDS"]:
       newState = {};
