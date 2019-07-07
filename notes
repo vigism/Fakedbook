@@ -3,3 +3,5 @@
 3. Change names to be saved capitalized consistnetly
 4. fix bug when notifications and friend requests dont go up when the other is clicked
 5. fix alignment issue on the signup page with the icons
+6. Alignment on modals
+7. Add no friends when no pending notifications (in the modal)

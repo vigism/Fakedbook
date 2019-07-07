@@ -4,7 +4,8 @@ import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../
 
 const mapStateToProps = state => ({
     res: state.entities.user,
-    current_user_id: state.session.id
+    current_user_id: state.session.id,
+    friends: state.entities.friends
 })
 
 const mapDispatchToProps = dispatch => ({

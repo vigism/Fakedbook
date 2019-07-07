@@ -978,11 +978,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchResult).call(this, props));
     _this.state = {
+      id: 0,
       user_one_id: _this.props.current_user_id,
       user_two_id: _this.props.user.id,
       status: false
     };
     _this.handleFriend = _this.handleFriend.bind(_assertThisInitialized(_this));
+    _this.handleDeleteFriend = _this.handleDeleteFriend.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -992,22 +994,102 @@ function (_React$Component) {
       this.props.newFriend(this.state);
     }
   }, {
+    key: "handleDeleteFriend",
+    value: function handleDeleteFriend(id) {
+      var friend = {
+        id: id,
+        user_one_id: this.props.current_user_id,
+        user_two_id: this.props.user.id,
+        status: false
+      };
+      friend.id = id;
+      this.props.deleteFriend(friend);
+    }
+  }, {
+    key: "handleUpdateFriend",
+    value: function handleUpdateFriend(id) {
+      var friend = {
+        id: id,
+        user_one_id: this.props.current_user_id,
+        user_two_id: this.props.user.id,
+        status: true
+      };
+      friend.id = id;
+      this.props.updateFriend(friend);
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "search-res-list-el"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "search-res-profile-pic"
-      }), this.props.user.first_name, " ", this.props.user.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      var keys = Object.keys(this.props.friends);
+      var button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this2.handleFriend();
         },
         className: "add-friend-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "add-friend-icon"
-      }), "Add Friend"));
+      }), "Add Friend");
+
+      var _loop = function _loop(i) {
+        var cur = _this2.props.friends[keys[i]];
+
+        if (cur.user_one_id === _this2.props.current_user_id && cur.user_two_id === _this2.props.user.id && cur.status === true) {
+          button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: function onClick() {
+              return _this2.handleDeleteFriend(cur.id);
+            },
+            className: "remove-friend-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "remove-friend-icon"
+          }), "Remove Friend");
+        } else if (cur.user_one_id === _this2.props.current_user_id && cur.user_two_id === _this2.props.user.id && cur.status === false) {
+          button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: function onClick() {
+              return _this2.handleDeleteFriend(cur.id);
+            },
+            className: "add-friend-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "add-friend-icon"
+          }), "Cancel Request");
+        } else if (cur.user_one_id === _this2.props.user.id && cur.user_two_id === _this2.props.current_user_id && cur.status === true) {
+          button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: function onClick() {
+              return _this2.handleDeleteFriend(cur.id);
+            },
+            className: "remove-friend-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "remove-friend-icon"
+          }), "Remove Friend");
+        } else if (cur.user_one_id === _this2.props.user.id && cur.user_two_id === _this2.props.current_user_id && cur.status === false) {
+          button = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: function onClick() {
+              return _this2.handleDeleteFriend(cur.id);
+            },
+            className: "add-friend-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "add-friend-icon"
+          }), "Deny Request"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: function onClick() {
+              return _this2.handleUpdateFriend(cur.id);
+            },
+            className: "add-friend-button"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+            className: "add-friend-icon"
+          }), "Accept Request")];
+        }
+      };
+
+      for (var i = 0; i < keys.length; i++) {
+        _loop(i);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "search-res-list-el"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-res-profile-pic"
+      }), this.props.user.first_name, " ", this.props.user.last_name, button);
     }
   }]);
 
@@ -1069,6 +1151,9 @@ function (_React$Component) {
 
       var results = Object.keys(this.props.res).map(function (el) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchResult__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          friends: _this.props.friends,
+          updateFriend: _this.props.updateFriendRequest,
+          deleteFriend: _this.props.deleteFriendRequest,
           user: _this.props.res[el],
           newFriend: _this.props.newFriend,
           current_user_id: _this.props.current_user_id
@@ -1115,7 +1200,8 @@ __webpack_require__.r(__webpack_exports__);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     res: state.entities.user,
-    current_user_id: state.session.id
+    current_user_id: state.session.id,
+    friends: state.entities.friends
   };
 };
 
