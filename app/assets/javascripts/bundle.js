@@ -977,12 +977,6 @@ function (_React$Component) {
     _classCallCheck(this, SearchResult);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchResult).call(this, props));
-    _this.state = {
-      id: 0,
-      user_one_id: _this.props.current_user_id,
-      user_two_id: _this.props.user.id,
-      status: false
-    };
     _this.handleFriend = _this.handleFriend.bind(_assertThisInitialized(_this));
     _this.handleDeleteFriend = _this.handleDeleteFriend.bind(_assertThisInitialized(_this));
     return _this;
@@ -991,7 +985,12 @@ function (_React$Component) {
   _createClass(SearchResult, [{
     key: "handleFriend",
     value: function handleFriend() {
-      this.props.newFriend(this.state);
+      var friend = {
+        user_one_id: this.props.current_user_id,
+        user_two_id: this.props.user.id,
+        status: false
+      };
+      this.props.newFriend(friend);
     }
   }, {
     key: "handleDeleteFriend",
@@ -2300,13 +2299,13 @@ var friendsReducer = function friendsReducer() {
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state, newState);
 
     case _actions_friends_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_FRIEND"]:
-      newState = action.friend;
-      newState.status = true;
+      newState = _defineProperty({}, action.friend.id, action.friend);
+      newState[action.friend.id].status = true;
       return Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, newState);
 
     case _actions_friends_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_FRIEND"]:
       var updatedState = Object.assign({}, state);
-      updatedState[action.friend.id] = {};
+      delete updatedState[action.friend.id];
       return updatedState;
 
     case _actions_friends_actions__WEBPACK_IMPORTED_MODULE_0__["GET_FRIENDS"]:
