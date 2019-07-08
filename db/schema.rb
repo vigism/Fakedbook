@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_07_225454) do
+ActiveRecord::Schema.define(version: 2019_07_08_185632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 2019_07_07_225454) do
     t.boolean "status"
     t.index ["user_one_id"], name: "index_friends_on_user_one_id"
     t.index ["user_two_id"], name: "index_friends_on_user_two_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "profile_id", null: false
+    t.string "content", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id"
+    t.index ["profile_id"], name: "index_posts_on_profile_id"
   end
 
   create_table "users", force: :cascade do |t|

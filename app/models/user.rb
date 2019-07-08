@@ -8,7 +8,14 @@ class User < ApplicationRecord
   
     after_initialize :ensure_session_token
   
-  
+    has_many :created_posts,
+      foreign_key: :author_id,
+      class_name: :Post
+
+    has_many :received_posts,
+      foreign_key: :profile_id,
+      class_name: :Post
+
     has_many :sent_requests,
       foreign_key: :user_one_id,
       class_name: :Friend

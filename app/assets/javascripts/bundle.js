@@ -2205,7 +2205,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util/post_api_util */ "./frontend/util/post_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2216,6 +2218,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 document.addEventListener('DOMContentLoaded', function () {
   var store;
   window.merge = lodash__WEBPACK_IMPORTED_MODULE_5__["merge"];
+  window.createPost = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__["createPost"];
+  window.fetchPostById = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchPostById"];
 
   if (window.currentUser) {
     var preloadedState = {
@@ -2660,6 +2664,35 @@ var getFriends = function getFriends() {
   return $.ajax({
     method: "get",
     url: "api/friends"
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/post_api_util.js":
+/*!****************************************!*\
+  !*** ./frontend/util/post_api_util.js ***!
+  \****************************************/
+/*! exports provided: createPost, fetchPostById */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPostById", function() { return fetchPostById; });
+var createPost = function createPost(post) {
+  return $.ajax({
+    method: "POST",
+    url: "api/post",
+    data: {
+      post: post
+    }
+  });
+};
+var fetchPostById = function fetchPostById(id) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/post/".concat(id)
   });
 };
 
