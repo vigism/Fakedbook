@@ -475,7 +475,7 @@ function (_React$Component) {
 
       if (Object.keys(this.props.users).length > 0) {
         for (var i = 0; i < keys.length; i++) {
-          if (this.props.users[this.props.requests[keys[i]].user_two_id] != undefined) {
+          if (this.props.users[this.props.requests[keys[i]].user_two_id] != undefined && this.props.users[this.props.requests[keys[i]].user_one_id] != undefined) {
             requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
               updateFriend: this.props.updateFriend,
               friendId: this.props.requests[keys[i]].id,
@@ -1231,6 +1231,12 @@ function (_React$Component) {
         }, "No users found")];
       }
 
+      if (results.length === 0 && Object.keys(this.props.res).length === 1) {
+        results = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "search-res-list-el"
+        }, "No users found")];
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-content-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -1649,10 +1655,14 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "create-post-form-input-image",
         src: this.props.user.photoUrl
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         className: "create-post-form-input-area",
         placeholder: "What's on your mind, ".concat(this.props.user.first_name, "? ")
-      })));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "create-post-form-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "create-post-form-button"
+      }, "Create Post")));
     }
   }]);
 
@@ -2731,7 +2741,7 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_CURRENT_USER"]:
-      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, _defineProperty({}, action.currentUser.id, action.currentUser));
 
     default:
       return state;

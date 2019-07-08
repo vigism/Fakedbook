@@ -4,9 +4,7 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    object-fit: cover;
 }
 
 .newsfeed-sidepanel-text {
@@ -102,6 +100,8 @@
     list-style: none;
     margin-top: 40px;
     height: 200px;
+    padding-bottom: 5px;
+    padding-right: 3px;
 }
 
 .create-post-form-input {
@@ -109,7 +109,8 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    height: 170px;
+    max-height: 130px;
+    
 }
 
 
@@ -150,4 +151,19 @@
     margin-left:5px;
     padding:5px;
     font-size: 25px;
+}
+
+.create-post-form-footer {
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom:2px;
+}
+
+.create-post-form-button {
+    border-radius: 0;
+    background: #4267b2;
+    border: none;
+    color: white;
+    
 }

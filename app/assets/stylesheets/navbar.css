@@ -81,9 +81,8 @@
 .main-nav-bar-user-profile-pic-pic {
     width: 25px;
     height: 25px;
-    background-position: 50% 50%;
+    object-fit: cover;
     border-radius: 50%;
-    background-repeat: no-repeat;
 }
 
 
@@ -347,9 +346,7 @@
     height: 75px;
     border-radius: 50%;
     margin-right: 30px;
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
+    object-fit: cover;
 }
 .main-content-container {
     max-width: 1200px;

@@ -17,8 +17,11 @@ class CreatePostForm extends React.Component {
                     <img className="create-post-form-input-image" src={this.props.user.photoUrl}>
                     </img>
                     </div>
-                    <input className="create-post-form-input-area" placeholder={`What's on your mind, ${this.props.user.first_name}? `} />
+                    <textarea className="create-post-form-input-area" placeholder={`What's on your mind, ${this.props.user.first_name}? `} />
                 </div>
+                <div className="create-post-form-footer">
+                    <button className="create-post-form-button">Create Post</button>
+                    </div>    
             </div>
         )
     }

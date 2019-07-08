@@ -15,8 +15,14 @@ class SearchResults extends React.Component {
                 results.push(<SearchResult friends={this.props.friends} updateFriend={this.props.updateFriendRequest} 
                     deleteFriend={this.props.deleteFriendRequest} user={this.props.res[keys[i]]} newFriend={this.props.newFriend} current_user_id={this.props.current_user_id}/> )
                 }
+                
             }
-        if(this.props.res[0] === "No users found") {
+            
+        if(this.props.res[0] === "No users found" ) {
+            results = [<li className="search-res-list-el">No users found</li>]
+        }
+
+        if(results.length === 0 && Object.keys(this.props.res).length===1) {
             results = [<li className="search-res-list-el">No users found</li>]
         }
         return(
