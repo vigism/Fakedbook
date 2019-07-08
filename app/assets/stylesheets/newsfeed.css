@@ -17,6 +17,7 @@
 .newsfeed-main {
     max-width: 1200px;
     margin: auto;
+    display: flex;
 }
 
 .newsfeed-sidepanel-user {
@@ -24,7 +25,6 @@
 }
 
 .newsfeed-sidepanel {
-    position: absolute;
     margin-top: 20px;
     width: 184px;
     display: flex;
@@ -94,3 +94,60 @@
     display: block;
 }
 
+.create-post-form {
+    background: white;
+    width: 600px;
+    border:1px solid #dddfe2;
+    border-radius: 5px;
+    list-style: none;
+    margin-top: 40px;
+    height: 200px;
+}
+
+.create-post-form-input {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 170px;
+}
+
+
+.create-post-form-header {
+    background: #f5f6f7;
+    width: 595px;
+    border:1px solid #dddfe2;
+    border-radius: 5px 5px 0 0 ;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 30px;
+    color: #4b4f56;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    padding-left:5px;
+}
+
+.create-post-form-input-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.create-post-form-input-image-div {
+    width: 50px;
+    height: 50px;
+    margin-right: 3px;
+}
+
+.create-post-form-input-area {
+    outline: none;
+    background: white;
+    border: none;
+    height: 100px;
+    margin-left:5px;
+    padding:5px;
+    font-size: 25px;
+}
