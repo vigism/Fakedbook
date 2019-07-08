@@ -1161,23 +1161,26 @@ function (_React$Component) {
   _createClass(SearchResults, [{
     key: "render",
     value: function render() {
-      var _this = this;
+      var results = [];
+      var keys = Object.keys(this.props.res);
 
-      var results = Object.keys(this.props.res).map(function (el) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchResult__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          friends: _this.props.friends,
-          updateFriend: _this.props.updateFriendRequest,
-          deleteFriend: _this.props.deleteFriendRequest,
-          user: _this.props.res[el],
-          newFriend: _this.props.newFriend,
-          current_user_id: _this.props.current_user_id
-        });
-      });
+      for (var i = 0; i < keys.length; i++) {
+        if (keys[i] != this.props.current_user_id) {
+          results.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchResult__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            friends: this.props.friends,
+            updateFriend: this.props.updateFriendRequest,
+            deleteFriend: this.props.deleteFriendRequest,
+            user: this.props.res[keys[i]],
+            newFriend: this.props.newFriend,
+            current_user_id: this.props.current_user_id
+          }));
+        }
+      }
 
       if (this.props.res[0] === "No users found") {
-        results = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        results = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: "search-res-list-el"
-        }, "No users found");
+        }, "No users found")];
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
