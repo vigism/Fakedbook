@@ -2223,6 +2223,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.merge = lodash__WEBPACK_IMPORTED_MODULE_5__["merge"];
   window.createPost = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__["createPost"];
   window.fetchPostById = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchPostById"];
+  window.fetchUsersPosts = _util_post_api_util__WEBPACK_IMPORTED_MODULE_6__["fetchUsersPosts"];
 
   if (window.currentUser) {
     var preloadedState = {
@@ -2676,13 +2677,14 @@ var getFriends = function getFriends() {
 /*!****************************************!*\
   !*** ./frontend/util/post_api_util.js ***!
   \****************************************/
-/*! exports provided: createPost, fetchPostById */
+/*! exports provided: createPost, fetchPostById, fetchUsersPosts */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPostById", function() { return fetchPostById; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUsersPosts", function() { return fetchUsersPosts; });
 var createPost = function createPost(post) {
   return $.ajax({
     method: "POST",
@@ -2696,6 +2698,12 @@ var fetchPostById = function fetchPostById(id) {
   return $.ajax({
     method: "GET",
     url: "/api/post/".concat(id)
+  });
+};
+var fetchUsersPosts = function fetchUsersPosts(id) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/post/all/".concat(id)
   });
 };
 

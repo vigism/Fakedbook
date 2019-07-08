@@ -5,13 +5,14 @@ import Root from './components/root';
 import {logout} from './actions/session_actions';
 import {merge} from 'lodash'
 
-import {createPost, fetchPostById} from './util/post_api_util';
+import {createPost, fetchPostById, fetchUsersPosts} from './util/post_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   window.merge = merge;
   window.createPost = createPost
   window.fetchPostById = fetchPostById;
+  window.fetchUsersPosts = fetchUsersPosts;
   if (window.currentUser) {
     const preloadedState = {
       entities: {
