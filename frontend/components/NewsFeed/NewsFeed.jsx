@@ -10,7 +10,7 @@ class NewsFeed extends React.Component {
     render() {
         return (
             <div className="newsfeed-main">
-                <SidePanel first_name={this.props.first_name} last_name={this.props.last_name} />
+                <SidePanel user={this.props.user}/>
             </div>
         )
     }

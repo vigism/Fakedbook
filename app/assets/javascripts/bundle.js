@@ -619,6 +619,14 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var photo;
+
+      if (this.props.user.photoUrl) {
+        photo = this.props.user.photoUrl;
+      } else {
+        return null;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -640,7 +648,7 @@ function (_React$Component) {
         className: "main-nav-bar-user-profile-pic"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "main-nav-bar-user-profile-pic-pic",
-        src: this.props.user.photoUrl
+        src: photo
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-user-name"
       }, this.props.user.first_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1092,7 +1100,10 @@ function (_React$Component) {
         className: "search-res-list-el"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-res-profile-pic"
-      }), this.props.user.first_name, " ", this.props.user.last_name, button);
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "search-res-profile-pic",
+        src: this.props.user.photoUrl
+      })), this.props.user.first_name, " ", this.props.user.last_name, button);
     }
   }]);
 
@@ -1487,8 +1498,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newsfeed-main"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SidePanel_SidePanel__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        first_name: this.props.first_name,
-        last_name: this.props.last_name
+        user: this.props.user
       }));
     }
   }]);
@@ -1516,8 +1526,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    first_name: state.entities.users[state.session.id].first_name,
-    last_name: state.entities.users[state.session.id].last_name
+    user: state.entities.users[state.session.id]
   };
 };
 
@@ -1582,9 +1591,12 @@ function (_React$Component) {
         className: "newsfeed-sidepanel-button  newsfeed-sidepanel-user"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newsfeed-sidepanel-profile-pic"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "newsfeed-sidepanel-profile-pic",
+        src: this.props.user.photoUrl
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newsfeed-sidepanel-text"
-      }, this.props.first_name, " ", this.props.last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, this.props.user.first_name, " ", this.props.user.last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newsfeed-sidepanel-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "newsfeed-icon"

@@ -4,8 +4,8 @@ import NewsFeed from './NewsFeed';
 
 const mapStateToProps = state => {
     return {
-        first_name: state.entities.users[state.session.id].first_name,
-        last_name: state.entities.users[state.session.id].last_name,
+        user: state.entities.users[state.session.id]
+        
     }
 }
 

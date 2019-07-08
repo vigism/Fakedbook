@@ -67,7 +67,7 @@ class SearchResult extends React.Component {
         }
         return (
             <li className="search-res-list-el">
-            <div className="search-res-profile-pic"></div>
+            <div className="search-res-profile-pic"><img className="search-res-profile-pic" src={this.props.user.photoUrl}></img></div>
             {this.props.user.first_name} {this.props.user.last_name}
             {button}
             </li>

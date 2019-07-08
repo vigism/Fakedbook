@@ -11,8 +11,8 @@ class SidePanel extends React.Component {
             <div className="newsfeed-sidepanel">
                         <div className="newsfeed-sidepanel">
                             <div className="newsfeed-sidepanel-button  newsfeed-sidepanel-user">
-                                <div className="newsfeed-sidepanel-profile-pic"></div>
-                                <div className="newsfeed-sidepanel-text">{this.props.first_name} {this.props.last_name}</div>
+                                <div className="newsfeed-sidepanel-profile-pic"><img className="newsfeed-sidepanel-profile-pic" src={this.props.user.photoUrl}></img></div>
+                                <div className="newsfeed-sidepanel-text">{this.props.user.first_name} {this.props.user.last_name}</div>
                             </div>
                             
                             <div className="newsfeed-sidepanel-button">
