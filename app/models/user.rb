@@ -17,7 +17,7 @@ class User < ApplicationRecord
       foreign_key: :user_two_id,
       class_name: :Friend
 
-    has_one_attached :profile_pic
+    has_one_attached :photo
 
     def self.find_by_credentials(email, password)
       user = User.find_by(email: email)

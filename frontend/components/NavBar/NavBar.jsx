@@ -33,7 +33,7 @@ class NavBar extends React.Component {
 
                     <div className="main-nav-bar-content-mid">
                         <div className="main-nav-bar-user">
-                            <div className="main-nav-bar-user-profile-pic"></div>
+                            <div className="main-nav-bar-user-profile-pic" ><img className="main-nav-bar-user-profile-pic-pic" src={this.props.user.photoUrl}></img></div>
                             <div className="main-nav-bar-user-name">{this.props.user.first_name}</div>
                         </div>
                         <div className="main-nav-bar-links">
