@@ -22,7 +22,7 @@ class FriendsModal extends React.Component {
                         friendId = {this.props.requests[keys[i]].id}
                         currentUser = {this.props.currentUser}
                         deleteFriend = {this.props.deleteFriend}
-                        sender={this.props.users[this.props.requests[keys[i]].user_two_id]}/>)
+                        sender={this.props.users[this.props.requests[keys[i]].user_one_id]}/>)
                     }
                 }
         }
