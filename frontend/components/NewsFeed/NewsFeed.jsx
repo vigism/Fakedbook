@@ -11,14 +11,31 @@ class NewsFeed extends React.Component {
 
     componentDidMount() {
         this.props.fetchPosts(this.props.currentUserId)
+        
+        
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.friends != this.props.friends) {
+            let keys = Object.keys(this.props.friends);
+            for(let i = 0;i < keys.length; i++) {
+                if(this.props.friends[keys[i].status === true]) {
+                this.props.receiveUserById(this.props.friends[keys[i]].user_one_id)
+                this.props.receiveUserById(this.props.friends[keys[i]].user_two_id)
+                }
+            }
+        }
     }
 
     render() {
         let postList = [];
         let keys = Object.keys(this.props.posts);
-        for(let i = 0; i<keys.length;i ++){
+        for(let i = keys.length-1; i>=0;i--){
             postList.push(
-                <Post content={this.props.posts[keys[i]].content}/>
+                <Post 
+                post={this.props.posts[keys[i]]}
+                users={this.props.users}
+                currentUser={this.props.user}/>
             )
         }
         return (

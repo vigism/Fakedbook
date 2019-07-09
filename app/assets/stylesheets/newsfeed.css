@@ -178,4 +178,21 @@
     height: 200px;
     padding-bottom: 5px;
     padding-right: 3px;
+    
+}
+
+.post-header {
+    background: #f5f6f7;
+    width: 595px;
+    border:1px solid #dddfe2;
+    border-radius: 5px 5px 0 0 ;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 30px;
+    color: #4b4f56;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    padding-left:5px;
 }
