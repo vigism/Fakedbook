@@ -4,6 +4,25 @@ class CreatePostForm extends React.Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            author_id: this.props.currentUserId,
+            profile_id: this.props.currentUserId,
+            content: ""
+        }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleSubmit() {
+        
+    }
+
+    handleChange(e) {
+       
+            this.setState({
+                content:e.currentTarget.value
+            })
+            
     }
 
     render() {
@@ -17,10 +36,10 @@ class CreatePostForm extends React.Component {
                     <img className="create-post-form-input-image" src={this.props.user.photoUrl}>
                     </img>
                     </div>
-                    <textarea className="create-post-form-input-area" placeholder={`What's on your mind, ${this.props.user.first_name}? `} />
+                    <textarea value={this.state.content} className="create-post-form-input-area" onChange={this.handleChange} placeholder={`What's on your mind, ${this.props.user.first_name}? `} />
                 </div>
                 <div className="create-post-form-footer">
-                    <button className="create-post-form-button">Create Post</button>
+                    <button className="create-post-form-button" onClick={this.handleSubmit}>Create Post</button>
                     </div>    
             </div>
         )

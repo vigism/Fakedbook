@@ -1559,7 +1559,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SidePanel_SidePanel__WEBPACK_IMPORTED_MODULE_1__["default"], {
         user: this.props.user
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Posts_CreatePostForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        user: this.props.user
+        user: this.props.user,
+        currentUserId: this.props.currentUserId,
+        createPost: this.props.createPost
       }));
     }
   }]);
@@ -1582,17 +1584,24 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _NewsFeed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewsFeed */ "./frontend/components/NewsFeed/NewsFeed.jsx");
+/* harmony import */ var _actions_posts_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/posts_actions */ "./frontend/actions/posts_actions.js");
+
 
 
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    user: state.entities.users[state.session.id]
+    user: state.entities.users[state.session.id],
+    currentUserId: state.session.id
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    createPost: function createPost(post) {
+      return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_2__["createPost"])(post));
+    }
+  };
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_NewsFeed__WEBPACK_IMPORTED_MODULE_1__["default"]));
@@ -1620,9 +1629,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1636,12 +1645,32 @@ function (_React$Component) {
   _inherits(CreatePostForm, _React$Component);
 
   function CreatePostForm(props) {
+    var _this;
+
     _classCallCheck(this, CreatePostForm);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CreatePostForm).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreatePostForm).call(this, props));
+    _this.state = {
+      author_id: _this.props.currentUserId,
+      profile_id: _this.props.currentUserId,
+      content: ""
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(CreatePostForm, [{
+    key: "handleSubmit",
+    value: function handleSubmit() {}
+  }, {
+    key: "handleChange",
+    value: function handleChange(e) {
+      this.setState({
+        content: e.currentTarget.value
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1656,12 +1685,15 @@ function (_React$Component) {
         className: "create-post-form-input-image",
         src: this.props.user.photoUrl
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        value: this.state.content,
         className: "create-post-form-input-area",
+        onChange: this.handleChange,
         placeholder: "What's on your mind, ".concat(this.props.user.first_name, "? ")
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "create-post-form-footer"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "create-post-form-button"
+        className: "create-post-form-button",
+        onClick: this.handleSubmit
       }, "Create Post")));
     }
   }]);
