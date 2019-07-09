@@ -14,7 +14,10 @@ class CreatePostForm extends React.Component {
     }
 
     handleSubmit() {
-        
+        this.props.createPost(this.state);
+        this.setState({
+            content: ""
+        })
     }
 
     handleChange(e) {
@@ -39,7 +42,7 @@ class CreatePostForm extends React.Component {
                     <textarea value={this.state.content} className="create-post-form-input-area" onChange={this.handleChange} placeholder={`What's on your mind, ${this.props.user.first_name}? `} />
                 </div>
                 <div className="create-post-form-footer">
-                    <button className="create-post-form-button" onClick={this.handleSubmit}>Create Post</button>
+                    <button className="create-post-form-button" onClick={() => this.handleSubmit()}>Create Post</button>
                     </div>    
             </div>
         )

@@ -20,7 +20,7 @@ export const createPost = post => dispatch => (
 )
 
 export const fetchUserPosts = id => dispatch => (
-    APIUtil.fetchUserPosts(id).then(posts => (
+    APIUtil.fetchUsersPosts(id).then(posts => (
         dispatch(receivePosts(posts))
     ))
 )
