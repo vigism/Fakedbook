@@ -106,11 +106,9 @@
 
 .create-post-form-input {
     display: flex;
-    justify-content: center;
-    align-content: center;
     align-items: center;
-    max-height: 130px;
     
+    height:130px;
 }
 
 
@@ -131,15 +129,16 @@
 }
 
 .create-post-form-input-image {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
 }
 
 .create-post-form-input-image-div {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
+    padding-left:10px;
     margin-right: 3px;
 }
 
@@ -147,10 +146,11 @@
     outline: none;
     background: white;
     border: none;
-    height: 100px;
     margin-left:5px;
     padding:5px;
     font-size: 25px;
+    width: 530px;
+    resize: none;
 }
 
 .create-post-form-footer {
