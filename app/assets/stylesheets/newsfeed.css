@@ -175,7 +175,7 @@
     border-radius: 5px;
     list-style: none;
     margin-top: 40px;
-    height: 200px;
+    min-height: 270px;
     padding-bottom: 5px;
     padding-right: 3px;
     
@@ -217,6 +217,10 @@
 
 .post-content {
     padding: 15px;
+    height: 130px;
+    width: 570px;
+    border:1px solid #dddfe2;
+    border-radius: 5px 5px 0 0 ;
 }
 
 .arrow-right {
@@ -238,4 +242,34 @@
     height: 45px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.post-create-comment {
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.post-form-user-profile-pic {
+    width: 35px;
+    padding-left: 8px;
+    height: 35px;
+}
+
+.post-form-user-profile-pic-pic {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.create-comment-text-input {
+    background-color: #f2f3f5;
+    border:1px solid #dddfe2;
+    border-radius: 16px;
+    line-height: 16px;
+    width: 515px;
+    height: 25px;
+    margin-left: 10px;
+    padding: 5px;
 }

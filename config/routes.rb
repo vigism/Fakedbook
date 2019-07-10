@@ -5,7 +5,9 @@ Rails.application.routes.draw do
       
     end
     get 'post/all/:id', to: 'post#allUserPosts'
-    resources :post, only: [:create, :show]
+    resources :post, only: [:create, :show] do
+      resources :comment, only: [:create, :show, :destroy, :index]
+    end
     resource :session, only: [:create, :destroy, :show]
     get 'users/', to: 'user#search'
     resources :friends, only: [:create,:update, :destroy, :index]
