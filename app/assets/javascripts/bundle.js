@@ -1565,7 +1565,7 @@ function (_React$Component) {
         var keys = Object.keys(this.props.friends);
 
         for (var i = 0; i < keys.length; i++) {
-          if (this.props.friends[keys[i].status === true]) {
+          if (this.props.friends[keys[i]].status === true) {
             this.props.receiveUserById(this.props.friends[keys[i]].user_one_id);
             this.props.receiveUserById(this.props.friends[keys[i]].user_two_id);
           }
@@ -1812,18 +1812,35 @@ function (_React$Component) {
 
       if (this.props.users[this.props.post.author_id] != undefined && this.props.users[this.props.post.profile_id] != undefined) {
         if (this.props.post.author_id === this.props.post.profile_id) {
-          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].first_name);
+          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-header"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-user-profile-pic"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "post-user-profile-pic-pic",
+            src: this.props.users[this.props.post.author_id].photoUrl
+          })), this.props.users[this.props.post.author_id].first_name);
         } else {
-          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].first_name, this.props.users[this.props.post.profile_id].first_name);
+          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-header"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-user-profile-pic"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "post-user-profile-pic-pic",
+            src: this.props.users[this.props.post.author_id].photoUrl
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.post.author_id].first_name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "arrow-right"
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.post.profile_id].first_name));
         }
-      } //  debugger;
-
+      }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "post-header"
-      }, header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.post.content));
+        className: "post-header-container"
+      }, header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.post.content)));
     }
   }]);
 

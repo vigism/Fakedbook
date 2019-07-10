@@ -19,7 +19,7 @@ class NewsFeed extends React.Component {
         if(prevProps.friends != this.props.friends) {
             let keys = Object.keys(this.props.friends);
             for(let i = 0;i < keys.length; i++) {
-                if(this.props.friends[keys[i].status === true]) {
+                if(this.props.friends[keys[i]].status === true) {
                 this.props.receiveUserById(this.props.friends[keys[i]].user_one_id)
                 this.props.receiveUserById(this.props.friends[keys[i]].user_two_id)
                 }
