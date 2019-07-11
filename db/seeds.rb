@@ -51,6 +51,13 @@ andy.photo.attach(io:file7, filename: 'andy.jpg');
 file8 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/andy_cover.jpg')
 andy.cover_photo.attach(io: file8, filename:'andy_cover.jpg')
 
+dwight = User.create(first_name: "Dwight", last_name: "Schrute", email:"dwight@gmail.com",password:"password", birthday:"1st January 2018")
+file9 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/dwight.jpg')
+dwight.photo.attach(io: file9 , filename:'dwight.jpg')
+
+file9 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/dwight_cover.jpg')
+dwight.cover_photo.attach(io: file9 , filename:'dwight_cover.jpg')
+
 # Kevin friends
 friend1 = Friend.create(user_one_id:kevin.id, user_two_id: pam.id, status:true)
 friend2 = Friend.create(user_one_id:kevin.id, user_two_id: michael.id, status:true)
@@ -73,6 +80,7 @@ friend3 = Friend.create(user_one_id:pam.id, user_two_id: andy.id, status:true)
 post1 = Post.create(author_id: kevin.id, profile_id: kevin.id, content: "Hey guys I'm bringing in my famous chilli tomorrow!")
 file9 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/kevin_chilli.jpg')
 post1.photo.attach(io: file9, filename:'kevin_chilli.jpg')
+comment2 = Comment.create(post_id:post1.id, author_id:dwight.id, content:"I'll bring some beets they'll go great together")
 comment1 = Comment.create(post_id:post1.id, author_id:michael.id, content:"Don't.")
 
 post2 = Post.create(author_id: kevin.id, profile_id: pam.id, content: "Where are my copies???")

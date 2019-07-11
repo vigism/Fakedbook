@@ -164,7 +164,7 @@
     background: #4267b2;
     border: none;
     color: white;
-    
+    cursor: pointer;
 }
 
 .post {
@@ -208,6 +208,14 @@
 }
 
 
+.post-header > a {
+    display: flex;
+}
+
+.profile-link > *{
+    padding-left: 3px;
+    padding-right: 3px;
+}
 
 .post-header > * {
     padding-left: 3px;

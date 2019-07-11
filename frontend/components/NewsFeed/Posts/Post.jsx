@@ -1,6 +1,7 @@
 import React from 'react'
 import CommentForm from './CommentForm';
 import Comment from './Comment';
+import {Link} from 'react-router-dom'
 
 class Post extends React.Component {
 
@@ -49,25 +50,33 @@ class Post extends React.Component {
                 header = <div className="post-header">
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
+                <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
                 <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].last_name}</p>
+                </Link>
                 </div>
             } else {
                 header = <div className="post-header">
                     <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
-                <i>{this.props.users[this.props.post.author_id].first_name} </i>
-                <i>{this.props.users[this.props.post.author_id].last_name} </i>
+                 <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
+                <i >{this.props.users[this.props.post.author_id].first_name} </i>
+                
+                <i >{this.props.users[this.props.post.author_id].last_name} </i>
+                </Link>
                             <div className="arrow-right"></div>
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.profile_id].photoUrl}></img></div>
-                <i>{this.props.users[this.props.post.profile_id].first_name}</i>
-                <i>{this.props.users[this.props.post.profile_id].last_name}
-                </i></div>
+                 <Link to={`/${this.props.post.profile_id}/profile`} className="profile-link">
+                <i >{this.props.users[this.props.post.profile_id].first_name}</i>
+                <i >{this.props.users[this.props.post.profile_id].last_name}
+                </i>
+                </Link></div>
             } 
          }
          let img = <div></div>
          if(this.props.post.photoUrl != undefined) {
              img = <img src={this.props.post.photoUrl} className="post-photo"/>
+             
          }
         return(
             <div className="post">
