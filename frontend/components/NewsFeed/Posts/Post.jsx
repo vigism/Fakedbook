@@ -65,6 +65,10 @@ class Post extends React.Component {
                 </i></div>
             } 
          }
+         let img = <div></div>
+         if(this.props.post.photoUrl != undefined) {
+             img = <img src={this.props.post.photoUrl} className="post-photo"/>
+         }
         return(
             <div className="post">
                 <div className="post-header-container">
@@ -72,6 +76,7 @@ class Post extends React.Component {
                     </div>
                 <div className="post-content">
                 <p>{this.props.post.content}</p>
+                {img}
                 </div>
                 {commentComponent}
                 <CommentForm currentUser={this.props.currentUser}

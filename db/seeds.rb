@@ -71,7 +71,8 @@ friend3 = Friend.create(user_one_id:pam.id, user_two_id: andy.id, status:true)
 
 #posts
 post1 = Post.create(author_id: kevin.id, profile_id: kevin.id, content: "Hey guys I'm bringing in my famous chilli tomorrow!")
-
+file9 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/kevin_chilli.jpg')
+post1.photo.attach(io: file9, filename:'kevin_chilli.jpg')
 comment1 = Comment.create(post_id:post1.id, author_id:michael.id, content:"Don't.")
 
 post2 = Post.create(author_id: kevin.id, profile_id: pam.id, content: "Where are my copies???")

@@ -216,11 +216,16 @@
 
 .post-content {
     padding: 15px;
-    height: 130px;
+    min-height: 50px;
     width: 570px;
     border:1px solid #dddfe2;
     border-radius: 5px 5px 0 0 ;
     font-size: 25px;
+}
+
+.post-photo {
+    width:100%;
+    max-height: 600px;
 }
 
 .arrow-right {

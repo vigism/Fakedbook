@@ -2180,13 +2180,22 @@ function (_React$Component) {
         }
       }
 
+      var img = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+
+      if (this.props.post.photoUrl != undefined) {
+        img = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          src: this.props.post.photoUrl,
+          className: "post-photo"
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-header-container"
       }, header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.post.content)), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.post.content), img), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
         currentUser: this.props.currentUser,
         createComment: this.props.createComment,
         postId: this.props.post.id,
