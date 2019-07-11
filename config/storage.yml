@@ -12,13 +12,13 @@ amazon_prod:
   region: <%= Rails.application.credentials.aws[:region] %>
   bucket: <%= Rails.application.credentials.aws[:prod_bucket] %>
 
-  test:
-  service: Disk
-  root: <%= Rails.root.join("tmp/storage") %>
+#   test:
+#   service: Disk
+#   root: <%= Rails.root.join("tmp/storage") %>
 
-local:
-  service: Disk
-  root: <%= Rails.root.join("storage") %>
+# local:
+#   service: Disk
+#   root: <%= Rails.root.join("storage") %>
 
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
