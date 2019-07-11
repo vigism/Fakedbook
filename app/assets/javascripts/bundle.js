@@ -1297,7 +1297,7 @@ function (_React$Component) {
       var results = [];
       var keys = Object.keys(this.props.res);
 
-      for (var i = 0; i < keys.length; i++) {
+      for (var i = keys.length - 1; i >= 0; i--) {
         if (keys[i] != this.props.current_user_id) {
           results.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchResult__WEBPACK_IMPORTED_MODULE_1__["default"], {
             friends: this.props.friends,
@@ -1355,7 +1355,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    res: state.entities.user,
+    res: state.entities.searchRes,
     current_user_id: state.session.id,
     friends: state.entities.friends
   };
@@ -2150,7 +2150,7 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "post-user-profile-pic-pic",
             src: this.props.users[this.props.post.author_id].photoUrl
-          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].first_name));
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name));
         } else {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
@@ -3067,7 +3067,7 @@ function (_React$Component) {
     key: "demo",
     value: function demo() {
       var credentials = {
-        email: "test@test.com",
+        email: "kevinmalone@gmail.com",
         password: "password"
       };
       this.props.login(credentials);
@@ -3579,6 +3579,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _friends_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./friends_reducer */ "./frontend/reducers/friends_reducer.js");
 /* harmony import */ var _posts_reducer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./posts_reducer */ "./frontend/reducers/posts_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
+/* harmony import */ var _searchResReducer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./searchResReducer */ "./frontend/reducers/searchResReducer.js");
+
 
 
 
@@ -3590,7 +3592,8 @@ __webpack_require__.r(__webpack_exports__);
   user: _user_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   friends: _friends_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
   posts: _posts_reducer__WEBPACK_IMPORTED_MODULE_4__["default"],
-  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_5__["default"]
+  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_5__["default"],
+  searchRes: _searchResReducer__WEBPACK_IMPORTED_MODULE_6__["default"]
 }));
 
 /***/ }),
@@ -3743,6 +3746,45 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
   ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/searchResReducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/searchResReducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_friends_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/friends_actions */ "./frontend/actions/friends_actions.js");
+
+
+
+var searchResResducer = function searchResResducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USERS"]:
+      var newState = {};
+      var keys = Object.keys(action.users);
+
+      for (var i = 0; i < keys.length; i++) {
+        newState[keys[i]] = action.users[keys[i]];
+      }
+
+      return merge({}, newState);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (searchResResducer);
 
 /***/ }),
 
@@ -54587,7 +54629,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -16,6 +16,7 @@
     max-width: 1200px;
     margin: auto;
     display: flex;
+    margin-top:40px;
 }
 
 .newsfeed-sidepanel-user {
@@ -23,7 +24,6 @@
 }
 
 .newsfeed-sidepanel {
-    margin-top: 20px;
     width: 184px;
     display: flex;
     flex-direction: column;
@@ -98,7 +98,6 @@
     border:1px solid #dddfe2;
     border-radius: 5px;
     list-style: none;
-    margin-top: 40px;
     height: 200px;
     padding-bottom: 5px;
     padding-right: 3px;

@@ -10,27 +10,69 @@
 require 'open-uri'
 
 
-demo_user = User.create(first_name: "AWSTest", last_name: "AWS", email:"AWSTESTER",password:"password", birthday:"1st January 2018")
+kevin = User.create!(first_name: "Kevin", last_name: "Malone", email:"kevinmalone@gmail.com",password:"password", birthday:"1st January 2018")
 
-file = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/default_profile.png')
-demo_user.photo.attach(io:file, filename: 'default_profile.png');
+file = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/kevin.jpg')
+kevin.photo.attach(io:file, filename: 'kevin.jpg');
 
-file2 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/bora-bora-685303__340.jpg')
-demo_user.cover_photo.attach(io: file2, filename:'bora-bora-685303__340.jpg')
-
-demo_user1 = User.create(first_name: "Test", last_name: "test", email:"test@test.com",password:"password", birthday:"1st January 2018")
-
-file3 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/default_profile.png')
-demo_user1.photo.attach(io:file3, filename: 'default_profile.png');
-file4 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/bora-bora-685303__340.jpg')
-demo_user1.cover_photo.attach(io: file4, filename:'bora-bora-685303__340.jpg')
+file2 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/kevin_cover.png')
+kevin.cover_photo.attach(io: file2, filename:'kevin_cover.png')
 
 
-demo_user2 = User.create(first_name: "Test1", last_name: "test1", email:"test1@test.com",password:"password", birthday:"1st January 2018")
+jim = User.create(first_name: "Jim", last_name: "Halpert", email:"jim@gmail.com",password:"password", birthday:"1st January 2018")
 
-file5 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/default_profile.png')
+file3 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/jim.png')
+jim.photo.attach(io:file3, filename: 'jim.png');
 
-demo_user2.photo.attach(io:file5, filename: 'default_profile.png');
+file4 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/jim_cover.jpg')
+jim.cover_photo.attach(io: file4, filename:'jim_cover.jpg')
 
-file6 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/bora-bora-685303__340.jpg')
-demo_user2.cover_photo.attach(io: file6, filename:'bora-bora-685303__340.jpg')
+michael = User.create(first_name: "Michael", last_name: "Scott", email:"michael@gmail.com",password:"password", birthday:"1st January 2018")
+
+file5 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/michael.jpg')
+michael.photo.attach(io:file5, filename: 'michael.jpg');
+
+file6 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/michael_cover.png')
+michael.cover_photo.attach(io: file6, filename:'michael_cover.png')
+
+pam = User.create(first_name: "Pam", last_name: "Beesly", email:"pam@gmail.com",password:"password", birthday:"1st January 2018")
+
+file5 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/pam.jpg')
+pam.photo.attach(io:file5, filename: 'pam.jpg');
+
+file6 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/jim_cover.jpg')
+pam.cover_photo.attach(io: file6, filename:'jim_cover.jpg')
+
+andy = User.create(first_name: "Andy", last_name: "Bernard", email:"andy@gmail.com",password:"password", birthday:"1st January 2018")
+
+file7 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/andy.jpg')
+andy.photo.attach(io:file7, filename: 'andy.jpg');
+
+file8 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/andy_cover.jpg')
+andy.cover_photo.attach(io: file8, filename:'andy_cover.jpg')
+
+# Kevin friends
+friend1 = Friend.create(user_one_id:kevin.id, user_two_id: pam.id, status:true)
+friend2 = Friend.create(user_one_id:kevin.id, user_two_id: michael.id, status:true)
+friend3 = Friend.create(user_one_id:kevin.id, user_two_id: andy.id, status:true)
+friend4 = Friend.create(user_one_id:jim.id, user_two_id: kevin.id, status:false)
+
+#Michael friends
+friend1 = Friend.create(user_one_id:michael.id, user_two_id: pam.id, status:true)
+friend3 = Friend.create(user_one_id:michael.id, user_two_id: andy.id, status:true)
+friend4 = Friend.create(user_one_id:jim.id, user_two_id: michael.id, status:true)
+
+#Jim friends
+friend1 = Friend.create(user_one_id:jim.id, user_two_id: pam.id, status:true)
+friend3 = Friend.create(user_one_id:jim.id, user_two_id: andy.id, status:true)
+
+#Pam friends
+friend3 = Friend.create(user_one_id:pam.id, user_two_id: andy.id, status:true)
+
+#posts
+post1 = Post.create(author_id: kevin.id, profile_id: kevin.id, content: "Hey guys I'm bringing in my famous chilli tomorrow!")
+
+comment1 = Comment.create(post_id:post1.id, author_id:michael.id, content:"Don't.")
+
+post2 = Post.create(author_id: kevin.id, profile_id: pam.id, content: "Where are my copies???")
+comment2 = Comment.create(post_id: post2.id, author_id: pam.id, content: "Kevin it's 12 AM!!!!")

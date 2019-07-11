@@ -3,7 +3,7 @@ import SearchResults from './SearchResults';
 import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../actions/friends_actions'
 
 const mapStateToProps = state => ({
-    res: state.entities.user,
+    res: state.entities.searchRes,
     current_user_id: state.session.id,
     friends: state.entities.friends
 })

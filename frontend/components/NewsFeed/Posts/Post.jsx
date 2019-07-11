@@ -49,7 +49,7 @@ class Post extends React.Component {
                 header = <div className="post-header">
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
-                <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].first_name}</p>
+                <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].last_name}</p>
                 </div>
             } else {
                 header = <div className="post-header">
