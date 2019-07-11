@@ -4,10 +4,12 @@ import users from './users_reducer';
 import user from './user_reducer';
 import friends from './friends_reducer';
 import posts from './posts_reducer';
+import comments from './comments_reducer';
 
 export default combineReducers({
     users: users,
     user: user,
     friends: friends,
-    posts: posts
+    posts: posts,
+    comments: comments
 })

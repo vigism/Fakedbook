@@ -1,5 +1,6 @@
 import React from 'react'
 import CommentForm from './CommentForm';
+import Comment from './Comment';
 
 class Post extends React.Component {
 
@@ -7,7 +8,35 @@ class Post extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.fetchPostComments(this.props.post.id);
+    }
+
+
     render() {
+        let comments = [];
+        let keys = Object.keys(this.props.comments);
+        for(let i = 0; i< keys.length; i++) {
+            if(this.props.comments[keys[i]].post_id === this.props.post.id) {
+                comments.push(this.props.comments[keys[i]]);
+            }
+        }
+        let commentComponents = [];
+        for(let i =0 ;i< comments.length;i++) {
+            let component = <Comment comment={comments[i]}
+                                users={this.props.users}/>
+            commentComponents.push(component);
+        }
+
+        let commentComponent;
+        if(commentComponents.length>0){
+            commentComponent = <div className="comments-container">
+                {commentComponents}
+            </div>
+        } else {
+            commentComponent = <div></div>
+        }
+        
         let header = <p>Not found</p>;
         if(this.props.users[this.props.post.author_id]!=undefined && this.props.users[this.props.post.profile_id] != undefined){
             if(this.props.post.author_id === this.props.post.profile_id) {
@@ -38,7 +67,11 @@ class Post extends React.Component {
                 <div className="post-content">
                 <p>{this.props.post.content}</p>
                 </div>
-                <CommentForm currentUser={this.props.currentUser} />
+                {commentComponent}
+                <CommentForm currentUser={this.props.currentUser}
+                createComment={this.props.createComment}
+                postId={this.props.post.id} 
+                currentUserId={this.props.currentUser.id}/>
             </div>
         )
     }

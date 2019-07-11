@@ -6,12 +6,12 @@ Rails.application.routes.draw do
     end
     get 'post/all/:id', to: 'post#allUserPosts'
     resources :post, only: [:create, :show] do
-      resources :comment, only: [:create, :show, :destroy, :index]
+      resources :comment, only: [:create, :show, :index]
     end
-    resource :session, only: [:create, :destroy, :show]
+    resource :session, only: [:create, :show]
     get 'users/', to: 'user#search'
     resources :friends, only: [:create,:update, :destroy, :index]
-
+    resources :comment, only: [:destroy]
   end
   
   root "static_pages#root"

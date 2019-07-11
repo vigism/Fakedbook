@@ -25,6 +25,12 @@ class NewsFeed extends React.Component {
                 }
             }
         }
+        if(!(prevProps.comments === this.props.comments)) {
+            let keys = Object.keys(this.props.comments);
+            for(let i = 0 ; i< keys.length; i++){
+                this.props.receiveUserById(this.props.comments[keys[i]].author_id);
+            }
+        }
     }
 
     render() {
@@ -35,7 +41,11 @@ class NewsFeed extends React.Component {
                 <Post 
                 post={this.props.posts[keys[i]]}
                 users={this.props.users}
-                currentUser={this.props.user}/>
+                currentUser={this.props.user}
+                fetchPostComments={this.props.fetchPostComments}
+                createComment={this.props.createComment}
+                comments={this.props.comments}
+                receiveUserById={this.props.receiveUserById}/>
             )
         }
         return (
