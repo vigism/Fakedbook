@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
     has_one_attached :photo
 
+    has_one_attached :cover_photo
+
     def self.find_by_credentials(email, password)
       user = User.find_by(email: email)
       return nil unless user

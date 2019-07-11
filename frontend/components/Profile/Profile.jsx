@@ -1,0 +1,135 @@
+import React from 'react';
+import CreatePostProfile from './CreatePostProfile';
+
+class Profile extends React.Component {
+
+    constructor(props){
+        super(props);
+
+        this.handleFriend = this.handleFriend.bind(this);
+        this.handleDeleteFriend = this.handleDeleteFriend.bind(this);
+        this.handleUpdateFriend = this.handleUpdateFriend.bind(this);
+        
+    }
+
+    componentDidMount() {
+        this.props.receiveUserById(this.props.profileUserId)
+        this.props.getAllFriends();
+        this.props.fetchPosts(this.props.profileUserId);
+    }
+
+    handleFriend() {
+        let friend = {
+            user_one_id: this.props.currentUser.id,
+            user_two_id: this.props.profileUserId,
+            status: false
+        }
+        this.props.newFriend(friend)
+    }
+
+    handleDeleteFriend(id) {
+        let friend = {
+            id:id,
+            user_one_id: this.props.currentUser.id,
+            user_two_id: this.props.profileUserId,
+            status: false
+        }
+        friend.id = id;
+        this.props.deleteFriendRequest(friend);
+        
+    }
+
+    handleUpdateFriend(id) {
+        let friend = {
+            id:id,
+            user_one_id: this.props.currentUser.id,
+            user_two_id: this.props.profileUserId,
+            status: true
+        }
+        friend.id = id;
+        this.props.updateFriendRequest(friend);
+        
+    }
+
+    render() {
+        let button=<div></div>;
+        let friend ;
+        if(this.props.users[this.props.profileUserId] === undefined){
+            return (
+                <div></div>
+            )
+        }
+        if(!(this.props.profileUserId === this.props.currentUser.id)) {
+            let keys = Object.keys(this.props.friends);
+            for(let i =0; i< keys.length;i++) {
+                let curFriend = this.props.friends[keys[i]];
+                if(curFriend.user_one_id === this.props.currentUser.id 
+                    && curFriend.user_two_id === this.props.profileUserId) {
+                     friend = curFriend   
+                    }
+                if(curFriend.user_one_id === this.props.profileUserId 
+                     && curFriend.user_two_id === this.props.currentUser.id) {
+                     friend = curFriend   
+                }
+            }
+            if(friend != undefined) {
+                if(friend.status === true) {
+                    button = <button onClick= {() => this.handleDeleteFriend(friend.id)} 
+                    className="profile-remove-friend-button"><i className="remove-friend-icon"></i>Remove Friend</button>;
+                }else {
+                    if(friend.user_one_id ===  this.props.currentUser.id && friend.user_two_id === this.props.profileUserId){
+
+                        button = <button onClick= {() => this.handleDeleteFriend(cur.id)}
+                        className="profile-add-friend-button"><i className="add-friend-icon"></i>Cancel Request</button>;
+                    } else if(friend.user_one_id ===  this.props.profileUserId && friend.user_two_id === this.props.currentUser.id){
+                        button = [
+                        
+                            <button onClick= {() => this.handleUpdateFriend(friend.id)}
+                            className="profile-add-friend-button"><i className="add-friend-icon"></i>Accept Request</button>,
+                        <button onClick= {() => this.handleDeleteFriend(friend.id)}
+                            className="profile-add-friend-button"><i className="add-friend-icon"></i>Deny Request</button>];
+                    }
+                }
+            } else {
+                button = <button onClick= {() => this.handleFriend()}
+                 className="profile-add-friend-button"><i className="add-friend-icon"></i>Add Friend</button>;
+            }
+        }
+        return (
+            <div className="profile-main-container">
+                <div className="profile-header">
+                    <img className="profile-cover-photo" src={this.props.users[this.props.profileUserId].coverPhotoUrl}>
+                        
+                    </img>
+                        <div className="profile-header-content">
+                        <img className="profile-profile-photo" src={this.props.users[this.props.profileUserId].photoUrl}>
+                            
+                            </img>
+
+                        <h1>{this.props.users[this.props.profileUserId].first_name}</h1>
+                        <h1>{this.props.users[this.props.profileUserId].last_name}</h1>
+                        <div className="profile-header-button-container">
+                        {button}
+                        </div>
+                </div>
+                </div>
+                <div className="empty-div">
+                </div>
+                    <div className="profile-main-content">
+                        <div className="profile-side-panel">
+
+                        </div>
+                         <div className="profile-post-panel">
+                         <CreatePostProfile user={this.props.users[this.props.profileUserId]}
+                          currentUserId={this.props.currentUser.id} 
+                          createPost={this.props.createPost}/>
+                         </div>
+                    </div>
+                
+            </div>
+        )
+    }
+
+}
+
+export default Profile;

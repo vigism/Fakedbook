@@ -7,14 +7,16 @@ import NewsFeedContainer from './NewsFeed/NewsFeedContainer'
 import SearchResultsContainer from './NavBar/SearchResultsContainer';
 import SettingsModalContainer from './NavBar/SettingsModal/SettingsModalContainer';
 import FriendsModalContainer from './NavBar/FriendsModal/FriendsModalContainer';
+import ProfileContainer from './Profile/ProfileContainer';
 
 const App = () => (
     <div className="app-container">
         <ProtectedRoute path='/'component={SettingsModalContainer} />
         <ProtectedRoute path='/' component={FriendsModalContainer}/>
         <ProtectedRoute path='/' component={NavBarContainer} />
-        <ProtectedRoute path='/newsfeed' component={NewsFeedContainer} /> 
         <ProtectedRoute path='/searchResults' component={SearchResultsContainer} />
+        <ProtectedRoute path='/:id/profile' component={ProfileContainer} />
+        <ProtectedRoute path='/newsfeed' component={NewsFeedContainer} /> 
         <Switch>
             
             <AuthRoute exact path ='/' component={SignUpContainer} />

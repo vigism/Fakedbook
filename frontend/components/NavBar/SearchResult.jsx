@@ -1,4 +1,5 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 
 class SearchResult extends React.Component {
 
@@ -6,6 +7,7 @@ class SearchResult extends React.Component {
         super(props);
         this.handleFriend = this.handleFriend.bind(this);
         this.handleDeleteFriend = this.handleDeleteFriend.bind(this);
+        this.handleUpdateFriend = this.handleUpdateFriend.bind(this);
     }
 
     handleFriend() {
@@ -41,6 +43,9 @@ class SearchResult extends React.Component {
         
     }
 
+    clickName() {
+        this.props.history.push(`/${this.props.user.id}/profile`)
+    }
     
 
     render() {
@@ -59,16 +64,16 @@ class SearchResult extends React.Component {
                 button = <button onClick= {() => this.handleDeleteFriend(cur.id)} 
                 className="remove-friend-button"><i className="remove-friend-icon"></i>Remove Friend</button>;
             }  else if (cur.user_one_id === this.props.user.id && cur.user_two_id === this.props.current_user_id && cur.status === false) {
-                button = [<button onClick= {() => this.handleDeleteFriend(cur.id)}
-                className="add-friend-button"><i className="add-friend-icon"></i>Deny Request</button>,
-                 <button onClick= {() => this.handleUpdateFriend(cur.id)}
-                className="add-friend-button"><i className="add-friend-icon"></i>Accept Request</button>];
+                button = [<button onClick= {() => this.handleUpdateFriend(cur.id)}
+                    className="add-friend-button"><i className="add-friend-icon"></i>Accept Request</button>,<button onClick= {() => this.handleDeleteFriend(cur.id)}
+                className="add-friend-button"><i className="add-friend-icon"></i>Deny Request</button>
+                 ];
             } 
         }
         return (
             <li className="search-res-list-el">
             <div className="search-res-profile-pic"><img className="search-res-profile-pic" src={this.props.user.photoUrl}></img></div>
-            {this.props.user.first_name} {this.props.user.last_name}
+            <div onClick={()=>this.clickName()}>{this.props.user.first_name} {this.props.user.last_name}</div>
             {button}
             </li>
         )
@@ -77,4 +82,4 @@ class SearchResult extends React.Component {
 
 }
 
-export default SearchResult;
+export default withRouter(SearchResult);

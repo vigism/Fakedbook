@@ -1,0 +1,89 @@
+.profile-main-container {
+    
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-header {
+    width: 1000px;
+    height: 230px;
+}
+
+.profile-cover-photo {
+    height: 100%;
+    width: 100%;
+    object-fit: cover
+}
+
+.profile-header-content {
+    position: relative;
+    top: -170px;
+    display: flex;
+    align-items: center
+}
+.profile-header-content > h1 {
+    color: white;
+    padding:5px;
+    font-size: 35px;
+    font-weight: bold;
+    text-shadow: 0 0 3px rgba(0, 0, 0, .4);
+    text-rendering: optimizelegibility;
+}
+
+.profile-profile-photo {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left:10px;
+}
+
+.profile-header-button-container{
+    width: 300px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.profile-add-friend-button {
+    margin-left: 10%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    border-width: 0;
+    padding:4px;
+    box-shadow: 0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15);
+    background-color: #f5f6f7;
+}
+.profile-remove-friend-button {
+    margin-left: 10%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    border-width: 0;
+    padding:4px;
+    box-shadow: 0 0 1px 2px rgba(88, 144, 255, .75), 0 1px 1px rgba(0, 0, 0, .15);
+    background-color: #f5f6f7;
+}
+
+.empty-div {
+    height: 60px;
+}
+
+.profile-main-content {
+    display:flex;
+}
+
+.profile-side-panel {
+    width: 300px;
+
+}
+
+
+.profile-post-panel {
+    width: 600px;
+    margin-left: 50px;
+}

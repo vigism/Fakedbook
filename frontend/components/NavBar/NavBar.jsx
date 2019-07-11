@@ -10,6 +10,7 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);    
         this.handleLogout = this.handleLogout.bind(this);
+        this.clickName = this.clickName.bind(this);
     }
 
     handleLogout(){
@@ -18,7 +19,9 @@ class NavBar extends React.Component {
         this.props.history.push(path);
     }
 
-   
+    clickName() {
+        this.props.history.push(`/${this.props.user.id}/profile`);
+    }
 
     render() {
         let photo;
@@ -38,7 +41,7 @@ class NavBar extends React.Component {
                     </div>
 
                     <div className="main-nav-bar-content-mid">
-                        <div className="main-nav-bar-user">
+                        <div className="main-nav-bar-user" onClick={() => this.clickName()}>
                             <div className="main-nav-bar-user-profile-pic" ><img className="main-nav-bar-user-profile-pic-pic" src={photo}></img></div>
                             <div className="main-nav-bar-user-name">{this.props.user.first_name}</div>
                         </div>
