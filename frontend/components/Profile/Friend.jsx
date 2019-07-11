@@ -12,11 +12,13 @@ class Friend extends React.Component {
             return (<div></div>)
         }
         return (
-            <div className="friend">
                 <Link to={`/${this.props.user.id}/profile`}>
                 <img src={this.props.user.photoUrl} className="friend-pic" />
+                <div className="profile-friends-pic-overlay">
+                    {this.props.user.first_name} {this.props.user.last_name}
+                </div>
                 </Link>
-            </div>
+            
         )
     }
 

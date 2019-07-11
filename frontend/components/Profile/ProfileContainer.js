@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import Profile from './Profile';
 import {receiveUserById} from '../../actions/user_actions';
-import {getAllFriends} from '../../actions/friends_actions';
+import {getAllFriends, getAllFriendsById} from '../../actions/friends_actions';
 
 import {createPost, fetchUserPosts} from '../../actions/posts_actions';
 import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../actions/friends_actions'
@@ -24,6 +24,7 @@ const mapDispatchToProps = dispatch => {
     return {
         receiveUserById: id => dispatch(receiveUserById(id)),
         getAllFriends: () => dispatch(getAllFriends()),
+        getAllFriendsById: id => dispatch(getAllFriendsById(id)),
         newFriend: friend => dispatch(newFriendRequest(friend)),
         updateFriendRequest: friend => dispatch(updateFriendRequest(friend)),
         deleteFriendRequest: friend => dispatch(deleteFriendRequest(friend)),

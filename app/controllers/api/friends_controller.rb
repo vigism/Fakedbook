@@ -14,6 +14,22 @@ class Api::FriendsController < ApplicationController
         end
         render "api/friends/index"
     end
+
+    def indexById
+        id = params[:id]
+        friends1 = Friend.where(user_one_id: id).to_a
+        friends2 = Friend.where(user_two_id: id).to_a
+        if friends1 == nil && friends2 == nil
+            @friends = []
+        elsif friends1 == nil
+            @friends = friends2
+        elsif friends2 == nil
+            @friends = friends1
+        else
+            @friends = friends1.concat(friends2)
+        end
+        render "api/friends/index"
+    end
     
     def create
         @friend = Friend.new(friend_params)

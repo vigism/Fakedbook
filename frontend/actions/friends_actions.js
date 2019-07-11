@@ -4,6 +4,7 @@ export const DELETE_FRIEND = "DELETE_FRIEND";
 export const UPDATE_FRIEND = "UPDATE_FRIEND";
 export const NEW_FRIEND = "NEW_FRIEND";
 export const GET_FRIENDS = "GET_FRIENDS";
+export const GET_FRIENDS_BY_ID = "GET_FRIENDS_BY_ID"
 
 export const newFriend = friend => ({
     type: NEW_FRIEND,
@@ -45,6 +46,12 @@ export const deleteFriendRequest = friend => dispatch => (
 
 export const getAllFriends = () => dispatch => (
     APIUtil.getFriends().then(friends => (
+        dispatch(getFriends(friends))
+    ))
+)
+
+export const getAllFriendsById = (id) => dispatch => (
+    APIUtil.getFriendsById(id).then(friends => (
         dispatch(getFriends(friends))
     ))
 )

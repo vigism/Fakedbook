@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy, :show]
     get 'users/', to: 'user#search'
     resources :friends, only: [:create,:update, :destroy, :index]
+    get 'friends/:id', to: 'friends#indexById'
     resources :comment, only: [:destroy]
   end
   

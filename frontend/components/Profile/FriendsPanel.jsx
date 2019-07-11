@@ -7,6 +7,10 @@ class FriendsPanel extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.getAllFriendsById(this.props.profileId)
+    }
+
     render() {
         let friends = [];
         
@@ -22,15 +26,17 @@ class FriendsPanel extends React.Component {
                     friendUser = curFriend.user_one_id;
                 }
                 if(curFriend.user_one_id != curFriend.user_two_id) {
-                friends.push(<Friend user={this.props.users[friendUser]}/>)
+                friends.push(<li><Friend user={this.props.users[friendUser]}/></li>)
                 }
             }
         }
         }
         return (
             <div className="profile-friends-panel">
-                <div className="profile-friends-panel-header">Friends</div>
+                <div className="profile-friends-panel-header">{`Friends        ${friends.length}`}</div>
+                <ul className="friends-panel-list">
                 {friends}
+                </ul>
             </div>
         )
     }

@@ -4,6 +4,11 @@ export const newFriendRequest = friend => ($.ajax({
     data: {friend}
 }))
 
+export const getFriendsById = id => ($.ajax({
+    method:"GET",
+    url:   `api/friends/${id}`
+}))
+
 export const updateFriendRequest = friend => ($.ajax({
     method: "patch",
     url: `api/friends/${friend.id}`,

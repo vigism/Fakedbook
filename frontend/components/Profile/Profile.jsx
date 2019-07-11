@@ -165,6 +165,7 @@ class Profile extends React.Component {
                                 users={this.props.users}
                                 friends={this.props.friends}
                                 profileId = {this.props.profileUserId}
+                                getAllFriendsById = {this.props.getAllFriendsById}
                             />
                         </div>
                          <div className="profile-post-panel">

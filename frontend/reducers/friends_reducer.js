@@ -22,7 +22,7 @@ const friendsReducer = (state = {}, action) => {
             for(let i = 0;i<keys.length; i++) {
                 newState[keys[i]] = action.friends[keys[i]]
             }
-            return merge({},newState)
+            return merge({},state,newState)
         default:
             return state
     }
