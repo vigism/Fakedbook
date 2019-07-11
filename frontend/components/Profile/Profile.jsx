@@ -26,9 +26,6 @@ class Profile extends React.Component {
 
     componentDidUpdate(prevProps) {
 
-        if(!arrMatch(Object.keys(this.props.posts), Object.keys(prevProps.posts))) {
-            this.props.fetchPosts(this.props.profileUserId);
-        }
         if(!(prevProps.profileUserId === this.props.profileUserId)){
             this.props.fetchPosts(this.props.profileUserId);
             this.props.receiveUserById(this.props.profileUserId);
@@ -110,7 +107,7 @@ class Profile extends React.Component {
                 }else {
                     if(friend.user_one_id ===  this.props.currentUser.id && friend.user_two_id === this.props.profileUserId){
 
-                        button = <button onClick= {() => this.handleDeleteFriend(cur.id)}
+                        button = <button onClick= {() => this.handleDeleteFriend(friend.id)}
                         className="profile-add-friend-button"><i className="add-friend-icon"></i>Cancel Request</button>;
                     } else if(friend.user_one_id ===  this.props.profileUserId && friend.user_two_id === this.props.currentUser.id){
                         button = [
@@ -129,7 +126,8 @@ class Profile extends React.Component {
 
         let postList = [];
         let keys = Object.keys(this.props.posts);
-        for(let i = keys.length-1; i>=0;i--){
+        let i = keys.length-1;
+        for(i; i>=0;i--){
             postList.push(
                 <Post 
                 post={this.props.posts[keys[i]]}

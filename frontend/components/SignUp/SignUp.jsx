@@ -11,7 +11,8 @@ class SignUp extends React.Component {
         return (
             <div>
             <SignUpNav login={this.props.login}/>
-            <SignUpMain signup={this.props.signup} login={this.props.login}/>
+            <SignUpMain signup={this.props.signup} login={this.props.login}
+                errors={this.props.errors}/>
             </div>
         )
     }

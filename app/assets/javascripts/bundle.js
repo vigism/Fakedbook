@@ -2626,10 +2626,6 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (!Object(_util_ArrayUtil__WEBPACK_IMPORTED_MODULE_4__["arrMatch"])(Object.keys(this.props.posts), Object.keys(prevProps.posts))) {
-        this.props.fetchPosts(this.props.profileUserId);
-      }
-
       if (!(prevProps.profileUserId === this.props.profileUserId)) {
         this.props.fetchPosts(this.props.profileUserId);
         this.props.receiveUserById(this.props.profileUserId);
@@ -2702,8 +2698,8 @@ function (_React$Component) {
       if (!(this.props.profileUserId === this.props.currentUser.id)) {
         var _keys2 = Object.keys(this.props.friends);
 
-        for (var i = 0; i < _keys2.length; i++) {
-          var curFriend = this.props.friends[_keys2[i]];
+        for (var _i2 = 0; _i2 < _keys2.length; _i2++) {
+          var curFriend = this.props.friends[_keys2[_i2]];
 
           if (curFriend.user_one_id === this.props.currentUser.id && curFriend.user_two_id === this.props.profileUserId) {
             friend = curFriend;
@@ -2728,7 +2724,7 @@ function (_React$Component) {
             if (friend.user_one_id === this.props.currentUser.id && friend.user_two_id === this.props.profileUserId) {
               button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
                 onClick: function onClick() {
-                  return _this2.handleDeleteFriend(cur.id);
+                  return _this2.handleDeleteFriend(friend.id);
                 },
                 className: "profile-add-friend-button"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
@@ -2766,10 +2762,11 @@ function (_React$Component) {
 
       var postList = [];
       var keys = Object.keys(this.props.posts);
+      var i = keys.length - 1;
 
-      for (var _i2 = keys.length - 1; _i2 >= 0; _i2--) {
+      for (i; i >= 0; i--) {
         postList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          post: this.props.posts[keys[_i2]],
+          post: this.props.posts[keys[i]],
           users: this.props.users,
           currentUser: this.props.currentUser,
           fetchPostComments: this.props.fetchPostComments,
@@ -2945,7 +2942,8 @@ function (_React$Component) {
         login: this.props.login
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpMain__WEBPACK_IMPORTED_MODULE_2__["default"], {
         signup: this.props.signup,
-        login: this.props.login
+        login: this.props.login,
+        errors: this.props.errors
       }));
     }
   }]);
@@ -2974,7 +2972,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
-  return {};
+  return {
+    errors: state.errors.session
+  };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
@@ -3280,6 +3280,14 @@ function (_React$Component) {
   _createClass(SignUpMain, [{
     key: "render",
     value: function render() {
+      var errors = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null)];
+
+      if (this.props.errors.length > 0) {
+        for (var i = 0; i < this.props.errors.length; i++) {
+          errors.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.props.errors[i]));
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "signup-main-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -3305,7 +3313,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SignUpForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
         signup: this.props.signup,
         login: this.props.login
-      }))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "errors-ul"
+      }, errors))));
     }
   }]);
 

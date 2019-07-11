@@ -72,6 +72,8 @@
  
  .signup-right-bar {
      margin-left:75px;
+     display: flex;
+     flex-direction: column;
  }
  
  .sign-up-button{
@@ -85,3 +87,13 @@
  .signup-form > * {
      margin-top:15px;
  }
+
+ .errors-ul {
+     list-style: none;
+     color:red;
+ 
+   }
+
+   .errors-ul > * {
+       padding:4px;
+   }

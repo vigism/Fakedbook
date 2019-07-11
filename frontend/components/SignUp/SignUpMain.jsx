@@ -8,6 +8,12 @@ class SignUpMain extends React.Component {
     }
 
     render() {
+        let errors=[<li></li>];
+        if(this.props.errors.length>0){
+            for(let i = 0; i< this.props.errors.length;i++){
+                errors.push(<li>{this.props.errors[i]}</li>)
+            }
+        }
         return (
             <div className="signup-main-content">
 
@@ -33,6 +39,9 @@ class SignUpMain extends React.Component {
     
                 <div className="signup-right-bar">
                    <SignUpForm signup={this.props.signup} login={this.props.login} />
+                <ul className="errors-ul">
+                    {errors}
+                    </ul>
                 </div>
             </div>
             </div>
