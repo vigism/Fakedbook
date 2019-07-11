@@ -6,6 +6,8 @@ import {getAllFriends} from '../../actions/friends_actions';
 import {createPost, fetchUserPosts} from '../../actions/posts_actions';
 import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../actions/friends_actions'
 
+import {fetchPostComments, createComment} from '../../actions/comments_actions';
+
 
 const mapStateToProps = (state, { match }) => {
     return {
@@ -13,7 +15,8 @@ const mapStateToProps = (state, { match }) => {
         currentUser: state.entities.users[state.session.id],
         users: state.entities.user,
         friends: state.entities.friends,
-        posts: state.entities.posts
+        posts: state.entities.posts,
+        comments: state.entities.comments
     }
 }
 
@@ -26,6 +29,8 @@ const mapDispatchToProps = dispatch => {
         deleteFriendRequest: friend => dispatch(deleteFriendRequest(friend)),
         createPost: post => dispatch(createPost(post)),
         fetchPosts: id => dispatch(fetchUserPosts(id)),
+        fetchPostComments: post_id => dispatch(fetchPostComments(post_id)),
+        createComment: comment => dispatch(createComment(comment))
     }
 }
 

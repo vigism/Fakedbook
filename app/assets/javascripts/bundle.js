@@ -2416,6 +2416,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CreatePostProfile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreatePostProfile */ "./frontend/components/Profile/CreatePostProfile.jsx");
+/* harmony import */ var _NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../NewsFeed/Posts/Post */ "./frontend/components/NewsFeed/Posts/Post.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2433,6 +2434,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2460,6 +2462,18 @@ function (_React$Component) {
       this.props.receiveUserById(this.props.profileUserId);
       this.props.getAllFriends();
       this.props.fetchPosts(this.props.profileUserId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!(prevProps.posts === this.props.posts)) {
+        var keys = Object.keys(this.props.posts);
+
+        for (var i = 0; i < keys.length; i++) {
+          this.props.receiveUserById(this.props.posts[keys[i]].author_id);
+          this.props.receiveUserById(this.props.posts[keys[i]].profile_id);
+        }
+      }
     }
   }, {
     key: "handleFriend",
@@ -2508,10 +2522,10 @@ function (_React$Component) {
       }
 
       if (!(this.props.profileUserId === this.props.currentUser.id)) {
-        var keys = Object.keys(this.props.friends);
+        var _keys = Object.keys(this.props.friends);
 
-        for (var i = 0; i < keys.length; i++) {
-          var curFriend = this.props.friends[keys[i]];
+        for (var i = 0; i < _keys.length; i++) {
+          var curFriend = this.props.friends[_keys[i]];
 
           if (curFriend.user_one_id === this.props.currentUser.id && curFriend.user_two_id === this.props.profileUserId) {
             friend = curFriend;
@@ -2572,6 +2586,21 @@ function (_React$Component) {
         }
       }
 
+      var postList = [];
+      var keys = Object.keys(this.props.posts);
+
+      for (var _i = keys.length - 1; _i >= 0; _i--) {
+        postList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          post: this.props.posts[keys[_i]],
+          users: this.props.users,
+          currentUser: this.props.currentUser,
+          fetchPostComments: this.props.fetchPostComments,
+          createComment: this.props.createComment,
+          comments: this.props.comments,
+          receiveUserById: this.props.receiveUserById
+        }));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-main-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2598,7 +2627,7 @@ function (_React$Component) {
         user: this.props.users[this.props.profileUserId],
         currentUserId: this.props.currentUser.id,
         createPost: this.props.createPost
-      }))));
+      }), postList)));
     }
   }]);
 
@@ -2623,6 +2652,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/user_actions */ "./frontend/actions/user_actions.js");
 /* harmony import */ var _actions_friends_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/friends_actions */ "./frontend/actions/friends_actions.js");
 /* harmony import */ var _actions_posts_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/posts_actions */ "./frontend/actions/posts_actions.js");
+/* harmony import */ var _actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/comments_actions */ "./frontend/actions/comments_actions.js");
+
 
 
 
@@ -2637,7 +2668,8 @@ var mapStateToProps = function mapStateToProps(state, _ref) {
     currentUser: state.entities.users[state.session.id],
     users: state.entities.user,
     friends: state.entities.friends,
-    posts: state.entities.posts
+    posts: state.entities.posts,
+    comments: state.entities.comments
   };
 };
 
@@ -2663,6 +2695,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchPosts: function fetchPosts(id) {
       return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_4__["fetchUserPosts"])(id));
+    },
+    fetchPostComments: function fetchPostComments(post_id) {
+      return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["fetchPostComments"])(post_id));
+    },
+    createComment: function createComment(comment) {
+      return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["createComment"])(comment));
     }
   };
 };

@@ -13,6 +13,7 @@ class CreatePostProfile extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+
     handleSubmit() {
         this.props.createPost(this.state);
         this.setState({
