@@ -1,5 +1,9 @@
 import {CREATE_POST, RECEIVE_POSTS} from '../actions/posts_actions';
 import {merge} from 'lodash';
+import {
+    RECEIVE_CURRENT_USER,
+    LOGOUT_CURRENT_USER,
+} from '../actions/session_actions';
 
 const postsReducer = (state={},action) => {
     Object.freeze(state);
@@ -12,6 +16,8 @@ const postsReducer = (state={},action) => {
         case RECEIVE_POSTS:
             newState = action.posts;
             return merge({}, newState);
+        case LOGOUT_CURRENT_USER: 
+            return {};
         default:
             return state;
     }

@@ -1,5 +1,10 @@
 import {RECEIVE_COMMENT, GET_POST_COMMENTS} from '../actions/comments_actions';
 import {merge} from 'lodash';
+import {
+    RECEIVE_CURRENT_USER,
+    LOGOUT_CURRENT_USER,
+} from '../actions/session_actions';
+
 
 const commentsReducer = (state={}, action) => {
     Object.freeze(state);
@@ -12,6 +17,8 @@ const commentsReducer = (state={}, action) => {
         case GET_POST_COMMENTS:
             newState = action.comments;
             return merge({},state,newState);
+        case LOGOUT_CURRENT_USER:
+            return {};
         default:
             return state;
     }

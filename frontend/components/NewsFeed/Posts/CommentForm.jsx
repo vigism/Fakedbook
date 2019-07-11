@@ -4,7 +4,6 @@ class CommentForm extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             post_id: this.props.postId,
             author_id: this.props.currentUserId,
@@ -14,15 +13,15 @@ class CommentForm extends React.Component {
         this.keyPress =this.keyPress.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-
+    
     handleChange(e) {
-       
+        
         this.setState({
             content:e.currentTarget.value
         })
         
-}
-
+    }
+    
     submitComment() {
         this.props.createComment(this.state);
         this.setState({

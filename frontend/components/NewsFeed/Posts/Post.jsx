@@ -11,6 +11,12 @@ class Post extends React.Component {
     componentDidMount() {
         this.props.fetchPostComments(this.props.post.id);
     }
+    
+    componentDidUpdate(prevProps) {
+        if(!(prevProps.post===this.props.post)) {
+            this.props.fetchPostComments(this.props.post.id);
+        }
+    }
 
 
     render() {
