@@ -1,7 +1,7 @@
 import React from 'react';
 import CreatePostProfile from './CreatePostProfile';
 import Post from '../NewsFeed/Posts/Post';
-
+import FriendsPanel from './FriendsPanel';
 
 class Profile extends React.Component {
 
@@ -17,16 +17,28 @@ class Profile extends React.Component {
     componentDidMount() {
         this.props.receiveUserById(this.props.profileUserId)
         this.props.getAllFriends();
-        this.props.fetchPosts(this.props.profileUserId);
         
+        this.props.fetchPosts(this.props.profileUserId);
     }
 
     componentDidUpdate(prevProps) {
+
+        if(!(prevProps.profileUserId === this.props.profileUserId)){
+            this.props.fetchPosts(this.props.profileUserId);
+            this.props.receiveUserById(this.props.profileUserId)
+        }
         if(!(prevProps.posts === this.props.posts)) {
             let keys = Object.keys(this.props.posts)
-            for(let i = 0;i<keys.length;i++){
+            for(let i = 0;i<keys.length;i++) {
             this.props.receiveUserById(this.props.posts[keys[i]].author_id);
             this.props.receiveUserById(this.props.posts[keys[i]].profile_id);
+            }
+        }
+        if(!(prevProps.friends === this.props.friends)) {
+            let keys = Object.keys(this.props.friends)
+            for(let i = 0;i<keys.length;i++){
+            this.props.receiveUserById(this.props.friends[keys[i]].user_one_id);
+            this.props.receiveUserById(this.props.friends[keys[i]].user_two_id);
             }
         }
     }
@@ -146,7 +158,11 @@ class Profile extends React.Component {
                 </div>
                     <div className="profile-main-content">
                         <div className="profile-side-panel">
-                        
+                            <FriendsPanel
+                                users={this.props.users}
+                                friends={this.props.friends}
+                                profileId = {this.props.profileUserId}
+                            />
                         </div>
                          <div className="profile-post-panel">
                          <CreatePostProfile user={this.props.users[this.props.profileUserId]}

@@ -87,3 +87,35 @@
     width: 600px;
     margin-left: 50px;
 }
+
+.profile-friends-panel {
+    
+    border:1px solid #dddfe2;
+    border-radius: 5px;
+    background: white;
+    min-height: 200px;
+}
+
+.profile-friends-panel-header {
+    background: #f5f6f7;
+    width: 298px;
+    border:1px solid #dddfe2;
+    border-radius: 5px 5px 0 0 ;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 30px;
+    color: #4b4f56;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    padding-left:5px;
+}
+
+.friend-pic {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    padding: 4px;
+}
+}

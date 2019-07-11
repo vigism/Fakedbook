@@ -2404,6 +2404,162 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/Profile/Friend.jsx":
+/*!************************************************!*\
+  !*** ./frontend/components/Profile/Friend.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Friend =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Friend, _React$Component);
+
+  function Friend(props) {
+    _classCallCheck(this, Friend);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Friend).call(this, props));
+  }
+
+  _createClass(Friend, [{
+    key: "render",
+    value: function render() {
+      if (this.props.user === undefined) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "friend"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/".concat(this.props.user.id, "/profile")
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: this.props.user.photoUrl,
+        className: "friend-pic"
+      })));
+    }
+  }]);
+
+  return Friend;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Friend));
+
+/***/ }),
+
+/***/ "./frontend/components/Profile/FriendsPanel.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/Profile/FriendsPanel.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Friend__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Friend */ "./frontend/components/Profile/Friend.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var FriendsPanel =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(FriendsPanel, _React$Component);
+
+  function FriendsPanel(props) {
+    _classCallCheck(this, FriendsPanel);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(FriendsPanel).call(this, props));
+  }
+
+  _createClass(FriendsPanel, [{
+    key: "render",
+    value: function render() {
+      var friends = [];
+      var keys = Object.keys(this.props.friends);
+
+      for (var i = 0; i < keys.length; i++) {
+        var curFriend = this.props.friends[keys[i]];
+
+        if (curFriend.user_one_id === this.props.profileId || curFriend.user_two_id === this.props.profileId) {
+          if (curFriend.status === true) {
+            var friendUser = void 0;
+
+            if (curFriend.user_one_id === this.props.profileId) {
+              friendUser = curFriend.user_two_id;
+            } else {
+              friendUser = curFriend.user_one_id;
+            }
+
+            if (curFriend.user_one_id != curFriend.user_two_id) {
+              friends.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Friend__WEBPACK_IMPORTED_MODULE_1__["default"], {
+                user: this.props.users[friendUser]
+              }));
+            }
+          }
+        }
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-friends-panel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-friends-panel-header"
+      }, "Friends"), friends);
+    }
+  }]);
+
+  return FriendsPanel;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (FriendsPanel);
+
+/***/ }),
+
 /***/ "./frontend/components/Profile/Profile.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/Profile/Profile.jsx ***!
@@ -2417,6 +2573,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _CreatePostProfile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreatePostProfile */ "./frontend/components/Profile/CreatePostProfile.jsx");
 /* harmony import */ var _NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../NewsFeed/Posts/Post */ "./frontend/components/NewsFeed/Posts/Post.jsx");
+/* harmony import */ var _FriendsPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FriendsPanel */ "./frontend/components/Profile/FriendsPanel.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2434,6 +2591,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2466,12 +2624,26 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      if (!(prevProps.profileUserId === this.props.profileUserId)) {
+        this.props.fetchPosts(this.props.profileUserId);
+        this.props.receiveUserById(this.props.profileUserId);
+      }
+
       if (!(prevProps.posts === this.props.posts)) {
         var keys = Object.keys(this.props.posts);
 
         for (var i = 0; i < keys.length; i++) {
           this.props.receiveUserById(this.props.posts[keys[i]].author_id);
           this.props.receiveUserById(this.props.posts[keys[i]].profile_id);
+        }
+      }
+
+      if (!(prevProps.friends === this.props.friends)) {
+        var _keys = Object.keys(this.props.friends);
+
+        for (var _i = 0; _i < _keys.length; _i++) {
+          this.props.receiveUserById(this.props.friends[_keys[_i]].user_one_id);
+          this.props.receiveUserById(this.props.friends[_keys[_i]].user_two_id);
         }
       }
     }
@@ -2522,10 +2694,10 @@ function (_React$Component) {
       }
 
       if (!(this.props.profileUserId === this.props.currentUser.id)) {
-        var _keys = Object.keys(this.props.friends);
+        var _keys2 = Object.keys(this.props.friends);
 
-        for (var i = 0; i < _keys.length; i++) {
-          var curFriend = this.props.friends[_keys[i]];
+        for (var i = 0; i < _keys2.length; i++) {
+          var curFriend = this.props.friends[_keys2[i]];
 
           if (curFriend.user_one_id === this.props.currentUser.id && curFriend.user_two_id === this.props.profileUserId) {
             friend = curFriend;
@@ -2589,9 +2761,9 @@ function (_React$Component) {
       var postList = [];
       var keys = Object.keys(this.props.posts);
 
-      for (var _i = keys.length - 1; _i >= 0; _i--) {
+      for (var _i2 = keys.length - 1; _i2 >= 0; _i2--) {
         postList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          post: this.props.posts[keys[_i]],
+          post: this.props.posts[keys[_i2]],
           users: this.props.users,
           currentUser: this.props.currentUser,
           fetchPostComments: this.props.fetchPostComments,
@@ -2621,7 +2793,11 @@ function (_React$Component) {
         className: "profile-main-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-side-panel"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsPanel__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        users: this.props.users,
+        friends: this.props.friends,
+        profileId: this.props.profileUserId
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-post-panel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CreatePostProfile__WEBPACK_IMPORTED_MODULE_1__["default"], {
         user: this.props.users[this.props.profileUserId],

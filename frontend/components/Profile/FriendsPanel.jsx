@@ -1,4 +1,5 @@
 import React from 'react';
+import Friend from './Friend';
 
 class FriendsPanel extends React.Component {
 
@@ -7,8 +8,30 @@ class FriendsPanel extends React.Component {
     }
 
     render() {
+        let friends = [];
+        
+        let keys = Object.keys(this.props.friends);
+        for(let i =0; i< keys.length; i++){
+            let curFriend = this.props.friends[keys[i]];
+            if(curFriend.user_one_id === this.props.profileId || curFriend.user_two_id === this.props.profileId){
+            if(curFriend.status === true) {
+                let friendUser;
+                if(curFriend.user_one_id === this.props.profileId) {
+                    friendUser = curFriend.user_two_id;
+                }else {
+                    friendUser = curFriend.user_one_id;
+                }
+                if(curFriend.user_one_id != curFriend.user_two_id) {
+                friends.push(<Friend user={this.props.users[friendUser]}/>)
+                }
+            }
+        }
+        }
         return (
-            <h1>friends panel</h1>
+            <div className="profile-friends-panel">
+                <div className="profile-friends-panel-header">Friends</div>
+                {friends}
+            </div>
         )
     }
 
