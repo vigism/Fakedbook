@@ -277,6 +277,9 @@
 
 .comments-container {
     min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
 }
 

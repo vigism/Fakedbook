@@ -405,3 +405,8 @@
     z-index: 2;
     display: block;
 }
+
+.no-requests-notification {
+    padding: 5px;
+    background: white;
+}

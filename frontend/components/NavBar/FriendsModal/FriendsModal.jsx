@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FriendsModalComponent from './FriendsModalComponent';
+import { request } from 'https';
 
 
 class FriendsModal extends React.Component {
@@ -27,6 +28,9 @@ class FriendsModal extends React.Component {
                         sender={this.props.users[this.props.requests[keys[i]].user_one_id]}/>)
                     }
                 }
+        }
+        if(requests.length === 0) {
+            requests = [<div className="no-requests-notification">No pending requests.</div>]
         }
      const JSX = (
         <div  className="friends-modal-container" onClick={() => this.props.toggleDropDown()}>
