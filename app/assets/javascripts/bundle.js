@@ -2557,6 +2557,13 @@ function (_React$Component) {
       this.props.getAllFriendsById(this.props.profileId);
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!(this.props.profileId === prevProps.profileId)) {
+        this.props.getAllFriendsById(this.props.profileId);
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var friends = [];
@@ -2601,6 +2608,94 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./frontend/components/Profile/PhotoPanel.jsx":
+/*!****************************************************!*\
+  !*** ./frontend/components/Profile/PhotoPanel.jsx ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var PhotoPanel =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(PhotoPanel, _React$Component);
+
+  function PhotoPanel(props) {
+    _classCallCheck(this, PhotoPanel);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(PhotoPanel).call(this, props));
+  }
+
+  _createClass(PhotoPanel, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchPosts(this.props.profileId);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!(this.props.profileId === prevProps.profileId)) {
+        this.props.fetchPosts(this.props.profileId);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var picsList = [];
+      var picKeys = Object.keys(this.props.posts);
+
+      for (var j = 0; j < picKeys.length; j++) {
+        var curPost = this.props.posts[picKeys[j]];
+
+        if (curPost.photoUrl != undefined) {
+          picsList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            src: curPost.photoUrl,
+            className: "friend-pic"
+          }));
+        }
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-photo-panel"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile-friends-panel-header"
+      }, "Photos       ".concat(picsList.length)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "friends-panel-list"
+      }, picsList));
+    }
+  }]);
+
+  return PhotoPanel;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (PhotoPanel);
+
+/***/ }),
+
 /***/ "./frontend/components/Profile/Profile.jsx":
 /*!*************************************************!*\
   !*** ./frontend/components/Profile/Profile.jsx ***!
@@ -2616,6 +2711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../NewsFeed/Posts/Post */ "./frontend/components/NewsFeed/Posts/Post.jsx");
 /* harmony import */ var _FriendsPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FriendsPanel */ "./frontend/components/Profile/FriendsPanel.jsx");
 /* harmony import */ var _util_ArrayUtil__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/ArrayUtil */ "./frontend/util/ArrayUtil.js");
+/* harmony import */ var _PhotoPanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PhotoPanel */ "./frontend/components/Profile/PhotoPanel.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2633,6 +2729,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2842,6 +2939,10 @@ function (_React$Component) {
         friends: this.props.friends,
         profileId: this.props.profileUserId,
         getAllFriendsById: this.props.getAllFriendsById
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PhotoPanel__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        posts: this.props.posts,
+        fetchPosts: this.props.fetchPosts,
+        profileId: this.props.profileUserId
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "profile-post-panel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CreatePostProfile__WEBPACK_IMPORTED_MODULE_1__["default"], {

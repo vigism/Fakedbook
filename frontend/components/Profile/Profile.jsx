@@ -3,6 +3,7 @@ import CreatePostProfile from './CreatePostProfile';
 import Post from '../NewsFeed/Posts/Post';
 import FriendsPanel from './FriendsPanel';
 import {arrMatch} from '../../util/ArrayUtil'
+import PhotoPanel from './PhotoPanel';
 
 class Profile extends React.Component {
 
@@ -139,6 +140,9 @@ class Profile extends React.Component {
                 receiveUserById={this.props.receiveUserById}/>
             )
         }
+
+
+
         return (
             <div className="profile-main-container">
                 <div className="profile-header">
@@ -167,6 +171,11 @@ class Profile extends React.Component {
                                 profileId = {this.props.profileUserId}
                                 getAllFriendsById = {this.props.getAllFriendsById}
                             />
+                            <PhotoPanel
+                                posts={this.props.posts}
+                                fetchPosts={this.props.fetchPosts}
+                                profileId={this.props.profileUserId}
+                            />
                         </div>
                          <div className="profile-post-panel">
                          <CreatePostProfile user={this.props.users[this.props.profileUserId]}
@@ -174,6 +183,7 @@ class Profile extends React.Component {
                           createPost={this.props.createPost}
                           fetchPosts={this.props.fetchPosts}/>
                           {postList}
+                          
                          </div>
                     </div>
                 

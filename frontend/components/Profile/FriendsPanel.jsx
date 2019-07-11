@@ -11,6 +11,12 @@ class FriendsPanel extends React.Component {
         this.props.getAllFriendsById(this.props.profileId)
     }
 
+    componentDidUpdate(prevProps) {
+        if(!(this.props.profileId === prevProps.profileId) ) {
+            this.props.getAllFriendsById(this.props.profileId)
+        }
+    }
+
     render() {
         let friends = [];
         

@@ -163,3 +163,14 @@ text-rendering: optimizelegibility;
     flex-wrap: wrap;   
     justify-content: flex-start;
 }
+
+.profile-photo-panel {
+    
+    border:1px solid #dddfe2;
+    border-radius: 5px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+}
