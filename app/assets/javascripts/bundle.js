@@ -2574,6 +2574,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CreatePostProfile__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreatePostProfile */ "./frontend/components/Profile/CreatePostProfile.jsx");
 /* harmony import */ var _NewsFeed_Posts_Post__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../NewsFeed/Posts/Post */ "./frontend/components/NewsFeed/Posts/Post.jsx");
 /* harmony import */ var _FriendsPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./FriendsPanel */ "./frontend/components/Profile/FriendsPanel.jsx");
+/* harmony import */ var _util_ArrayUtil__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/ArrayUtil */ "./frontend/util/ArrayUtil.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2591,6 +2592,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2624,6 +2626,10 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      if (!Object(_util_ArrayUtil__WEBPACK_IMPORTED_MODULE_4__["arrMatch"])(Object.keys(this.props.posts), Object.keys(prevProps.posts))) {
+        this.props.fetchPosts(this.props.profileUserId);
+      }
+
       if (!(prevProps.profileUserId === this.props.profileUserId)) {
         this.props.fetchPosts(this.props.profileUserId);
         this.props.receiveUserById(this.props.profileUserId);
@@ -2733,14 +2739,14 @@ function (_React$Component) {
                 onClick: function onClick() {
                   return _this2.handleUpdateFriend(friend.id);
                 },
-                className: "profile-add-friend-button"
+                className: "profile-add-friend-button-request"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
                 className: "add-friend-icon"
               }), "Accept Request"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
                 onClick: function onClick() {
                   return _this2.handleDeleteFriend(friend.id);
                 },
-                className: "profile-add-friend-button"
+                className: "profile-add-friend-button-request"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
                 className: "add-friend-icon"
               }), "Deny Request")];
@@ -2802,7 +2808,8 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CreatePostProfile__WEBPACK_IMPORTED_MODULE_1__["default"], {
         user: this.props.users[this.props.profileUserId],
         currentUserId: this.props.currentUser.id,
-        createPost: this.props.createPost
+        createPost: this.props.createPost,
+        fetchPosts: this.props.fetchPosts
       }), postList)));
     }
   }]);
@@ -4026,6 +4033,30 @@ var configureStore = function configureStore() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/ArrayUtil.js":
+/*!************************************!*\
+  !*** ./frontend/util/ArrayUtil.js ***!
+  \************************************/
+/*! exports provided: arrMatch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "arrMatch", function() { return arrMatch; });
+var arrMatch = function arrMatch(arr1, arr2) {
+  // Check if the arrays are the same length
+  if (arr1.length !== arr2.length) return false; // Check if all items exist and are in the same order
+
+  for (var i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) return false;
+  } // Otherwise, return true
+
+
+  return true;
+};
 
 /***/ }),
 

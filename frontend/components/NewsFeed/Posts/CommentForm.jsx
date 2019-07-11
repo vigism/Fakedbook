@@ -37,7 +37,6 @@ class CommentForm extends React.Component {
       
 
     render() {
-
         return(
             <div className="post-create-comment">
                 <div className="post-form-user-profile-pic" >

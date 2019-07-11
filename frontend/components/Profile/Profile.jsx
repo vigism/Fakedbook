@@ -2,6 +2,7 @@ import React from 'react';
 import CreatePostProfile from './CreatePostProfile';
 import Post from '../NewsFeed/Posts/Post';
 import FriendsPanel from './FriendsPanel';
+import {arrMatch} from '../../util/ArrayUtil'
 
 class Profile extends React.Component {
 
@@ -21,11 +22,16 @@ class Profile extends React.Component {
         this.props.fetchPosts(this.props.profileUserId);
     }
 
+    
+
     componentDidUpdate(prevProps) {
 
+        if(!arrMatch(Object.keys(this.props.posts), Object.keys(prevProps.posts))) {
+            this.props.fetchPosts(this.props.profileUserId);
+        }
         if(!(prevProps.profileUserId === this.props.profileUserId)){
             this.props.fetchPosts(this.props.profileUserId);
-            this.props.receiveUserById(this.props.profileUserId)
+            this.props.receiveUserById(this.props.profileUserId);
         }
         if(!(prevProps.posts === this.props.posts)) {
             let keys = Object.keys(this.props.posts)
@@ -110,9 +116,9 @@ class Profile extends React.Component {
                         button = [
                         
                             <button onClick= {() => this.handleUpdateFriend(friend.id)}
-                            className="profile-add-friend-button"><i className="add-friend-icon"></i>Accept Request</button>,
+                            className="profile-add-friend-button-request"><i className="add-friend-icon"></i>Accept Request</button>,
                         <button onClick= {() => this.handleDeleteFriend(friend.id)}
-                            className="profile-add-friend-button"><i className="add-friend-icon"></i>Deny Request</button>];
+                            className="profile-add-friend-button-request"><i className="add-friend-icon"></i>Deny Request</button>];
                     }
                 }
             } else {
@@ -124,7 +130,6 @@ class Profile extends React.Component {
         let postList = [];
         let keys = Object.keys(this.props.posts);
         for(let i = keys.length-1; i>=0;i--){
-            
             postList.push(
                 <Post 
                 post={this.props.posts[keys[i]]}
@@ -167,7 +172,8 @@ class Profile extends React.Component {
                          <div className="profile-post-panel">
                          <CreatePostProfile user={this.props.users[this.props.profileUserId]}
                           currentUserId={this.props.currentUser.id} 
-                          createPost={this.props.createPost}/>
+                          createPost={this.props.createPost}
+                          fetchPosts={this.props.fetchPosts}/>
                           {postList}
                          </div>
                     </div>
