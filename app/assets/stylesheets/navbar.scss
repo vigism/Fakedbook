@@ -41,7 +41,7 @@
 }
 
 .nav-search-button-icon {
-    background-image: url('icons.png');
+    background-image: asset-url('icons.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -125px -192px;
@@ -55,7 +55,7 @@
 .logo-button {
     width: 24px;
     height: 24px;
-    background-image: url('main-logo.png');
+    background-image: asset-url('main-logo.png');
     background-repeat: no-repeat;
     margin-right: 7px;
     cursor: pointer;
@@ -144,7 +144,7 @@
 }
 
 .nav-friends-button-icon {
-    background-image: url('icons.png');
+    background-image: asset-url('icons.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -25px -319px;
@@ -165,7 +165,7 @@
 }
 
 .nav-message-button-icon {
-    background-image: url('icons.png');
+    background-image: image-url('icons.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -75px -319px;
@@ -186,7 +186,7 @@
 }
 
 .nav-notification-button-icon {
-    background-image: url('icons.png');
+    background-image: image-url('icons.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -50px -294px;
@@ -207,7 +207,7 @@
 }
 
 .nav-help-button-icon {
-    background-image: url('icons.png');
+    background-image: image-url('icons.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: 0 -344px;
@@ -230,7 +230,7 @@
 }
 
 .nav-drop-down-button-icon {
-    background-image: url('icons.png');
+    background-image: image-url('icons.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -100px -294px;
@@ -381,7 +381,7 @@
 }
 
 .add-friend-icon {
-    background-image: url('icons2.png');
+    background-image: image-url('icons2.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -37px -166px;
@@ -402,7 +402,7 @@
 }
 
 .remove-friend-icon {
-    background-image: url('icons2.png');
+    background-image: image-url('icons2.png');
     background-size: auto;
     background-repeat: no-repeat;
     background-position: -37px -166px;
