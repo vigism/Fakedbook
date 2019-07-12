@@ -1,24 +1,4 @@
-# README
+# Fakedbook README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Fakedbook](https://faked-book.herokuapp.com) is a minimal clone of Facebook, allowing it's users to share posts and pictures with their friends and leave comments on their friend's posts.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
