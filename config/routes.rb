@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :post, only: [:create, :show] do
       resources :comment, only: [:create, :show, :index]
     end
+    get 'post/userAll/:id', to: 'post#allPosts'
     resource :session, only: [:create, :destroy, :show]
     get 'users/', to: 'user#search'
     resources :friends, only: [:create,:update, :destroy, :index]

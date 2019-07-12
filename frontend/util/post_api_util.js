@@ -13,3 +13,8 @@ export const fetchUsersPosts = id => ($.ajax({
     method: "GET",
     url: `/api/post/all/${id}`
 }))
+
+export const fetchAllPosts = id => ($.ajax({
+    method: "GET",
+    url: `/api/post/userAll/${id}`
+}))

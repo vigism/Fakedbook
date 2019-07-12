@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import NewsFeed from './NewsFeed';
-import {createPost, fetchUserPosts} from '../../actions/posts_actions';
+import {createPost, fetchUserPosts, fetchAllPosts} from '../../actions/posts_actions';
 import {receiveUserById} from '../../actions/user_actions';
 import {selectFriendPostsOnly} from '../../selectors/post_selector';
 import {fetchPostComments, createComment} from '../../actions/comments_actions';
@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch => {
         fetchPosts: id => dispatch(fetchUserPosts(id)),
         receiveUserById: id => dispatch(receiveUserById(id)),
         fetchPostComments: post_id => dispatch(fetchPostComments(post_id)),
-        createComment: comment => dispatch(createComment(comment))
+        createComment: comment => dispatch(createComment(comment)),
+        fetchAllPosts: id => dispatch(fetchAllPosts(id)),
     }
 }
 

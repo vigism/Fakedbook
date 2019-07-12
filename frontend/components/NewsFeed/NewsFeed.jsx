@@ -10,7 +10,7 @@ class NewsFeed extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPosts(this.props.currentUserId)
+        this.props.fetchAllPosts(this.props.currentUserId)
         
         
     }

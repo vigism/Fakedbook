@@ -230,7 +230,7 @@ var getAllFriendsById = function getAllFriendsById(id) {
 /*!*******************************************!*\
   !*** ./frontend/actions/posts_actions.js ***!
   \*******************************************/
-/*! exports provided: CREATE_POST, RECEIVE_POSTS, receivePost, receivePosts, createPost, fetchUserPosts */
+/*! exports provided: CREATE_POST, RECEIVE_POSTS, receivePost, receivePosts, createPost, fetchUserPosts, fetchAllPosts */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -241,6 +241,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePosts", function() { return receivePosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserPosts", function() { return fetchUserPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPosts", function() { return fetchAllPosts; });
 /* harmony import */ var _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/post_api_util */ "./frontend/util/post_api_util.js");
 
 var CREATE_POST = "CREATE_POST";
@@ -267,6 +268,13 @@ var createPost = function createPost(post) {
 var fetchUserPosts = function fetchUserPosts(id) {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchUsersPosts"](id).then(function (posts) {
+      return dispatch(receivePosts(posts));
+    });
+  };
+};
+var fetchAllPosts = function fetchAllPosts(id) {
+  return function (dispatch) {
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllPosts"](id).then(function (posts) {
       return dispatch(receivePosts(posts));
     });
   };
@@ -1651,7 +1659,7 @@ function (_React$Component) {
   _createClass(NewsFeed, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.fetchPosts(this.props.currentUserId);
+      this.props.fetchAllPosts(this.props.currentUserId);
     }
   }, {
     key: "componentDidUpdate",
@@ -1765,6 +1773,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createComment: function createComment(comment) {
       return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["createComment"])(comment));
+    },
+    fetchAllPosts: function fetchAllPosts(id) {
+      return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllPosts"])(id));
     }
   };
 };
@@ -4348,7 +4359,7 @@ var getFriends = function getFriends() {
 /*!****************************************!*\
   !*** ./frontend/util/post_api_util.js ***!
   \****************************************/
-/*! exports provided: createPost, fetchPostById, fetchUsersPosts */
+/*! exports provided: createPost, fetchPostById, fetchUsersPosts, fetchAllPosts */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4356,6 +4367,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPostById", function() { return fetchPostById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUsersPosts", function() { return fetchUsersPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPosts", function() { return fetchAllPosts; });
 var createPost = function createPost(post) {
   return $.ajax({
     method: "POST",
@@ -4375,6 +4387,12 @@ var fetchUsersPosts = function fetchUsersPosts(id) {
   return $.ajax({
     method: "GET",
     url: "/api/post/all/".concat(id)
+  });
+};
+var fetchAllPosts = function fetchAllPosts(id) {
+  return $.ajax({
+    method: "GET",
+    url: "/api/post/userAll/".concat(id)
   });
 };
 
