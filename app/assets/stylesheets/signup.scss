@@ -3,23 +3,23 @@
     height:55px;
     width: 300px;
     border-width:0px;
-    background-image: url('login_logo.png');
+    background-image: image-url('login_logo.png');
     background-size: 270px 55px;
     background-repeat: no-repeat;
  }
 
  .signup-logo-photos {
-    content: url('photos_logo.png');
+    content: image-url('photos_logo.png');
    
  }
 
  .signup-logo-share {
-    content: url('share_logo.png');
+    content: image-url('share_logo.png');
    
  }
 
  .signup-logo-find-more {
-    content: url('find_more_logo.png');
+    content: image-url('find_more_logo.png');
    
  }
  .signup-nav-bar {
