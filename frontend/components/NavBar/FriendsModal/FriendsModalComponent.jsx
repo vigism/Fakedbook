@@ -8,7 +8,9 @@ function FriendsModalComponent(props) {
             status:true}
     return (
         <div className="friends-modal-component"  > 
-            <li className="friends-modal-list-el"> {props.sender.first_name} {props.sender.last_name} 
+            <li className="friends-modal-list-el"> 
+            <div className="profile-pic"><img className="profile-pic" src={props.sender.photoUrl}></img></div>
+            {props.sender.first_name} {props.sender.last_name} 
                 <div><button 
                 onClick = {() => props.updateFriend(friend)}
                 className="friend-request-button accept-request">Confirm</button>

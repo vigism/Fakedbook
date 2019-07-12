@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     return {
         user: state.entities.users[state.session.id],
         currentUserId: state.session.id,
-        posts: selectFriendPostsOnly(state),
+        posts: state.entities.posts,
         users: state.entities.user,
         friends: state.entities.friends,
         comments: state.entities.comments

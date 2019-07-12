@@ -16,6 +16,7 @@ class NewsFeed extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
+
         if(prevProps.friends != this.props.friends) {
             let keys = Object.keys(this.props.friends);
             for(let i = 0;i < keys.length; i++) {

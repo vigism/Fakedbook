@@ -617,7 +617,12 @@ function FriendsModalComponent(props) {
     className: "friends-modal-component"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
     className: "friends-modal-list-el"
-  }, " ", props.sender.first_name, " ", props.sender.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile-pic"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    className: "profile-pic",
+    src: props.sender.photoUrl
+  })), props.sender.first_name, " ", props.sender.last_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     onClick: function onClick() {
       return props.updateFriend(friend);
     },
@@ -1750,7 +1755,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     user: state.entities.users[state.session.id],
     currentUserId: state.session.id,
-    posts: Object(_selectors_post_selector__WEBPACK_IMPORTED_MODULE_4__["selectFriendPostsOnly"])(state),
+    posts: state.entities.posts,
     users: state.entities.user,
     friends: state.entities.friends,
     comments: state.entities.comments
@@ -54800,7 +54805,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

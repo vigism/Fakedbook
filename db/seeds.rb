@@ -85,3 +85,21 @@ comment1 = Comment.create(post_id:post1.id, author_id:michael.id, content:"Don't
 
 post2 = Post.create(author_id: kevin.id, profile_id: pam.id, content: "Where are my copies???")
 comment2 = Comment.create(post_id: post2.id, author_id: pam.id, content: "Kevin it's 12 AM!!!!")
+
+
+post3 = Post.create(author_id: michael.id, profile_id:jim.id, content:"Get ready for RABIES awareness run tomorrow!!!")
+file10 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/officerun3.jpg')
+post3.photo.attach(io: file10, filename:'officerun3.jpg')
+
+comment4 = Comment.create(post_id:post3.id, author_id:jim.id, content:"Sorry I actually can't come to work tomorrow")
+
+
+post4 = Post.create(author_id: andy.id, profile_id: kevin.id, content: "Proud to be a member of Dunder Mifflin")
+file11 = open('https://fakedbook-seeds.s3-us-west-1.amazonaws.com/kevin_olympics.jpg')
+post4.photo.attach(io: file11, filename:'kevin_olympics.jpg')
+
+
+comment4 = Comment.create(post_id:post4.id, author_id:michael.id, content:"YES!")
+
+comment4 = Comment.create(post_id:post4.id, author_id:kevin.id, content:"Definitely")
+comment4 = Comment.create(post_id:post4.id, author_id:pam.id, content:"Love you all")
