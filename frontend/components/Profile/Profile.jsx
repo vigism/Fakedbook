@@ -120,8 +120,10 @@ class Profile extends React.Component {
                     }
                 }
             } else {
+                
                 button = <button onClick= {() => this.handleFriend()}
-                 className="profile-add-friend-button"><i className="add-friend-icon"></i>Add Friend</button>;
+                className="profile-add-friend-button"><i className="add-friend-icon"></i>Add Friend</button>;
+                
             }
         }
 
