@@ -1877,12 +1877,18 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Comment).call(this, props));
     _this.removeComment = _this.removeComment.bind(_assertThisInitialized(_this));
     _this.updateComment = _this.updateComment.bind(_assertThisInitialized(_this));
+    _this.updateCommentState = _this.updateCommentState.bind(_assertThisInitialized(_this));
+    _this.updateCommentContent = _this.updateCommentContent.bind(_assertThisInitialized(_this));
+    _this.keyPress = _this.keyPress.bind(_assertThisInitialized(_this));
     _this.state = {
-      id: _this.props.comment.id,
-      parent_comment_id: _this.props.comment.parent_comment_id,
-      content: _this.props.comment.content,
-      post_id: _this.props.comment.post_id,
-      author_id: _this.props.comment.author_id
+      comment: {
+        id: _this.props.comment.id,
+        parent_comment_id: _this.props.comment.parent_comment_id,
+        content: _this.props.comment.content,
+        post_id: _this.props.comment.post_id,
+        author_id: _this.props.comment.author_id
+      },
+      editable: false
     };
     return _this;
   }
@@ -1895,11 +1901,61 @@ function (_React$Component) {
   }, {
     key: "updateComment",
     value: function updateComment() {
-      this.props.patchComment(this.state);
+      this.props.patchComment(this.state.comment);
+      this.setState({
+        editable: false
+      });
+    }
+  }, {
+    key: "updateCommentState",
+    value: function updateCommentState() {
+      this.setState({
+        editable: true
+      });
+    }
+  }, {
+    key: "updateCommentContent",
+    value: function updateCommentContent(e) {
+      this.setState({
+        comment: {
+          id: this.props.comment.id,
+          parent_comment_id: this.props.comment.parent_comment_id,
+          post_id: this.props.comment.post_id,
+          author_id: this.props.comment.author_id,
+          content: e.target.value
+        }
+      });
+    }
+  }, {
+    key: "keyPress",
+    value: function keyPress(e) {
+      if (e.keyCode == 13) {
+        this.updateComment();
+      }
     }
   }, {
     key: "render",
     value: function render() {
+      var contentDisp;
+
+      if (this.state.editable) {
+        contentDisp = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          className: "comment-text-edit",
+          value: this.state.comment.content,
+          autoFocus: true,
+          onChange: this.updateCommentContent,
+          onKeyDown: this.keyPress
+        });
+      } else {
+        contentDisp = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          className: "comment-text",
+          value: this.props.comment.content,
+          readOnly: "false"
+        });
+      }
+
       var authorInfo = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)];
 
       if (this.props.users[this.props.comment.author_id] != undefined) {
@@ -1916,17 +1972,12 @@ function (_React$Component) {
           to: "/".concat(this.props.comment.author_id, "/profile")
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-content-user-name"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].first_name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].last_name, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-          type: "text",
-          className: "comment-text",
-          value: this.props.comment.content,
-          readOnly: "false"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].first_name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].last_name, " "))), contentDisp, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "remove-comment-button",
           onClick: this.removeComment
         }, "Remove"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "remove-comment-button",
-          onClick: this.updateComment
+          onClick: this.updateCommentState
         }, "Update")));
       } else {
         authorInfo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
@@ -3803,6 +3854,11 @@ var commentsReducer = function commentsReducer() {
     case _actions_comments_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_COMMENT"]:
       newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
       delete newState[action.id];
+      return newState;
+
+    case _actions_comments_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_COMMENT"]:
+      newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
+      newState[action.comment.id] = action.comment;
       return newState;
 
     default:

@@ -7,12 +7,18 @@ class Comment extends React.Component {
         super(props);
         this.removeComment = this.removeComment.bind(this);
         this.updateComment = this.updateComment.bind(this);
+        this.updateCommentState = this.updateCommentState.bind(this);
+        this.updateCommentContent = this.updateCommentContent.bind(this);
+        this.keyPress = this.keyPress.bind(this);
         this.state={
-            id: this.props.comment.id,
-            parent_comment_id: this.props.comment.parent_comment_id,
-            content: this.props.comment.content,
-            post_id: this.props.comment.post_id,
-            author_id: this.props.comment.author_id,
+            comment:{
+                id: this.props.comment.id,
+                parent_comment_id: this.props.comment.parent_comment_id,
+                content: this.props.comment.content,
+                post_id: this.props.comment.post_id,
+                author_id: this.props.comment.author_id,
+            },
+            editable:false
         }
     }
 
@@ -21,48 +27,87 @@ class Comment extends React.Component {
     }
 
     updateComment() {
-        this.props.patchComment(this.state);
+        this.props.patchComment(this.state.comment);
+        this.setState({
+            editable:false
+        })
+    }
+
+    updateCommentState() {
+        this.setState({
+            editable:true
+        })
+    }
+
+    updateCommentContent(e) {
+
+        this.setState({
+            comment:{
+                id: this.props.comment.id,
+                parent_comment_id: this.props.comment.parent_comment_id,
+                post_id: this.props.comment.post_id,
+                author_id: this.props.comment.author_id,
+                content:e.target.value
+            }
+        })
+    }
+
+    keyPress(e){
+        if(e.keyCode == 13){
+            this.updateComment();
+         }
     }
 
     render() {
-    let authorInfo =[<div></div>];
-        if(this.props.users[this.props.comment.author_id] != undefined) {
-            authorInfo = <div className ="post-comment">
-                    <div className="comment-image-div">
-                    <img className="comment-image" src={this.props.users[this.props.comment.author_id].photoUrl}>
-                    </img>
-                    </div>
-                    <div className="comment-content-div">
-                    <Link to={`/${this.props.comment.author_id}/profile`}>
-                    <div className="comment-content-user-name">
-                    <i>{this.props.users[this.props.comment.author_id].first_name} </i>
-                    <i>{this.props.users[this.props.comment.author_id].last_name} </i>
-                    </div>
-                    </Link>
-                    <input type="text" className="comment-text"
-                     value={this.props.comment.content} readOnly="false"/>
 
-                    <button className="remove-comment-button"
-                            onClick={this.removeComment}>
-                        Remove
-                    </button>
-                    <button className="remove-comment-button"
-                            onClick={this.updateComment}>
-                        Update
-                    </button>
-
-                 
-                    
-                    
-                    </div>
-                    </div>
+        let contentDisp;
+        if(this.state.editable) {
+            contentDisp = <input type="text" className="comment-text-edit"
+            value={this.state.comment.content} autoFocus
+            onChange={this.updateCommentContent}
+            onKeyDown={this.keyPress} />
         } else {
-            authorInfo = <div></div>
+            contentDisp = <input type="text" className="comment-text"
+            value={this.props.comment.content} readOnly="false"/>
         }
-        return(
-            authorInfo
-        )
-    }
+
+        let authorInfo =[<div></div>];
+            if(this.props.users[this.props.comment.author_id] != undefined) {
+                authorInfo = <div className ="post-comment">
+                        <div className="comment-image-div">
+                        <img className="comment-image" src={this.props.users[this.props.comment.author_id].photoUrl}>
+                        </img>
+                        </div>
+                        <div className="comment-content-div">
+                        <Link to={`/${this.props.comment.author_id}/profile`}>
+                        <div className="comment-content-user-name">
+                        <i>{this.props.users[this.props.comment.author_id].first_name} </i>
+                        <i>{this.props.users[this.props.comment.author_id].last_name} </i>
+                        </div>
+                        </Link>
+                        {contentDisp}
+
+                        <button className="remove-comment-button"
+                                onClick={this.removeComment}>
+                            Remove
+                        </button>
+                        <button className="remove-comment-button"
+                                onClick={this.updateCommentState}>
+                            Update
+                        </button>
+
+                    
+                        
+                        
+                        </div>
+                        </div>
+            } else {
+                authorInfo = <div></div>
+            }
+            return(
+                authorInfo
+            )
+        }
 
 }
 

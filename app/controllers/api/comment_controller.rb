@@ -11,7 +11,7 @@ class Api::CommentController < ApplicationController
 
     def update
         @comment = Comment.find_by(id:params[:id])
-        @comment.update(content:params[:content])
+        @comment.update(comment_params)
         render "api/comments/show"
     end
 
