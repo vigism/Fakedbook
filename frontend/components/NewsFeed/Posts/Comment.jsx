@@ -71,11 +71,16 @@ class Comment extends React.Component {
             value={this.props.comment.content} readOnly="false"/>
         }
         let updateButton=null;
+        let deleteButton= null;
         if(this.props.currentUser.id === this.props.comment.author_id) {
             updateButton = <button className="remove-comment-button"
-            onClick={this.updateCommentState}>
-        Update
-    </button>
+                    onClick={this.updateCommentState}>
+                Update
+            </button>
+            deleteButton =  <button className="remove-comment-button"
+                    onClick={this.removeComment}>
+                Remove
+            </button>
         }
         let authorInfo =[<div></div>];
             if(this.props.users[this.props.comment.author_id] != undefined) {
@@ -93,10 +98,7 @@ class Comment extends React.Component {
                         </Link>
                         {contentDisp}
 
-                        <button className="remove-comment-button"
-                                onClick={this.removeComment}>
-                            Remove
-                        </button>
+                        {deleteButton}
                        {updateButton}
 
                     
