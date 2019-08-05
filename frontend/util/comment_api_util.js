@@ -9,7 +9,7 @@ export const getCommentsForPost = post_id => ($.ajax({
     url: `api/post/${post_id}/comment`
 }))
 
-export const destroyComment = comment => ($.ajax({
+export const destroyComment = id => ($.ajax({
     method: "DESTROY",
-    url: `api/comment/${comment.id}`
+    url: `api/comment/${id}`
 }))

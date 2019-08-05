@@ -5,6 +5,11 @@ class Comment extends React.Component {
 
     constructor(props) {
         super(props);
+        this.removeComment = this.removeComment.bind(this);
+    }
+
+    removeComment() {
+        
     }
 
     render() {
@@ -22,7 +27,16 @@ class Comment extends React.Component {
                     <i>{this.props.users[this.props.comment.author_id].last_name} </i>
                     </div>
                     </Link>
-                    <i className="comment-text">{this.props.comment.content}</i>
+                    <input type="text" className="comment-text"
+                     value={this.props.comment.content} readOnly="false"/>
+
+                    <button className="remove-comment-button"
+                            onClick={this.removeComment}>
+                        Remove
+                    </button>
+
+                 
+                    
                     
                     </div>
                     </div>

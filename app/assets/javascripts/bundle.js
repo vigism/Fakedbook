@@ -90,21 +90,31 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/comments_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_COMMENT, GET_POST_COMMENTS, receiveComment, getPostComments, createComment, fetchPostComments */
+/*! exports provided: RECEIVE_COMMENT, GET_POST_COMMENTS, DELETE_COMMENT, deleteComment, receiveComment, getPostComments, destroyComment, createComment, fetchPostComments */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT", function() { return RECEIVE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POST_COMMENTS", function() { return GET_POST_COMMENTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_COMMENT", function() { return DELETE_COMMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveComment", function() { return receiveComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPostComments", function() { return getPostComments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyComment", function() { return destroyComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPostComments", function() { return fetchPostComments; });
 /* harmony import */ var _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/comment_api_util */ "./frontend/util/comment_api_util.js");
 
 var RECEIVE_COMMENT = "RECEIVE_COMMENT";
 var GET_POST_COMMENTS = "GET_POST_COMMENTS";
+var DELETE_COMMENT = "DELETE_COMMENT";
+var deleteComment = function deleteComment(id) {
+  return {
+    type: DELETE_COMMENT,
+    id: id
+  };
+};
 var receiveComment = function receiveComment(comment) {
   return {
     type: RECEIVE_COMMENT,
@@ -115,6 +125,13 @@ var getPostComments = function getPostComments(comments) {
   return {
     type: GET_POST_COMMENTS,
     comments: comments
+  };
+};
+var destroyComment = function destroyComment(id) {
+  return function (dispatch) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["destroyComment"](id).then(function (comment) {
+      return dispatch(deleteComment(comment.id));
+    });
   };
 };
 var createComment = function createComment(comment) {
@@ -1811,9 +1828,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1828,12 +1845,19 @@ function (_React$Component) {
   _inherits(Comment, _React$Component);
 
   function Comment(props) {
+    var _this;
+
     _classCallCheck(this, Comment);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Comment).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Comment).call(this, props));
+    _this.removeComment = _this.removeComment.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Comment, [{
+    key: "removeComment",
+    value: function removeComment() {}
+  }, {
     key: "render",
     value: function render() {
       var authorInfo = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)];
@@ -1852,9 +1876,15 @@ function (_React$Component) {
           to: "/".concat(this.props.comment.author_id, "/profile")
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "comment-content-user-name"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].first_name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].last_name, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "comment-text"
-        }, this.props.comment.content)));
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].first_name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].last_name, " "))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          type: "text",
+          className: "comment-text",
+          value: this.props.comment.content,
+          readOnly: "false"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "remove-comment-button",
+          onClick: this.removeComment
+        }, "Remove")));
       } else {
         authorInfo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       }
@@ -3717,6 +3747,11 @@ var commentsReducer = function commentsReducer() {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["LOGOUT_CURRENT_USER"]:
       return {};
 
+    case _actions_comments_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_COMMENT"]:
+      newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
+      newState[action.id] = undefined;
+      return newState;
+
     default:
       return state;
   }
@@ -4301,10 +4336,10 @@ var getCommentsForPost = function getCommentsForPost(post_id) {
     url: "api/post/".concat(post_id, "/comment")
   });
 };
-var destroyComment = function destroyComment(comment) {
+var destroyComment = function destroyComment(id) {
   return $.ajax({
     method: "DESTROY",
-    url: "api/comment/".concat(comment.id)
+    url: "api/comment/".concat(id)
   });
 };
 
