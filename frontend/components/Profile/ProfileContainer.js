@@ -3,7 +3,8 @@ import Profile from './Profile';
 import {receiveUserById} from '../../actions/user_actions';
 import {getAllFriends, getAllFriendsById} from '../../actions/friends_actions';
 
-import {createPost, fetchUserPosts} from '../../actions/posts_actions';
+import {createPost, fetchUserPosts,
+        patchPost, destroyPost} from '../../actions/posts_actions';
 import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../actions/friends_actions'
 
 import {fetchPostComments, createComment, destroyComment,
@@ -35,6 +36,8 @@ const mapDispatchToProps = dispatch => {
         createComment: comment => dispatch(createComment(comment)),
         destroyComment: id => dispatch(destroyComment(id)),
         patchComment: comment => dispatch(patchComment(comment)),
+        patchPost: post => dispatch(patchPost(post)),
+        destroyPost: id => dispatch(destroyPost(id)),
     }
 }
 

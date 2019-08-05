@@ -264,22 +264,30 @@ var getAllFriendsById = function getAllFriendsById(id) {
 /*!*******************************************!*\
   !*** ./frontend/actions/posts_actions.js ***!
   \*******************************************/
-/*! exports provided: CREATE_POST, RECEIVE_POSTS, receivePost, receivePosts, createPost, fetchUserPosts, fetchAllPosts */
+/*! exports provided: CREATE_POST, RECEIVE_POSTS, UPDATE_POST, DELETE_POST, receivePost, receivePosts, deletePost, updatePost, createPost, fetchUserPosts, fetchAllPosts, patchPost, destroyPost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CREATE_POST", function() { return CREATE_POST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_POSTS", function() { return RECEIVE_POSTS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_POST", function() { return UPDATE_POST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_POST", function() { return DELETE_POST; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePost", function() { return receivePost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receivePosts", function() { return receivePosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePost", function() { return deletePost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePost", function() { return updatePost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPost", function() { return createPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUserPosts", function() { return fetchUserPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPosts", function() { return fetchAllPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "patchPost", function() { return patchPost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyPost", function() { return destroyPost; });
 /* harmony import */ var _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/post_api_util */ "./frontend/util/post_api_util.js");
 
 var CREATE_POST = "CREATE_POST";
 var RECEIVE_POSTS = "RECEIVE_POSTS";
+var UPDATE_POST = "UPDATE_POST";
+var DELETE_POST = "DELETE_POST";
 var receivePost = function receivePost(post) {
   return {
     type: CREATE_POST,
@@ -290,6 +298,18 @@ var receivePosts = function receivePosts(posts) {
   return {
     type: RECEIVE_POSTS,
     posts: posts
+  };
+};
+var deletePost = function deletePost(post) {
+  return {
+    type: DELETE_POST,
+    post: post
+  };
+};
+var updatePost = function updatePost(post) {
+  return {
+    type: UPDATE_POST,
+    post: post
   };
 };
 var createPost = function createPost(post) {
@@ -310,6 +330,20 @@ var fetchAllPosts = function fetchAllPosts(id) {
   return function (dispatch) {
     return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchAllPosts"](id).then(function (posts) {
       return dispatch(receivePosts(posts));
+    });
+  };
+};
+var patchPost = function patchPost(post) {
+  return function (dispatch) {
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["updatePost"](post).then(function (post) {
+      return dispatch(updatePost(post));
+    });
+  };
+};
+var destroyPost = function destroyPost(id) {
+  return function (dispatch) {
+    return _util_post_api_util__WEBPACK_IMPORTED_MODULE_0__["deletePost"](id).then(function (post) {
+      return dispatch(deletePost(post));
     });
   };
 };
@@ -3063,7 +3097,9 @@ function (_React$Component) {
           destroyComment: this.props.destroyComment,
           comments: this.props.comments,
           receiveUserById: this.props.receiveUserById,
-          patchComment: this.props.patchComment
+          patchComment: this.props.patchComment,
+          patchPost: this.props.patchPost,
+          destroyPost: this.props.destroyPost
         }));
       }
 
@@ -3186,6 +3222,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     patchComment: function patchComment(comment) {
       return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["patchComment"])(comment));
+    },
+    patchPost: function patchPost(post) {
+      return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_4__["patchPost"])(post));
+    },
+    destroyPost: function destroyPost(id) {
+      return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_4__["destroyPost"])(id));
     }
   };
 };
@@ -4025,6 +4067,16 @@ var postsReducer = function postsReducer() {
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["LOGOUT_CURRENT_USER"]:
       return {};
+
+    case _actions_posts_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_POST"]:
+      newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
+      delete newState[action.post.id];
+      return newState;
+
+    case _actions_posts_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_POST"]:
+      newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
+      newState[action.post.id] = action.post;
+      return newState;
 
     default:
       return state;
