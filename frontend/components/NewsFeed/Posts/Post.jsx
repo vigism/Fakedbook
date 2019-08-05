@@ -7,10 +7,34 @@ class Post extends React.Component {
 
     constructor(props) {
         super(props);
+        this.container = React.createRef();
+        this.state = {
+            editDrop: false
+        }
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
+
+    handleButtonClick() {  
+        this.setState( {
+            editDrop: !this.state.editDrop,
+          
+        });
+      
+    }
+
+    handleClickOutside(event) {
+        if (this.container.current && !this.container.current.contains(event.target)) {
+          this.setState({
+            editDrop: false,
+          });
+        }
+      };
+      
 
     componentDidMount() {
         this.props.fetchPostComments(this.props.post.id);
+        document.addEventListener("mousedown", this.handleClickOutside);
     }
     
     componentDidUpdate(prevProps) {
@@ -19,6 +43,9 @@ class Post extends React.Component {
         }
     }
 
+    componentWillUnmount () {
+        document.removeEventListener("mousedown", this.handleClickOutside); 
+    }
 
     render() {
         let comments = [];
@@ -56,6 +83,17 @@ class Post extends React.Component {
                 <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
                 <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].last_name}</p>
                 </Link>
+                <div className="post-dropdown-container" ref={this.container}>
+                <button className="post-dropdown-button" onClick={this.handleButtonClick}>
+                ☰
+                </button>
+                {this.state.editDrop && <div className="post-dropdown">
+                    <ul>
+                    <li className="post-dropdown-li">Remove Post</li>
+                    <li className="post-dropdown-li">Edit Post</li>
+                    </ul>
+                </div>}
+                </div>
                 </div>
             } else {
                 header = <div className="post-header">

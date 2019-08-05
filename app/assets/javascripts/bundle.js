@@ -2269,9 +2269,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -2288,15 +2288,41 @@ function (_React$Component) {
   _inherits(Post, _React$Component);
 
   function Post(props) {
+    var _this;
+
     _classCallCheck(this, Post);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Post).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Post).call(this, props));
+    _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.state = {
+      editDrop: false
+    };
+    _this.handleButtonClick = _this.handleButtonClick.bind(_assertThisInitialized(_this));
+    _this.handleClickOutside = _this.handleClickOutside.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
   _createClass(Post, [{
+    key: "handleButtonClick",
+    value: function handleButtonClick() {
+      this.setState({
+        editDrop: !this.state.editDrop
+      });
+    }
+  }, {
+    key: "handleClickOutside",
+    value: function handleClickOutside(event) {
+      if (this.container.current && !this.container.current.contains(event.target)) {
+        this.setState({
+          editDrop: false
+        });
+      }
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchPostComments(this.props.post.id);
+      document.addEventListener("mousedown", this.handleClickOutside);
     }
   }, {
     key: "componentDidUpdate",
@@ -2304,6 +2330,11 @@ function (_React$Component) {
       if (!(prevProps.post === this.props.post)) {
         this.props.fetchPostComments(this.props.post.id);
       }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener("mousedown", this.handleClickOutside);
     }
   }, {
     key: "render",
@@ -2354,7 +2385,19 @@ function (_React$Component) {
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
             to: "/".concat(this.props.post.author_id, "/profile"),
             className: "profile-link"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name)));
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-dropdown-container",
+            ref: this.container
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            className: "post-dropdown-button",
+            onClick: this.handleButtonClick
+          }, "\u2630"), this.state.editDrop && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-dropdown"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "post-dropdown-li"
+          }, "Remove Post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            className: "post-dropdown-li"
+          }, "Edit Post")))));
         } else {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
