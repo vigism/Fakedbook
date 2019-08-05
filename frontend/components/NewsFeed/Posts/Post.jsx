@@ -33,7 +33,8 @@ class Post extends React.Component {
             let component = <Comment comment={comments[i]}
                                 users={this.props.users}
                                 deleteComment={this.props.destroyComment}
-                                patchComment={this.props.patchComment}/>
+                                patchComment={this.props.patchComment}
+                                currentUser={this.props.currentUser}/>
             commentComponents.push(component);
         }
 

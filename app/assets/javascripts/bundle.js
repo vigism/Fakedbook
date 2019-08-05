@@ -1956,6 +1956,15 @@ function (_React$Component) {
         });
       }
 
+      var updateButton = null;
+
+      if (this.props.currentUser.id === this.props.comment.author_id) {
+        updateButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "remove-comment-button",
+          onClick: this.updateCommentState
+        }, "Update");
+      }
+
       var authorInfo = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null)];
 
       if (this.props.users[this.props.comment.author_id] != undefined) {
@@ -1975,10 +1984,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].first_name, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.comment.author_id].last_name, " "))), contentDisp, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "remove-comment-button",
           onClick: this.removeComment
-        }, "Remove"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          className: "remove-comment-button",
-          onClick: this.updateCommentState
-        }, "Update")));
+        }, "Remove"), updateButton));
       } else {
         authorInfo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       }
@@ -2282,7 +2288,8 @@ function (_React$Component) {
           comment: comments[_i],
           users: this.props.users,
           deleteComment: this.props.destroyComment,
-          patchComment: this.props.patchComment
+          patchComment: this.props.patchComment,
+          currentUser: this.props.currentUser
         });
         commentComponents.push(component);
       }

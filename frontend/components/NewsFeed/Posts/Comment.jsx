@@ -70,7 +70,13 @@ class Comment extends React.Component {
             contentDisp = <input type="text" className="comment-text"
             value={this.props.comment.content} readOnly="false"/>
         }
-
+        let updateButton=null;
+        if(this.props.currentUser.id === this.props.comment.author_id) {
+            updateButton = <button className="remove-comment-button"
+            onClick={this.updateCommentState}>
+        Update
+    </button>
+        }
         let authorInfo =[<div></div>];
             if(this.props.users[this.props.comment.author_id] != undefined) {
                 authorInfo = <div className ="post-comment">
@@ -91,10 +97,7 @@ class Comment extends React.Component {
                                 onClick={this.removeComment}>
                             Remove
                         </button>
-                        <button className="remove-comment-button"
-                                onClick={this.updateCommentState}>
-                            Update
-                        </button>
+                       {updateButton}
 
                     
                         
