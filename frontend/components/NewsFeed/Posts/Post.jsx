@@ -13,6 +13,7 @@ class Post extends React.Component {
         }
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
+        this.deletePost = this.deletePost.bind(this);
     }
 
     handleButtonClick() {  
@@ -21,6 +22,10 @@ class Post extends React.Component {
           
         });
       
+    }
+
+    deletePost() {
+        this.props.destroyPost(this.props.post.id)
     }
 
     handleClickOutside(event) {
@@ -89,7 +94,8 @@ class Post extends React.Component {
                 </button>
                 {this.state.editDrop && <div className="post-dropdown">
                     <ul>
-                    <li className="post-dropdown-li">Remove Post</li>
+                    <li className="post-dropdown-li"
+                    onClick={this.deletePost}>Remove Post</li>
                     <li className="post-dropdown-li">Edit Post</li>
                     </ul>
                 </div>}

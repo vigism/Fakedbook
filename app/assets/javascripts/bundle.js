@@ -2299,6 +2299,7 @@ function (_React$Component) {
     };
     _this.handleButtonClick = _this.handleButtonClick.bind(_assertThisInitialized(_this));
     _this.handleClickOutside = _this.handleClickOutside.bind(_assertThisInitialized(_this));
+    _this.deletePost = _this.deletePost.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2308,6 +2309,11 @@ function (_React$Component) {
       this.setState({
         editDrop: !this.state.editDrop
       });
+    }
+  }, {
+    key: "deletePost",
+    value: function deletePost() {
+      this.props.destroyPost(this.props.post.id);
     }
   }, {
     key: "handleClickOutside",
@@ -2394,7 +2400,8 @@ function (_React$Component) {
           }, "\u2630"), this.state.editDrop && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-dropdown"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "post-dropdown-li"
+            className: "post-dropdown-li",
+            onClick: this.deletePost
           }, "Remove Post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             className: "post-dropdown-li"
           }, "Edit Post")))));
