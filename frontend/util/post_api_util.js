@@ -18,3 +18,14 @@ export const fetchAllPosts = id => ($.ajax({
     method: "GET",
     url: `/api/post/userAll/${id}`
 }))
+
+export const deletePost = id => ($.ajax({
+    method: "DELETE",
+    url: `/api/post/${id}`
+}))
+
+export const updatePost = post => ($.ajax({
+    method:"PATCH",
+    url:`/api/post/${post.id}`,
+    data: {post}
+}))

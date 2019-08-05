@@ -1963,7 +1963,7 @@ function (_React$Component) {
         updateButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "remove-comment-button",
           onClick: this.updateCommentState
-        }, "Update");
+        }, "Edit");
         deleteButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "remove-comment-button",
           onClick: this.removeComment
@@ -4527,7 +4527,7 @@ var getFriends = function getFriends() {
 /*!****************************************!*\
   !*** ./frontend/util/post_api_util.js ***!
   \****************************************/
-/*! exports provided: createPost, fetchPostById, fetchUsersPosts, fetchAllPosts */
+/*! exports provided: createPost, fetchPostById, fetchUsersPosts, fetchAllPosts, deletePost, updatePost */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4536,6 +4536,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPostById", function() { return fetchPostById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUsersPosts", function() { return fetchUsersPosts; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPosts", function() { return fetchAllPosts; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deletePost", function() { return deletePost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updatePost", function() { return updatePost; });
 var createPost = function createPost(post) {
   return $.ajax({
     method: "POST",
@@ -4561,6 +4563,21 @@ var fetchAllPosts = function fetchAllPosts(id) {
   return $.ajax({
     method: "GET",
     url: "/api/post/userAll/".concat(id)
+  });
+};
+var deletePost = function deletePost(id) {
+  return $.ajax({
+    method: "DELETE",
+    url: "/api/post/".concat(id)
+  });
+};
+var updatePost = function updatePost(post) {
+  return $.ajax({
+    method: "PATCH",
+    url: "/api/post/".concat(post.id),
+    data: {
+      post: post
+    }
   });
 };
 

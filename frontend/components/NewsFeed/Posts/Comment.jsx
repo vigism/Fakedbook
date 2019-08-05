@@ -75,7 +75,7 @@ class Comment extends React.Component {
         if(this.props.currentUser.id === this.props.comment.author_id) {
             updateButton = <button className="remove-comment-button"
                     onClick={this.updateCommentState}>
-                Update
+                Edit
             </button>
             deleteButton =  <button className="remove-comment-button"
                     onClick={this.removeComment}>
