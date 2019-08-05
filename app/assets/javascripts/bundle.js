@@ -1718,6 +1718,7 @@ function (_React$Component) {
           currentUser: this.props.user,
           fetchPostComments: this.props.fetchPostComments,
           createComment: this.props.createComment,
+          destroyComment: this.props.destroyComment,
           comments: this.props.comments,
           receiveUserById: this.props.receiveUserById
         }));
@@ -1798,6 +1799,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     fetchAllPosts: function fetchAllPosts(id) {
       return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_2__["fetchAllPosts"])(id));
+    },
+    destroyComment: function destroyComment(id) {
+      return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["destroyComment"])(id));
     }
   };
 };
@@ -1856,7 +1860,9 @@ function (_React$Component) {
 
   _createClass(Comment, [{
     key: "removeComment",
-    value: function removeComment() {}
+    value: function removeComment() {
+      this.props.deleteComment(this.props.comment.id);
+    }
   }, {
     key: "render",
     value: function render() {
@@ -2186,7 +2192,8 @@ function (_React$Component) {
       for (var _i = 0; _i < comments.length; _i++) {
         var component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment__WEBPACK_IMPORTED_MODULE_2__["default"], {
           comment: comments[_i],
-          users: this.props.users
+          users: this.props.users,
+          deleteComment: this.props.deleteComment
         });
         commentComponents.push(component);
       }

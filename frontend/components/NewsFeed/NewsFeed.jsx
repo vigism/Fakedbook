@@ -45,6 +45,7 @@ class NewsFeed extends React.Component {
                 currentUser={this.props.user}
                 fetchPostComments={this.props.fetchPostComments}
                 createComment={this.props.createComment}
+                destroyComment = {this.props.destroyComment}
                 comments={this.props.comments}
                 receiveUserById={this.props.receiveUserById}/>
             )

@@ -9,7 +9,7 @@ class Comment extends React.Component {
     }
 
     removeComment() {
-        
+        this.props.deleteComment(this.props.comment.id);
     }
 
     render() {
