@@ -90,7 +90,7 @@
 /*!**********************************************!*\
   !*** ./frontend/actions/comments_actions.js ***!
   \**********************************************/
-/*! exports provided: RECEIVE_COMMENT, GET_POST_COMMENTS, DELETE_COMMENT, deleteComment, receiveComment, getPostComments, destroyComment, createComment, fetchPostComments */
+/*! exports provided: RECEIVE_COMMENT, GET_POST_COMMENTS, DELETE_COMMENT, UPDATE_COMMENT, deleteComment, receiveComment, getPostComments, updateComment, destroyComment, createComment, fetchPostComments, patchComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -98,17 +98,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_COMMENT", function() { return RECEIVE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GET_POST_COMMENTS", function() { return GET_POST_COMMENTS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DELETE_COMMENT", function() { return DELETE_COMMENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_COMMENT", function() { return UPDATE_COMMENT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteComment", function() { return deleteComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveComment", function() { return receiveComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getPostComments", function() { return getPostComments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateComment", function() { return updateComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyComment", function() { return destroyComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPostComments", function() { return fetchPostComments; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "patchComment", function() { return patchComment; });
 /* harmony import */ var _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/comment_api_util */ "./frontend/util/comment_api_util.js");
 
 var RECEIVE_COMMENT = "RECEIVE_COMMENT";
 var GET_POST_COMMENTS = "GET_POST_COMMENTS";
 var DELETE_COMMENT = "DELETE_COMMENT";
+var UPDATE_COMMENT = "UPDATE_COMMENT";
 var deleteComment = function deleteComment(id) {
   return {
     type: DELETE_COMMENT,
@@ -125,6 +129,12 @@ var getPostComments = function getPostComments(comments) {
   return {
     type: GET_POST_COMMENTS,
     comments: comments
+  };
+};
+var updateComment = function updateComment(comment) {
+  return {
+    type: UPDATE_COMMENT,
+    comment: comment
   };
 };
 var destroyComment = function destroyComment(id) {
@@ -145,6 +155,13 @@ var fetchPostComments = function fetchPostComments(post_id) {
   return function (dispatch) {
     return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["getCommentsForPost"](post_id).then(function (comments) {
       return dispatch(getPostComments(comments));
+    });
+  };
+};
+var patchComment = function patchComment(comment) {
+  return function (dispatch) {
+    return _util_comment_api_util__WEBPACK_IMPORTED_MODULE_0__["updateComment"](comment).then(function (comment) {
+      return dispatch(updateComment(comment));
     });
   };
 };
@@ -4324,7 +4341,7 @@ var arrMatch = function arrMatch(arr1, arr2) {
 /*!*******************************************!*\
   !*** ./frontend/util/comment_api_util.js ***!
   \*******************************************/
-/*! exports provided: createComment, getCommentsForPost, destroyComment */
+/*! exports provided: createComment, getCommentsForPost, destroyComment, updateComment */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4332,6 +4349,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createComment", function() { return createComment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCommentsForPost", function() { return getCommentsForPost; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "destroyComment", function() { return destroyComment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateComment", function() { return updateComment; });
 var createComment = function createComment(comment) {
   return $.ajax({
     method: "POST",
@@ -4351,6 +4369,15 @@ var destroyComment = function destroyComment(id) {
   return $.ajax({
     method: "DELETE",
     url: "api/comment/".concat(id)
+  });
+};
+var updateComment = function updateComment(comment) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/comment/".concat(comment.id),
+    data: {
+      comment: comment
+    }
   });
 };
 

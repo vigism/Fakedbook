@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'users/', to: 'user#search'
     resources :friends, only: [:create,:update, :destroy, :index]
     get 'friends/:id', to: 'friends#indexById'
-    resources :comment, only: [:destroy]
+    resources :comment, only: [:destroy, :update]
   end
   
   root "static_pages#root"

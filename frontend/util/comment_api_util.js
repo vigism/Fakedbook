@@ -13,3 +13,9 @@ export const destroyComment = id => ($.ajax({
     method: "DELETE",
     url: `api/comment/${id}`
 }))
+
+export const updateComment = comment => ($.ajax({
+    method:"PATCH",
+    url: `api/comment/${comment.id}`,
+    data: {comment}
+}))

@@ -9,6 +9,12 @@ class Api::CommentController < ApplicationController
     def show
     end
 
+    def update
+        @comment = Comment.find_by(id:params[:id])
+        @comment.update(comment_params)
+        render "api/comments/show"
+    end
+
     def create
         @comment = Comment.new(comment_params)
         if @comment.save
