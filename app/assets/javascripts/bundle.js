@@ -1737,7 +1737,8 @@ function (_React$Component) {
           createComment: this.props.createComment,
           destroyComment: this.props.destroyComment,
           comments: this.props.comments,
-          receiveUserById: this.props.receiveUserById
+          receiveUserById: this.props.receiveUserById,
+          patchComment: this.props.patchComment
         }));
       }
 
@@ -1819,6 +1820,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     destroyComment: function destroyComment(id) {
       return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["destroyComment"])(id));
+    },
+    patchComment: function patchComment(comment) {
+      return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["patchComment"])(comment));
     }
   };
 };
@@ -1872,6 +1876,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Comment).call(this, props));
     _this.removeComment = _this.removeComment.bind(_assertThisInitialized(_this));
+    _this.updateComment = _this.updateComment.bind(_assertThisInitialized(_this));
+    _this.state = {
+      id: _this.props.comment.id,
+      parent_comment_id: _this.props.comment.parent_comment_id,
+      content: _this.props.comment.content,
+      post_id: _this.props.comment.post_id,
+      author_id: _this.props.comment.author_id
+    };
     return _this;
   }
 
@@ -1879,6 +1891,11 @@ function (_React$Component) {
     key: "removeComment",
     value: function removeComment() {
       this.props.deleteComment(this.props.comment.id);
+    }
+  }, {
+    key: "updateComment",
+    value: function updateComment() {
+      this.props.patchComment(this.state);
     }
   }, {
     key: "render",
@@ -1907,7 +1924,10 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           className: "remove-comment-button",
           onClick: this.removeComment
-        }, "Remove")));
+        }, "Remove"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "remove-comment-button",
+          onClick: this.updateComment
+        }, "Update")));
       } else {
         authorInfo = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       }
@@ -2210,7 +2230,8 @@ function (_React$Component) {
         var component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment__WEBPACK_IMPORTED_MODULE_2__["default"], {
           comment: comments[_i],
           users: this.props.users,
-          deleteComment: this.props.destroyComment
+          deleteComment: this.props.destroyComment,
+          patchComment: this.props.patchComment
         });
         commentComponents.push(component);
       }
@@ -2981,7 +3002,8 @@ function (_React$Component) {
           createComment: this.props.createComment,
           destroyComment: this.props.destroyComment,
           comments: this.props.comments,
-          receiveUserById: this.props.receiveUserById
+          receiveUserById: this.props.receiveUserById,
+          patchComment: this.props.patchComment
         }));
       }
 
@@ -3101,6 +3123,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     destroyComment: function destroyComment(id) {
       return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["destroyComment"])(id));
+    },
+    patchComment: function patchComment(comment) {
+      return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["patchComment"])(comment));
     }
   };
 };

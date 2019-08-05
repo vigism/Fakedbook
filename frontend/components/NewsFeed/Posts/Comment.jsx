@@ -6,10 +6,22 @@ class Comment extends React.Component {
     constructor(props) {
         super(props);
         this.removeComment = this.removeComment.bind(this);
+        this.updateComment = this.updateComment.bind(this);
+        this.state={
+            id: this.props.comment.id,
+            parent_comment_id: this.props.comment.parent_comment_id,
+            content: this.props.comment.content,
+            post_id: this.props.comment.post_id,
+            author_id: this.props.comment.author_id,
+        }
     }
 
     removeComment() {
         this.props.deleteComment(this.props.comment.id);
+    }
+
+    updateComment() {
+        this.props.patchComment(this.state);
     }
 
     render() {
@@ -33,6 +45,10 @@ class Comment extends React.Component {
                     <button className="remove-comment-button"
                             onClick={this.removeComment}>
                         Remove
+                    </button>
+                    <button className="remove-comment-button"
+                            onClick={this.updateComment}>
+                        Update
                     </button>
 
                  

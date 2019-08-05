@@ -3,7 +3,8 @@ import NewsFeed from './NewsFeed';
 import {createPost, fetchUserPosts, fetchAllPosts} from '../../actions/posts_actions';
 import {receiveUserById} from '../../actions/user_actions';
 import {selectFriendPostsOnly} from '../../selectors/post_selector';
-import {fetchPostComments, createComment, destroyComment} from '../../actions/comments_actions';
+import {fetchPostComments, createComment, destroyComment,
+patchComment} from '../../actions/comments_actions';
 
 
 const mapStateToProps = state => {
@@ -26,6 +27,7 @@ const mapDispatchToProps = dispatch => {
         createComment: comment => dispatch(createComment(comment)),
         fetchAllPosts: id => dispatch(fetchAllPosts(id)),
         destroyComment: id => dispatch(destroyComment(id)),
+        patchComment: comment =>  dispatch(patchComment(comment)),
     }
 }
 
