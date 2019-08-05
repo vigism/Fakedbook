@@ -2193,7 +2193,7 @@ function (_React$Component) {
         var component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment__WEBPACK_IMPORTED_MODULE_2__["default"], {
           comment: comments[_i],
           users: this.props.users,
-          deleteComment: this.props.deleteComment
+          deleteComment: this.props.destroyComment
         });
         commentComponents.push(component);
       }
@@ -2962,6 +2962,7 @@ function (_React$Component) {
           currentUser: this.props.currentUser,
           fetchPostComments: this.props.fetchPostComments,
           createComment: this.props.createComment,
+          destroyComment: this.props.destroyComment,
           comments: this.props.comments,
           receiveUserById: this.props.receiveUserById
         }));
@@ -3080,6 +3081,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     createComment: function createComment(comment) {
       return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["createComment"])(comment));
+    },
+    destroyComment: function destroyComment(id) {
+      return dispatch(Object(_actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__["destroyComment"])(id));
     }
   };
 };
@@ -3756,7 +3760,7 @@ var commentsReducer = function commentsReducer() {
 
     case _actions_comments_actions__WEBPACK_IMPORTED_MODULE_0__["DELETE_COMMENT"]:
       newState = Object(lodash__WEBPACK_IMPORTED_MODULE_1__["merge"])({}, state);
-      newState[action.id] = undefined;
+      delete newState[action.id];
       return newState;
 
     default:
@@ -4345,7 +4349,7 @@ var getCommentsForPost = function getCommentsForPost(post_id) {
 };
 var destroyComment = function destroyComment(id) {
   return $.ajax({
-    method: "DESTROY",
+    method: "DELETE",
     url: "api/comment/".concat(id)
   });
 };

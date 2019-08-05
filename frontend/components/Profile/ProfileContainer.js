@@ -6,7 +6,7 @@ import {getAllFriends, getAllFriendsById} from '../../actions/friends_actions';
 import {createPost, fetchUserPosts} from '../../actions/posts_actions';
 import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../actions/friends_actions'
 
-import {fetchPostComments, createComment} from '../../actions/comments_actions';
+import {fetchPostComments, createComment, destroyComment} from '../../actions/comments_actions';
 
 
 const mapStateToProps = (state, { match }) => {
@@ -31,7 +31,8 @@ const mapDispatchToProps = dispatch => {
         createPost: post => dispatch(createPost(post)),
         fetchPosts: id => dispatch(fetchUserPosts(id)),
         fetchPostComments: post_id => dispatch(fetchPostComments(post_id)),
-        createComment: comment => dispatch(createComment(comment))
+        createComment: comment => dispatch(createComment(comment)),
+        destroyComment: id => dispatch(destroyComment(id)),
     }
 }
 

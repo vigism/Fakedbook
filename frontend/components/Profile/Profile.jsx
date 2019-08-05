@@ -138,6 +138,7 @@ class Profile extends React.Component {
                 currentUser={this.props.currentUser}
                 fetchPostComments={this.props.fetchPostComments}
                 createComment={this.props.createComment}
+                destroyComment = {this.props.destroyComment}
                 comments={this.props.comments}
                 receiveUserById={this.props.receiveUserById}/>
             )

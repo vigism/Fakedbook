@@ -19,6 +19,9 @@ class Api::CommentController < ApplicationController
     end
 
     def destroy
+        @comment = Comment.find_by(id:params[:id])
+        @comment.destroy
+        render "api/comments/show"
     end
 
     private
