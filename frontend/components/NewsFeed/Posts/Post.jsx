@@ -9,11 +9,14 @@ class Post extends React.Component {
         super(props);
         this.container = React.createRef();
         this.state = {
-            editDrop: false
+            editDrop: false,
+            editPost: false,
         }
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.deletePost = this.deletePost.bind(this);
+        this.editPost = this.editPost.bind(this);
+        this.submitUpdate = this.submitUpdate.bind(this);
     }
 
     handleButtonClick() {  
@@ -26,6 +29,16 @@ class Post extends React.Component {
 
     deletePost() {
         this.props.destroyPost(this.props.post.id)
+    }
+
+    editPost() {
+        this.setState({
+            editPost: true
+        })
+    }
+
+    submitUpdate() {
+
     }
 
     handleClickOutside(event) {
@@ -96,7 +109,8 @@ class Post extends React.Component {
                     <ul>
                     <li className="post-dropdown-li"
                     onClick={this.deletePost}>Remove Post</li>
-                    <li className="post-dropdown-li">Edit Post</li>
+                    <li className="post-dropdown-li"
+                    onClick={this.editPost}>Edit Post</li>
                     </ul>
                 </div>}
                 </div>
@@ -125,13 +139,24 @@ class Post extends React.Component {
              img = <img src={this.props.post.photoUrl} className="post-photo"/>
              
          }
+
+         let postContent =<p>{this.props.post.content}</p>;
+
+         if(this.state.editPost) {
+             postContent = <textarea type="text"
+             className="edit-post-input"
+             value={this.props.post.content}>
+
+             </textarea>
+         }
+
         return(
             <div className="post">
                 <div className="post-header-container">
                     {header}
                     </div>
                 <div className="post-content">
-                <p>{this.props.post.content}</p>
+                {postContent}
                 {img}
                 </div>
                 {commentComponent}

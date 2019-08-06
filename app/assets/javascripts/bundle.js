@@ -2295,11 +2295,14 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Post).call(this, props));
     _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
-      editDrop: false
+      editDrop: false,
+      editPost: false
     };
     _this.handleButtonClick = _this.handleButtonClick.bind(_assertThisInitialized(_this));
     _this.handleClickOutside = _this.handleClickOutside.bind(_assertThisInitialized(_this));
     _this.deletePost = _this.deletePost.bind(_assertThisInitialized(_this));
+    _this.editPost = _this.editPost.bind(_assertThisInitialized(_this));
+    _this.submitUpdate = _this.submitUpdate.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2315,6 +2318,16 @@ function (_React$Component) {
     value: function deletePost() {
       this.props.destroyPost(this.props.post.id);
     }
+  }, {
+    key: "editPost",
+    value: function editPost() {
+      this.setState({
+        editPost: true
+      });
+    }
+  }, {
+    key: "submitUpdate",
+    value: function submitUpdate() {}
   }, {
     key: "handleClickOutside",
     value: function handleClickOutside(event) {
@@ -2403,7 +2416,8 @@ function (_React$Component) {
             className: "post-dropdown-li",
             onClick: this.deletePost
           }, "Remove Post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-            className: "post-dropdown-li"
+            className: "post-dropdown-li",
+            onClick: this.editPost
           }, "Edit Post")))));
         } else {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2439,13 +2453,23 @@ function (_React$Component) {
         });
       }
 
+      var postContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.post.content);
+
+      if (this.state.editPost) {
+        postContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+          type: "text",
+          className: "edit-post-input",
+          value: this.props.post.content
+        });
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-header-container"
       }, header), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.post.content), img), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, postContent, img), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
         currentUser: this.props.currentUser,
         createComment: this.props.createComment,
         postId: this.props.post.id,
