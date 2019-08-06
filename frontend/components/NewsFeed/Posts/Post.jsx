@@ -157,6 +157,38 @@ class Post extends React.Component {
                 </Link>
                 </div>
             }
+            else if (this.props.post.author_id === this.props.currentUser.id){
+                header = <div className="post-header">
+                <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
+                 src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
+                 <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
+                <i >{this.props.users[this.props.post.author_id].first_name} </i>
+                
+                <i >{this.props.users[this.props.post.author_id].last_name} </i>
+                </Link>
+                            <div className="arrow-right"></div>
+                <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
+                 src={this.props.users[this.props.post.profile_id].photoUrl}></img></div>
+                 <Link to={`/${this.props.post.profile_id}/profile`} className="profile-link">
+                <i >{this.props.users[this.props.post.profile_id].first_name}</i>
+                <i >{this.props.users[this.props.post.profile_id].last_name}
+                </i>
+                </Link>
+                <div className="post-dropdown-container" ref={this.container}>
+                <button className="post-dropdown-button" onClick={this.handleButtonClick}>
+                ☰
+                </button>
+                {this.state.editDrop && <div className="post-dropdown">
+                    <ul>
+                    <li className="post-dropdown-li"
+                    onClick={this.deletePost}>Remove Post</li>
+                    <li className="post-dropdown-li"
+                    onClick={this.editPost}>Edit Post</li>
+                    </ul>
+                </div>}
+                </div>
+                </div>
+            }
             else {
                 header = <div className="post-header">
                     <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
