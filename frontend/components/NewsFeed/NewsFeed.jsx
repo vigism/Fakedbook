@@ -48,7 +48,9 @@ class NewsFeed extends React.Component {
                 destroyComment = {this.props.destroyComment}
                 comments={this.props.comments}
                 receiveUserById={this.props.receiveUserById}
-                patchComment={this.props.patchComment}/>
+                patchComment={this.props.patchComment}
+                patchPost={this.props.patchPost}
+                destroyPost={this.props.destroyPost}/>
             )
         }
         return (
