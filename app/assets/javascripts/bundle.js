@@ -2296,13 +2296,21 @@ function (_React$Component) {
     _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
       editDrop: false,
-      editPost: false
+      editPost: false,
+      post: {
+        id: _this.props.post.id,
+        author_id: _this.props.post.author_id,
+        profile_id: _this.props.post.profile_id,
+        content: _this.props.post.content
+      }
     };
     _this.handleButtonClick = _this.handleButtonClick.bind(_assertThisInitialized(_this));
     _this.handleClickOutside = _this.handleClickOutside.bind(_assertThisInitialized(_this));
     _this.deletePost = _this.deletePost.bind(_assertThisInitialized(_this));
     _this.editPost = _this.editPost.bind(_assertThisInitialized(_this));
     _this.submitUpdate = _this.submitUpdate.bind(_assertThisInitialized(_this));
+    _this.updatePostContent = _this.updatePostContent.bind(_assertThisInitialized(_this));
+    _this.keyPress = _this.keyPress.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2322,12 +2330,37 @@ function (_React$Component) {
     key: "editPost",
     value: function editPost() {
       this.setState({
-        editPost: true
+        editPost: true,
+        editDrop: false
       });
     }
   }, {
     key: "submitUpdate",
-    value: function submitUpdate() {}
+    value: function submitUpdate() {
+      this.props.patchPost(this.state.post);
+      this.setState({
+        editPost: false
+      });
+    }
+  }, {
+    key: "updatePostContent",
+    value: function updatePostContent(e) {
+      this.setState({
+        post: {
+          id: this.props.post.id,
+          author_id: this.props.post.author_id,
+          profile_id: this.props.post.profile_id,
+          content: e.target.value
+        }
+      });
+    }
+  }, {
+    key: "keyPress",
+    value: function keyPress(e) {
+      if (e.keyCode == 13) {
+        this.submitUpdate();
+      }
+    }
   }, {
     key: "handleClickOutside",
     value: function handleClickOutside(event) {
@@ -2459,7 +2492,9 @@ function (_React$Component) {
         postContent = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
           type: "text",
           className: "edit-post-input",
-          value: this.props.post.content
+          value: this.state.post.content,
+          onChange: this.updatePostContent,
+          onKeyDown: this.keyPress
         });
       }
 

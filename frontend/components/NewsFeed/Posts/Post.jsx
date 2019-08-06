@@ -11,12 +11,20 @@ class Post extends React.Component {
         this.state = {
             editDrop: false,
             editPost: false,
+            post: {
+                id: this.props.post.id,
+                author_id: this.props.post.author_id,
+                profile_id: this.props.post.profile_id,
+                content: this.props.post.content
+            }
         }
         this.handleButtonClick = this.handleButtonClick.bind(this);
         this.handleClickOutside = this.handleClickOutside.bind(this);
         this.deletePost = this.deletePost.bind(this);
         this.editPost = this.editPost.bind(this);
         this.submitUpdate = this.submitUpdate.bind(this);
+        this.updatePostContent = this.updatePostContent.bind(this);
+        this.keyPress = this.keyPress.bind(this);
     }
 
     handleButtonClick() {  
@@ -33,13 +41,36 @@ class Post extends React.Component {
 
     editPost() {
         this.setState({
-            editPost: true
+            editPost: true,
+            editDrop: false
         })
     }
 
     submitUpdate() {
-
+        this.props.patchPost(this.state.post);
+        this.setState({
+            editPost:false
+        })
     }
+
+    updatePostContent(e) {
+        this.setState({
+            post:{
+                id: this.props.post.id,
+                author_id: this.props.post.author_id,
+                profile_id: this.props.post.profile_id,
+                content: e.target.value
+            }
+        })
+    }
+
+    keyPress(e) {
+        if(e.keyCode == 13){
+            this.submitUpdate();
+         }
+    }
+
+
 
     handleClickOutside(event) {
         if (this.container.current && !this.container.current.contains(event.target)) {
@@ -145,7 +176,9 @@ class Post extends React.Component {
          if(this.state.editPost) {
              postContent = <textarea type="text"
              className="edit-post-input"
-             value={this.props.post.content}>
+             value={this.state.post.content}
+             onChange={this.updatePostContent}
+             onKeyDown={this.keyPress}>
 
              </textarea>
          }
