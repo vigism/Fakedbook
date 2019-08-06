@@ -125,7 +125,8 @@ class Post extends React.Component {
         
         let header = <p>Not found</p>;
         if(this.props.users[this.props.post.author_id]!=undefined && this.props.users[this.props.post.profile_id] != undefined){
-            if(this.props.post.author_id === this.props.post.profile_id) {
+            if(this.props.post.author_id === this.props.post.profile_id
+                && this.props.post.author_id === this.props.currentUser.id) {
                 header = <div className="post-header">
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
@@ -146,7 +147,17 @@ class Post extends React.Component {
                 </div>}
                 </div>
                 </div>
-            } else {
+            }
+            else if (this.props.post.author_id === this.props.post.profile_id) {
+                header = <div className="post-header">
+                <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
+                 src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
+                <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
+                <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].last_name}</p>
+                </Link>
+                </div>
+            }
+            else {
                 header = <div className="post-header">
                     <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
@@ -173,7 +184,7 @@ class Post extends React.Component {
 
          let postContent =<p>{this.props.post.content}</p>;
 
-         if(this.state.editPost) {
+         if(this.state.editPost ) {
              postContent = <textarea type="text"
              className="edit-post-input"
              value={this.state.post.content}

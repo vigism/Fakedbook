@@ -2426,7 +2426,7 @@ function (_React$Component) {
       var header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Not found");
 
       if (this.props.users[this.props.post.author_id] != undefined && this.props.users[this.props.post.profile_id] != undefined) {
-        if (this.props.post.author_id === this.props.post.profile_id) {
+        if (this.props.post.author_id === this.props.post.profile_id && this.props.post.author_id === this.props.currentUser.id) {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2452,6 +2452,18 @@ function (_React$Component) {
             className: "post-dropdown-li",
             onClick: this.editPost
           }, "Edit Post")))));
+        } else if (this.props.post.author_id === this.props.post.profile_id) {
+          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-header"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-user-profile-pic"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+            className: "post-user-profile-pic-pic",
+            src: this.props.users[this.props.post.author_id].photoUrl
+          })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+            to: "/".concat(this.props.post.author_id, "/profile"),
+            className: "profile-link"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name)));
         } else {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
