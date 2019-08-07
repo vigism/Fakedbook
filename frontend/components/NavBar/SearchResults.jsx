@@ -12,7 +12,7 @@ class SearchResults extends React.Component {
         let keys = Object.keys(this.props.res);
         for (let i =keys.length-1; i>=0; i--){
             if(keys[i] != this.props.current_user_id) {
-                results.push(<SearchResult friends={this.props.friends} updateFriend={this.props.updateFriendRequest} 
+                results.push(<SearchResult key={this.props.res[keys[i]]} friends={this.props.friends} updateFriend={this.props.updateFriendRequest} 
                     deleteFriend={this.props.deleteFriendRequest} user={this.props.res[keys[i]]} newFriend={this.props.newFriend} current_user_id={this.props.current_user_id}/> )
                 }
                 

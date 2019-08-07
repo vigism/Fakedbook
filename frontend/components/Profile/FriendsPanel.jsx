@@ -32,7 +32,7 @@ class FriendsPanel extends React.Component {
                     friendUser = curFriend.user_one_id;
                 }
                 if(curFriend.user_one_id != curFriend.user_two_id) {
-                friends.push(<li><Friend user={this.props.users[friendUser]}/></li>)
+                friends.push(<li key={i}><Friend user={this.props.users[friendUser]}/></li>)
                 }
             }
         }

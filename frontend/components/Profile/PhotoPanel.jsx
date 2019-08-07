@@ -26,7 +26,8 @@ class PhotoPanel extends React.Component {
             let curPost = this.props.posts[picKeys[j]];
             if(curPost.photoUrl != undefined) {
                 picsList.push(
-                    <img src={curPost.photoUrl} className="friend-pic" />
+                    <img src={curPost.photoUrl} className="friend-pic"
+                    key={j} />
                 )
             }
         }

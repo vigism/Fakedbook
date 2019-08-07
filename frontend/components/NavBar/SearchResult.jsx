@@ -55,17 +55,17 @@ class SearchResult extends React.Component {
         for(let i = 0; i< keys.length; i++) {
             let cur = this.props.friends[keys[i]];
             if ( cur.user_one_id === this.props.current_user_id && cur.user_two_id === this.props.user.id && cur.status === true) {
-                button = <button onClick= {() => this.handleDeleteFriend(cur.id)} 
+                button = <button key={1}onClick= {() => this.handleDeleteFriend(cur.id)} 
                 className="remove-friend-button"><i className="remove-friend-icon"></i>Remove Friend</button>;
             } else if (cur.user_one_id === this.props.current_user_id && cur.user_two_id === this.props.user.id && cur.status === false) {
-                button = <button onClick= {() => this.handleDeleteFriend(cur.id)}
+                button = <button key={1}onClick= {() => this.handleDeleteFriend(cur.id)}
                 className="add-friend-button"><i className="add-friend-icon"></i>Cancel Request</button>;
             } else if (cur.user_one_id === this.props.user.id && cur.user_two_id === this.props.current_user_id && cur.status === true) {
-                button = <button onClick= {() => this.handleDeleteFriend(cur.id)} 
+                button = <button key={1}onClick= {() => this.handleDeleteFriend(cur.id)} 
                 className="remove-friend-button"><i className="remove-friend-icon"></i>Remove Friend</button>;
             }  else if (cur.user_one_id === this.props.user.id && cur.user_two_id === this.props.current_user_id && cur.status === false) {
-                button = [<button onClick= {() => this.handleUpdateFriend(cur.id)}
-                    className="add-friend-button"><i className="add-friend-icon"></i>Accept Request</button>,<button onClick= {() => this.handleDeleteFriend(cur.id)}
+                button = [<button key={1}onClick= {() => this.handleUpdateFriend(cur.id)}
+                    className="add-friend-button"><i className="add-friend-icon"></i>Accept Request</button>,<button key={2} onClick= {() => this.handleDeleteFriend(cur.id)}
                 className="add-friend-button"><i className="add-friend-icon"></i>Deny Request</button>
                  ];
             } 

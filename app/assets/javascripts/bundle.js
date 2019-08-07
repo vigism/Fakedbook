@@ -619,7 +619,7 @@ function (_React$Component) {
         for (var i = 0; i < keys.length; i++) {
           if (this.props.users[this.props.requests[keys[i]].user_two_id] != undefined && this.props.users[this.props.requests[keys[i]].user_one_id] != undefined) {
             requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              key: i,
+              key: this.props.requests[keys[i]].id,
               updateFriend: this.props.updateFriend,
               friendId: this.props.requests[keys[i]].id,
               currentUser: this.props.currentUser,
@@ -632,6 +632,7 @@ function (_React$Component) {
 
       if (requests.length === 0) {
         requests = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: 0,
           className: "no-requests-notification"
         }, "No pending requests.")];
       }
@@ -683,11 +684,9 @@ function FriendsModalComponent(props) {
     status: true
   };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "friends-modal-component",
-    key: props.key
+    className: "friends-modal-component"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "friends-modal-list-el",
-    key: props.key
+    className: "friends-modal-list-el"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profile-pic"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -1271,6 +1270,7 @@ function (_React$Component) {
 
         if (cur.user_one_id === _this2.props.current_user_id && cur.user_two_id === _this2.props.user.id && cur.status === true) {
           button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            key: 1,
             onClick: function onClick() {
               return _this2.handleDeleteFriend(cur.id);
             },
@@ -1280,6 +1280,7 @@ function (_React$Component) {
           }), "Remove Friend");
         } else if (cur.user_one_id === _this2.props.current_user_id && cur.user_two_id === _this2.props.user.id && cur.status === false) {
           button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            key: 1,
             onClick: function onClick() {
               return _this2.handleDeleteFriend(cur.id);
             },
@@ -1289,6 +1290,7 @@ function (_React$Component) {
           }), "Cancel Request");
         } else if (cur.user_one_id === _this2.props.user.id && cur.user_two_id === _this2.props.current_user_id && cur.status === true) {
           button = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            key: 1,
             onClick: function onClick() {
               return _this2.handleDeleteFriend(cur.id);
             },
@@ -1298,6 +1300,7 @@ function (_React$Component) {
           }), "Remove Friend");
         } else if (cur.user_one_id === _this2.props.user.id && cur.user_two_id === _this2.props.current_user_id && cur.status === false) {
           button = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            key: 1,
             onClick: function onClick() {
               return _this2.handleUpdateFriend(cur.id);
             },
@@ -1305,6 +1308,7 @@ function (_React$Component) {
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
             className: "add-friend-icon"
           }), "Accept Request"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            key: 2,
             onClick: function onClick() {
               return _this2.handleDeleteFriend(cur.id);
             },
@@ -1394,6 +1398,7 @@ function (_React$Component) {
       for (var i = keys.length - 1; i >= 0; i--) {
         if (keys[i] != this.props.current_user_id) {
           results.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SearchResult__WEBPACK_IMPORTED_MODULE_1__["default"], {
+            key: this.props.res[keys[i]],
             friends: this.props.friends,
             updateFriend: this.props.updateFriendRequest,
             deleteFriend: this.props.deleteFriendRequest,
@@ -2938,7 +2943,9 @@ function (_React$Component) {
             }
 
             if (curFriend.user_one_id != curFriend.user_two_id) {
-              friends.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Friend__WEBPACK_IMPORTED_MODULE_1__["default"], {
+              friends.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+                key: i
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Friend__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 user: this.props.users[friendUser]
               })));
             }
@@ -3029,7 +3036,8 @@ function (_React$Component) {
         if (curPost.photoUrl != undefined) {
           picsList.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             src: curPost.photoUrl,
-            className: "friend-pic"
+            className: "friend-pic",
+            key: j
           }));
         }
       }
@@ -3269,7 +3277,8 @@ function (_React$Component) {
           receiveUserById: this.props.receiveUserById,
           patchComment: this.props.patchComment,
           patchPost: this.props.patchPost,
-          destroyPost: this.props.destroyPost
+          destroyPost: this.props.destroyPost,
+          key: i
         }));
       }
 

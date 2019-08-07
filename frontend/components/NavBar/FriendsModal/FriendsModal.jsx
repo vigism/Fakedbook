@@ -20,7 +20,7 @@ class FriendsModal extends React.Component {
                 if(this.props.users[this.props.requests[keys[i]].user_two_id] != undefined &&
                     this.props.users[this.props.requests[keys[i]].user_one_id] != undefined) {
                     requests.push(<FriendsModalComponent 
-                        key={i}
+                        key={this.props.requests[keys[i]].id}
                         updateFriend = {this.props.updateFriend}
                         friendId = {this.props.requests[keys[i]].id}
                         currentUser = {this.props.currentUser}
@@ -31,7 +31,7 @@ class FriendsModal extends React.Component {
                 }
         }
         if(requests.length === 0) {
-            requests = [<div className="no-requests-notification">No pending requests.</div>]
+            requests = [<div key={0} className="no-requests-notification">No pending requests.</div>]
         }
      const JSX = (
         <div  className="friends-modal-container" onClick={() => this.props.toggleDropDown()}>

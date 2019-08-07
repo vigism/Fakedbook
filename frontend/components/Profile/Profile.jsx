@@ -143,7 +143,8 @@ class Profile extends React.Component {
                 receiveUserById={this.props.receiveUserById}
                 patchComment={this.props.patchComment}
                 patchPost={this.props.patchPost}
-                destroyPost={this.props.destroyPost}/>
+                destroyPost={this.props.destroyPost}
+                key={i}/>
             )
         }
 
