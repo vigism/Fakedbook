@@ -619,6 +619,7 @@ function (_React$Component) {
         for (var i = 0; i < keys.length; i++) {
           if (this.props.users[this.props.requests[keys[i]].user_two_id] != undefined && this.props.users[this.props.requests[keys[i]].user_one_id] != undefined) {
             requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+              key: this.props.requests[keys[i]].id,
               updateFriend: this.props.updateFriend,
               friendId: this.props.requests[keys[i]].id,
               currentUser: this.props.currentUser,
@@ -1774,7 +1775,8 @@ function (_React$Component) {
           receiveUserById: this.props.receiveUserById,
           patchComment: this.props.patchComment,
           patchPost: this.props.patchPost,
-          destroyPost: this.props.destroyPost
+          destroyPost: this.props.destroyPost,
+          key: this.props.posts[keys[i]].id
         }));
       }
 
@@ -1994,7 +1996,7 @@ function (_React$Component) {
           type: "text",
           className: "comment-text",
           value: this.props.comment.content,
-          readOnly: "false"
+          readOnly: true
         });
       }
 
@@ -2416,7 +2418,8 @@ function (_React$Component) {
           users: this.props.users,
           deleteComment: this.props.destroyComment,
           patchComment: this.props.patchComment,
-          currentUser: this.props.currentUser
+          currentUser: this.props.currentUser,
+          key: comments[_i].id
         });
         commentComponents.push(component);
       }

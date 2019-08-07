@@ -21,11 +21,13 @@ class FriendsModal extends React.Component {
                 if(this.props.users[this.props.requests[keys[i]].user_two_id] != undefined &&
                     this.props.users[this.props.requests[keys[i]].user_one_id] != undefined) {
                     requests.push(<FriendsModalComponent 
+                        key={this.props.requests[keys[i]].id}
                         updateFriend = {this.props.updateFriend}
                         friendId = {this.props.requests[keys[i]].id}
                         currentUser = {this.props.currentUser}
                         deleteFriend = {this.props.deleteFriend}
-                        sender={this.props.users[this.props.requests[keys[i]].user_one_id]}/>)
+                        sender={this.props.users[this.props.requests[keys[i]].user_one_id]}
+                        />)
                     }
                 }
         }
