@@ -6,7 +6,7 @@ import {receiveUserById} from '../../actions/user_actions';
 import {selectFriendPostsOnly} from '../../selectors/post_selector';
 import {fetchPostComments, createComment, destroyComment,
 patchComment} from '../../actions/comments_actions';
-
+import {getAllFriends} from '../../actions/friends_actions';
 
 const mapStateToProps = state => {
     return {
@@ -31,6 +31,7 @@ const mapDispatchToProps = dispatch => {
         patchComment: comment =>  dispatch(patchComment(comment)),
         patchPost: post => dispatch(patchPost(post)),
         destroyPost: id => dispatch(destroyPost(id)),
+        getAllFriends: () => dispatch(getAllFriends()),
     }
 }
 
