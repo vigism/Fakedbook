@@ -619,7 +619,7 @@ function (_React$Component) {
         for (var i = 0; i < keys.length; i++) {
           if (this.props.users[this.props.requests[keys[i]].user_two_id] != undefined && this.props.users[this.props.requests[keys[i]].user_one_id] != undefined) {
             requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-              key: this.props.requests[keys[i]].id,
+              key: i,
               updateFriend: this.props.updateFriend,
               friendId: this.props.requests[keys[i]].id,
               currentUser: this.props.currentUser,
@@ -683,9 +683,11 @@ function FriendsModalComponent(props) {
     status: true
   };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "friends-modal-component"
+    className: "friends-modal-component",
+    key: props.key
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "friends-modal-list-el"
+    className: "friends-modal-list-el",
+    key: props.key
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profile-pic"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {

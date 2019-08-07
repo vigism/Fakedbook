@@ -7,8 +7,8 @@ function FriendsModalComponent(props) {
                 user_two_id: props.sender.id,
             status:true}
     return (
-        <div className="friends-modal-component"  > 
-            <li className="friends-modal-list-el"> 
+        <div className="friends-modal-component" key={props.key}  > 
+            <li className="friends-modal-list-el" key={props.key}> 
             <div className="profile-pic"><img className="profile-pic" src={props.sender.photoUrl}></img></div>
             {props.sender.first_name} {props.sender.last_name} 
                 <div><button 
