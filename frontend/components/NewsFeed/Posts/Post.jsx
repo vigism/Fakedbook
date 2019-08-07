@@ -128,12 +128,15 @@ class Post extends React.Component {
         if(this.props.users[this.props.post.author_id]!=undefined && this.props.users[this.props.post.profile_id] != undefined){
             if(this.props.post.author_id === this.props.post.profile_id
                 && this.props.post.author_id === this.props.currentUser.id) {
-                header = <div className="post-header">
+                header = 
+                <div className="post-head-container">
+                <div className="post-header">
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
                 <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
                 <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].last_name}</p>
                 </Link>
+                </div>
                 <div className="post-dropdown-container" ref={this.container}>
                 <button className="post-dropdown-button" onClick={this.handleButtonClick}>
                 ☰
@@ -148,18 +151,20 @@ class Post extends React.Component {
                 </div>}
                 </div>
                 </div>
+                
             }
             else if (this.props.post.author_id === this.props.post.profile_id) {
-                header = <div className="post-header">
+                header = <div><div className="post-header">
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
                 <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
                 <p> {this.props.users[this.props.post.author_id].first_name}</p><p>{this.props.users[this.props.post.author_id].last_name}</p>
                 </Link>
                 </div>
+                </div>
             }
             else if (this.props.post.author_id === this.props.currentUser.id){
-                header = <div className="post-header">
+                header = <div className="post-head-container"><div className="post-header">
                 <div className="post-user-profile-pic" ><img className="post-user-profile-pic-pic"
                  src={this.props.users[this.props.post.author_id].photoUrl}></img></div>
                  <Link to={`/${this.props.post.author_id}/profile`} className="profile-link">
@@ -175,6 +180,7 @@ class Post extends React.Component {
                 <i >{this.props.users[this.props.post.profile_id].last_name}
                 </i>
                 </Link>
+                </div>
                 <div className="post-dropdown-container" ref={this.container}>
                 <button className="post-dropdown-button" onClick={this.handleButtonClick}>
                 ☰

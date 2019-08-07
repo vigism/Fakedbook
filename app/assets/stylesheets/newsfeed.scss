@@ -210,6 +210,11 @@ button {
     padding-left:5px;
 }
 
+.post-head-container {
+    width:100%;
+    display: flex;
+    justify-content: space-between
+}
 
 .post-header > a {
     display: flex;

@@ -2446,6 +2446,8 @@ function (_React$Component) {
       if (this.props.users[this.props.post.author_id] != undefined && this.props.users[this.props.post.profile_id] != undefined) {
         if (this.props.post.author_id === this.props.post.profile_id && this.props.post.author_id === this.props.currentUser.id) {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-head-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-user-profile-pic"
@@ -2455,7 +2457,7 @@ function (_React$Component) {
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
             to: "/".concat(this.props.post.author_id, "/profile"),
             className: "profile-link"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-dropdown-container",
             ref: this.container
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2471,7 +2473,7 @@ function (_React$Component) {
             onClick: this.editPost
           }, "Edit Post")))));
         } else if (this.props.post.author_id === this.props.post.profile_id) {
-          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-user-profile-pic"
@@ -2481,9 +2483,11 @@ function (_React$Component) {
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
             to: "/".concat(this.props.post.author_id, "/profile"),
             className: "profile-link"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name)));
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, " ", this.props.users[this.props.post.author_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.users[this.props.post.author_id].last_name))));
         } else if (this.props.post.author_id === this.props.currentUser.id) {
           header = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "post-head-container"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-header"
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-user-profile-pic"
@@ -2503,7 +2507,7 @@ function (_React$Component) {
           })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
             to: "/".concat(this.props.post.profile_id, "/profile"),
             className: "profile-link"
-          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.post.profile_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.post.profile_id].last_name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.post.profile_id].first_name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null, this.props.users[this.props.post.profile_id].last_name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "post-dropdown-container",
             ref: this.container
           }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
