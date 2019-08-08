@@ -21,6 +21,7 @@ const commentsReducer = (state={}, action) => {
             return merge({},state,newState);
         case LOGOUT_CURRENT_USER:
             return {};
+            
         case DELETE_COMMENT:
             newState = merge({}, state);
             delete newState[action.id];
