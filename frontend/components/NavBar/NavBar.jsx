@@ -9,9 +9,32 @@ class NavBar extends React.Component {
 
     constructor(props) {
         super(props);    
+        this.state = {
+            friendsDrop: false,
+            settingsDrop: false,
+        }
         this.handleLogout = this.handleLogout.bind(this);
         this.clickName = this.clickName.bind(this);
+        this.handleFriendsButtonClick = this.handleFriendsButtonClick.bind(this);
+        this.handleSettingsButtonClick = this.handleSettingsButtonClick.bind(this);
     }
+
+    componentDidMount() {
+        this.props.getAllFriends();
+    }
+
+    handleFriendsButtonClick() {
+        this.setState({
+            friendsDrop: !this.state.friendsDrop
+        });
+    }
+
+    handleSettingsButtonClick() {
+        this.setState({
+            settingsDrop: this.state.settingsDrop,
+        })
+    }
+
 
     handleLogout(){
         this.props.logout();
@@ -23,12 +46,20 @@ class NavBar extends React.Component {
         this.props.history.push(`/${this.props.user.id}/profile`);
     }
 
+    
+
     render() {
         let photo;
         if(this.props.user.photoUrl) {
             photo = this.props.user.photoUrl;
         } else {
             return null;
+        }
+        let notification;
+        if (Object.keys(this.props.incomingRequests).length > 0){
+            notification = <i className="nav-friends-button-icon-notification">{Object.keys(this.props.incomingRequests).length}</i>
+        } else {
+            notification = <i></i>
         }
         return (
             <div className="main-nav-bar">
@@ -52,6 +83,13 @@ class NavBar extends React.Component {
                         </div>
 
                         <div className="main-nav-bar-icons">
+                        <button className="nav-friends-button" onClick={this.handleFriendsButtonClick}  >
+                            
+                            <i className="nav-friends-button-icon"></i>
+                            
+                            {notification}
+                            
+                        </button>
                             <NavBarFriends receiveUserById= {this.props.receiveUserById} toggleFriendsDropdown = {this.props.toggleFriendsDropdown} incomingRequests={this.props.incomingRequests} getAllFriends={this.props.getAllFriends}/>
                             <button className="nav-message-button" >
                                 <i className="nav-message-button-icon"></i>
@@ -62,7 +100,9 @@ class NavBar extends React.Component {
                             <button className="nav-help-button" >
                                 <i className="nav-help-button-icon"></i>
                             </button>
-                           <SettingsDropDown toggleDropDown={this.props.toggleDropDown} />
+                            <button id="nav-modal-button" className="nav-drop-down-button" onClick={this.handleSettingsButtonClick}>
+                                <i className="nav-drop-down-button-icon"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -25,20 +25,9 @@ class NavBarFriends extends React.Component {
 
     render() {
        
-        let notification;
-        if (Object.keys(this.props.incomingRequests).length > 0){
-            notification = <i className="nav-friends-button-icon-notification">{Object.keys(this.props.incomingRequests).length}</i>
-        } else {
-            notification = <i></i>
-        }
+     
         return(
-            <button className="nav-friends-button" onClick={() => this.handleClick()}  >
-                
-                <i className="nav-friends-button-icon"></i>
-                
-                {notification}
-                
-            </button>
+           <div></div>
         )
     }
 

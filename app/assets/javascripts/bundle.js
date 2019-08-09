@@ -808,12 +808,37 @@ function (_React$Component) {
     _classCallCheck(this, NavBar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
+    _this.state = {
+      friendsDrop: false,
+      settingsDrop: false
+    };
     _this.handleLogout = _this.handleLogout.bind(_assertThisInitialized(_this));
     _this.clickName = _this.clickName.bind(_assertThisInitialized(_this));
+    _this.handleFriendsButtonClick = _this.handleFriendsButtonClick.bind(_assertThisInitialized(_this));
+    _this.handleSettingsButtonClick = _this.handleSettingsButtonClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(NavBar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.getAllFriends();
+    }
+  }, {
+    key: "handleFriendsButtonClick",
+    value: function handleFriendsButtonClick() {
+      this.setState({
+        friendsDrop: !this.state.friendsDrop
+      });
+    }
+  }, {
+    key: "handleSettingsButtonClick",
+    value: function handleSettingsButtonClick() {
+      this.setState({
+        settingsDrop: this.state.settingsDrop
+      });
+    }
+  }, {
     key: "handleLogout",
     value: function handleLogout() {
       this.props.logout();
@@ -836,6 +861,16 @@ function (_React$Component) {
         photo = this.props.user.photoUrl;
       } else {
         return null;
+      }
+
+      var notification;
+
+      if (Object.keys(this.props.incomingRequests).length > 0) {
+        notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "nav-friends-button-icon-notification"
+        }, Object.keys(this.props.incomingRequests).length);
+      } else {
+        notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -875,7 +910,12 @@ function (_React$Component) {
         className: "create-button"
       }, "Create")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-icons"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBarFriends__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "nav-friends-button",
+        onClick: this.handleFriendsButtonClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-friends-button-icon"
+      }), notification), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBarFriends__WEBPACK_IMPORTED_MODULE_4__["default"], {
         receiveUserById: this.props.receiveUserById,
         toggleFriendsDropdown: this.props.toggleFriendsDropdown,
         incomingRequests: this.props.incomingRequests,
@@ -892,9 +932,13 @@ function (_React$Component) {
         className: "nav-help-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-help-button-icon"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        toggleDropDown: this.props.toggleDropDown
-      })))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "nav-modal-button",
+        className: "nav-drop-down-button",
+        onClick: this.handleSettingsButtonClick
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "nav-drop-down-button-icon"
+      }))))));
     }
   }]);
 
@@ -1026,26 +1070,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
-      var notification;
-
-      if (Object.keys(this.props.incomingRequests).length > 0) {
-        notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-          className: "nav-friends-button-icon-notification"
-        }, Object.keys(this.props.incomingRequests).length);
-      } else {
-        notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);
-      }
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "nav-friends-button",
-        onClick: function onClick() {
-          return _this2.handleClick();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "nav-friends-button-icon"
-      }), notification);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
     }
   }]);
 
@@ -1523,17 +1548,7 @@ function (_React$Component) {
   _createClass(SettingsDropDown, [{
     key: "render",
     value: function render() {
-      var _this = this;
-
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "nav-modal-button",
-        className: "nav-drop-down-button",
-        onClick: function onClick() {
-          return _this.props.toggleDropDown();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "nav-drop-down-button-icon"
-      }));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null);
     }
   }]);
 
@@ -55223,7 +55238,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
