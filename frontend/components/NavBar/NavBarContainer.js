@@ -13,7 +13,7 @@ const mapStateToProps = state => {
     return {
         user: state.entities.users[state.session.id],
         incomingRequests: selectIncomingRequestsFromState(state),
-        users: state.entities.users,
+        users: state.entities.user,
         currentUser: state.session.id
     }
 }

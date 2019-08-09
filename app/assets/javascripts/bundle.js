@@ -1056,7 +1056,7 @@ var mapStateToProps = function mapStateToProps(state) {
   return {
     user: state.entities.users[state.session.id],
     incomingRequests: Object(_selectors_friends_selectors__WEBPACK_IMPORTED_MODULE_6__["selectIncomingRequestsFromState"])(state),
-    users: state.entities.users,
+    users: state.entities.user,
     currentUser: state.session.id
   };
 };
