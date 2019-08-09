@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom'
 import SettingsDropDown from './SettingsDropDown';
 import SearchBar from './SearchBar';
 import NavBarFriends from './NavBarFriends';
-import SettingsModal from './SettingsModal/SettingsModal';
+import SettingsModalComponent from './SettingsModal/SettingsModalComponent';
 
 class NavBar extends React.Component {
 
@@ -31,7 +31,7 @@ class NavBar extends React.Component {
 
     handleSettingsButtonClick() {
         this.setState({
-            settingsDrop: this.state.settingsDrop,
+            settingsDrop: !this.state.settingsDrop,
         })
     }
 
@@ -80,7 +80,14 @@ class NavBar extends React.Component {
                             <button className="home-button">Home</button>
                             <button className="friends-button" >Find Friends</button>
                             <button className="create-button">Create</button>
-                        </div>
+                        </div>{this.state.editDrop && <div className="post-dropdown">
+                    <ul>
+                    <li className="post-dropdown-li"
+                    onClick={this.deletePost}>Remove Post</li>
+                    <li className="post-dropdown-li"
+                    onClick={this.editPost}>Edit Post</li>
+                    </ul>
+                </div>}
 
                         <div className="main-nav-bar-icons">
                         <button className="nav-friends-button" onClick={this.handleFriendsButtonClick}  >
@@ -103,6 +110,15 @@ class NavBar extends React.Component {
                             <button id="nav-modal-button" className="nav-drop-down-button" onClick={this.handleSettingsButtonClick}>
                                 <i className="nav-drop-down-button-icon"></i>
                             </button>
+                            <div  className="settings-modal-container" onClick={() => this.props.toggleDropDown()}>
+                            {this.state.settingsDrop && 
+                                <div className="settings-modal">
+                                    <ul className="settings-modal-list">
+                                    <SettingsModalComponent action={this.props.logout}/>
+                                    </ul>
+                               
+                            </div>}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -771,7 +771,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsDropDown */ "./frontend/components/NavBar/SettingsDropDown.jsx");
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchBar */ "./frontend/components/NavBar/SearchBar.jsx");
 /* harmony import */ var _NavBarFriends__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBarFriends */ "./frontend/components/NavBar/NavBarFriends.jsx");
-/* harmony import */ var _SettingsModal_SettingsModal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SettingsModal/SettingsModal */ "./frontend/components/NavBar/SettingsModal/SettingsModal.jsx");
+/* harmony import */ var _SettingsModal_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SettingsModal/SettingsModalComponent */ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -835,7 +835,7 @@ function (_React$Component) {
     key: "handleSettingsButtonClick",
     value: function handleSettingsButtonClick() {
       this.setState({
-        settingsDrop: this.state.settingsDrop
+        settingsDrop: !this.state.settingsDrop
       });
     }
   }, {
@@ -908,7 +908,15 @@ function (_React$Component) {
         className: "friends-button"
       }, "Find Friends"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "create-button"
-      }, "Create")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Create")), this.state.editDrop && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-dropdown"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "post-dropdown-li",
+        onClick: this.deletePost
+      }, "Remove Post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "post-dropdown-li",
+        onClick: this.editPost
+      }, "Edit Post"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-icons"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "nav-friends-button",
@@ -938,7 +946,18 @@ function (_React$Component) {
         onClick: this.handleSettingsButtonClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-drop-down-button-icon"
-      }))))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-modal-container",
+        onClick: function onClick() {
+          return _this2.props.toggleDropDown();
+        }
+      }, this.state.settingsDrop && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-modal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "settings-modal-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsModal_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        action: this.props.logout
+      }))))))));
     }
   }]);
 
