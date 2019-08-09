@@ -11,6 +11,7 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);   
         this.container = React.createRef(); 
+        this.container2 = React.createRef();
         this.state = {
             friendsDrop: false,
             settingsDrop: false,
@@ -32,16 +33,24 @@ class NavBar extends React.Component {
         if (this.container.current && !this.container.current.contains(event.target)) {
           this.setState({
             friendsDrop: false,
-            settingsDrop: false,
           });
         }
-      };
-      componentWillUnmount () {
+        if (this.container2.current && !this.container2.current.contains(event.target)) {
+            this.setState({
+              settingsDrop: false,
+            });
+          }
+      }
+
+    componentWillUnmount () {
         document.removeEventListener("mousedown", this.handleClickOutside); 
     }
 
       
     handleFriendsButtonClick() {
+        this.setState({
+            friendsDrop: !this.state.friendsDrop
+        });
         let keys = Object.keys(this.props.incomingRequests);
         for(let i = 0;i < keys.length; i++){
             this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_one_id)
@@ -49,9 +58,7 @@ class NavBar extends React.Component {
         
         
         }
-        this.setState({
-            friendsDrop: !this.state.friendsDrop
-        });
+        
     }
 
     handleSettingsButtonClick() {
@@ -74,7 +81,6 @@ class NavBar extends React.Component {
     
 
     render() {
-        console.log(this.props)
         let photo;
         if(this.props.user.photoUrl) {
             photo = this.props.user.photoUrl;
@@ -136,16 +142,19 @@ class NavBar extends React.Component {
                 </div>}
 
                         <div className="main-nav-bar-icons" >
-                        <button className="nav-friends-button" onClick={this.handleFriendsButtonClick}  >
+                        <div className="friends-container">
+                        <button className="nav-friends-button" ref = {this.container} onClick={this.handleFriendsButtonClick}  >
                             
                             <i className="nav-friends-button-icon"></i>
                             
                             {notification}
                             
                         </button>
+                        <div className="friends-content">
                         {this.state.friendsDrop && requests}
-                            <NavBarFriends receiveUserById= {this.props.receiveUserById} toggleFriendsDropdown = {this.props.toggleFriendsDropdown} incomingRequests={this.props.incomingRequests} getAllFriends={this.props.getAllFriends}/>
-                            <button className="nav-message-button" >
+                        </div>
+                        </div>
+                             <button className="nav-message-button" >
                                 <i className="nav-message-button-icon"></i>
                             </button>
                             <button className="nav-notification-button" >
@@ -154,11 +163,11 @@ class NavBar extends React.Component {
                             <button className="nav-help-button" >
                                 <i className="nav-help-button-icon"></i>
                             </button>
-                            <button id="nav-modal-button" className="nav-drop-down-button" onClick={this.handleSettingsButtonClick}>
+                            <button id="nav-modal-button" ref={this.container2}    className="nav-drop-down-button" onClick={this.handleSettingsButtonClick}>
                                 <i className="nav-drop-down-button-icon"></i>
                             </button>
                             <div  className="settings-modal-container"
-                            ref = {this.container}
+                          
                                onClick={() => this.props.toggleDropDown()}>
                             {this.state.settingsDrop && 
                                 <div className="settings-modal" >

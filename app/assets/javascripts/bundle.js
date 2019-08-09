@@ -811,6 +811,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
     _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    _this.container2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
       friendsDrop: false,
       settingsDrop: false
@@ -834,7 +835,12 @@ function (_React$Component) {
     value: function handleClickOutside(event) {
       if (this.container.current && !this.container.current.contains(event.target)) {
         this.setState({
-          friendsDrop: false,
+          friendsDrop: false
+        });
+      }
+
+      if (this.container2.current && !this.container2.current.contains(event.target)) {
+        this.setState({
           settingsDrop: false
         });
       }
@@ -847,16 +853,15 @@ function (_React$Component) {
   }, {
     key: "handleFriendsButtonClick",
     value: function handleFriendsButtonClick() {
+      this.setState({
+        friendsDrop: !this.state.friendsDrop
+      });
       var keys = Object.keys(this.props.incomingRequests);
 
       for (var i = 0; i < keys.length; i++) {
         this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_one_id);
         this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_two_id);
       }
-
-      this.setState({
-        friendsDrop: !this.state.friendsDrop
-      });
     }
   }, {
     key: "handleSettingsButtonClick",
@@ -882,7 +887,6 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log(this.props);
       var photo;
 
       if (this.props.user.photoUrl) {
@@ -971,17 +975,17 @@ function (_React$Component) {
         onClick: this.editPost
       }, "Edit Post"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "main-nav-bar-icons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "friends-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "nav-friends-button",
+        ref: this.container,
         onClick: this.handleFriendsButtonClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-friends-button-icon"
-      }), notification), this.state.friendsDrop && requests, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBarFriends__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        receiveUserById: this.props.receiveUserById,
-        toggleFriendsDropdown: this.props.toggleFriendsDropdown,
-        incomingRequests: this.props.incomingRequests,
-        getAllFriends: this.props.getAllFriends
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), notification), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "friends-content"
+      }, this.state.friendsDrop && requests)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "nav-message-button"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-message-button-icon"
@@ -995,13 +999,13 @@ function (_React$Component) {
         className: "nav-help-button-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "nav-modal-button",
+        ref: this.container2,
         className: "nav-drop-down-button",
         onClick: this.handleSettingsButtonClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-drop-down-button-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "settings-modal-container",
-        ref: this.container,
         onClick: function onClick() {
           return _this2.props.toggleDropDown();
         }

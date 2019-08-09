@@ -238,9 +238,21 @@
     display: block;
 }
 
+.friends-container{
+    position: relative;
+    display: inline-block;
+}
+
 .settings-modal-container {
     position: relative;
    display: inline-block;
+}
+
+.friends-content {
+    position: absolute;
+    top: 34px;
+    z-index: 2;
+    left: -2px;
 }
 
 .settings-modal {
