@@ -1013,9 +1013,10 @@ function (_React$Component) {
         className: "settings-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "settings-modal-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsModal_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        action: this.props.logout
-      }))))))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "settings-modal-component",
+        onClick: this.handleLogout
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Log out")))))))));
     }
   }]);
 
@@ -1083,6 +1084,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     deleteFriend: function deleteFriend(friend) {
       return dispatch(Object(_actions_friends_actions__WEBPACK_IMPORTED_MODULE_3__["deleteFriendRequest"])(friend));
+    },
+    logout: function logout() {
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_1__["logout"])());
     }
   };
 };
@@ -1730,24 +1734,9 @@ function (_React$Component) {
   !*** ./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx ***!
   \*****************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function SettingsModalComponent(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "settings-modal-component",
-    onClick: function onClick() {
-      return props.action();
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Log out"));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (SettingsModalComponent);
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx'");
 
 /***/ }),
 

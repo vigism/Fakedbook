@@ -79,7 +79,7 @@ class NavBar extends React.Component {
     }
 
     
-
+        
     render() {
         let photo;
         if(this.props.user.photoUrl) {
@@ -174,7 +174,9 @@ class NavBar extends React.Component {
                             {this.state.settingsDrop && 
                                 <div className="settings-modal" >
                                     <ul className="settings-modal-list">
-                                    <SettingsModalComponent action={this.props.logout}/>
+                                    <div className="settings-modal-component" onClick={this.handleLogout} > 
+                                        <li >Log out</li>
+                                    </div>
                                     </ul>
                                
                             </div>}

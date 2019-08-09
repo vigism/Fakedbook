@@ -27,6 +27,7 @@ const mapDispatchToProps = dispatch => {
         receiveUserById: id => dispatch(receiveUserById(id)),
         updateFriend: friend => dispatch(updateFriendRequest(friend)),
         deleteFriend: friend => dispatch(deleteFriendRequest(friend)),
+        logout: () => dispatch(logout())
     }
 }
 
