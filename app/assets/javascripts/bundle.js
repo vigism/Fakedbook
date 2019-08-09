@@ -772,6 +772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchBar */ "./frontend/components/NavBar/SearchBar.jsx");
 /* harmony import */ var _NavBarFriends__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBarFriends */ "./frontend/components/NavBar/NavBarFriends.jsx");
 /* harmony import */ var _SettingsModal_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SettingsModal/SettingsModalComponent */ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx");
+/* harmony import */ var _FriendsModal_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FriendsModal/FriendsModalComponent */ "./frontend/components/NavBar/FriendsModal/FriendsModalComponent.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -797,6 +798,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var NavBar =
 /*#__PURE__*/
 function (_React$Component) {
@@ -809,7 +811,6 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
     _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
-    console.log(_this.container);
     _this.state = {
       friendsDrop: false,
       settingsDrop: false
@@ -846,6 +847,13 @@ function (_React$Component) {
   }, {
     key: "handleFriendsButtonClick",
     value: function handleFriendsButtonClick() {
+      var keys = Object.keys(this.props.incomingRequests);
+
+      for (var i = 0; i < keys.length; i++) {
+        this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_one_id);
+        this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_two_id);
+      }
+
       this.setState({
         friendsDrop: !this.state.friendsDrop
       });
@@ -874,6 +882,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log(this.props);
       var photo;
 
       if (this.props.user.photoUrl) {
@@ -890,6 +899,31 @@ function (_React$Component) {
         }, Object.keys(this.props.incomingRequests).length);
       } else {
         notification = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);
+      }
+
+      var requests = [];
+      var keys = Object.keys(this.props.incomingRequests);
+
+      if (Object.keys(this.props.users).length > 0) {
+        for (var i = 0; i < keys.length; i++) {
+          if (this.props.users[this.props.incomingRequests[keys[i]].user_two_id] != undefined && this.props.users[this.props.incomingRequests[keys[i]].user_one_id] != undefined) {
+            requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModal_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+              key: this.props.incomingRequests[keys[i]].id,
+              updateFriend: this.props.updateFriend,
+              friendId: this.props.incomingRequests[keys[i]].id,
+              currentUser: this.props.currentUser,
+              deleteFriend: this.props.deleteFriend,
+              sender: this.props.users[this.props.incomingRequests[keys[i]].user_one_id]
+            }));
+          }
+        }
+      }
+
+      if (requests.length === 0) {
+        requests = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: 0,
+          className: "no-requests-notification"
+        }, "No pending requests.")];
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -942,7 +976,7 @@ function (_React$Component) {
         onClick: this.handleFriendsButtonClick
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "nav-friends-button-icon"
-      }), notification), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBarFriends__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      }), notification), this.state.friendsDrop && requests, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_NavBarFriends__WEBPACK_IMPORTED_MODULE_4__["default"], {
         receiveUserById: this.props.receiveUserById,
         toggleFriendsDropdown: this.props.toggleFriendsDropdown,
         incomingRequests: this.props.incomingRequests,
@@ -1013,10 +1047,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mapStateToProps = function mapStateToProps(state) {
   return {
     user: state.entities.users[state.session.id],
-    incomingRequests: Object(_selectors_friends_selectors__WEBPACK_IMPORTED_MODULE_6__["selectIncomingRequestsFromState"])(state)
+    incomingRequests: Object(_selectors_friends_selectors__WEBPACK_IMPORTED_MODULE_6__["selectIncomingRequestsFromState"])(state),
+    users: state.entities.users,
+    currentUser: state.session.id
   };
 };
 
@@ -1036,6 +1073,12 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     receiveUserById: function receiveUserById(id) {
       return dispatch(Object(_actions_user_actions__WEBPACK_IMPORTED_MODULE_2__["receiveUserById"])(id));
+    },
+    updateFriend: function updateFriend(friend) {
+      return dispatch(Object(_actions_friends_actions__WEBPACK_IMPORTED_MODULE_3__["updateFriendRequest"])(friend));
+    },
+    deleteFriend: function deleteFriend(friend) {
+      return dispatch(Object(_actions_friends_actions__WEBPACK_IMPORTED_MODULE_3__["deleteFriendRequest"])(friend));
     }
   };
 };

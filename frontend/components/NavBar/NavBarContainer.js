@@ -6,11 +6,15 @@ import {connect} from 'react-redux'
 import {toggleDropDown, toggleFriendsDropdown} from '../../actions/ui_actions';
 import {selectIncomingRequestsFromState} from '../../selectors/friends_selectors';
 import {receiveUserById} from '../../actions/user_actions';
+import {updateFriendRequest, deleteFriendRequest} from '../../actions/friends_actions';
+
 
 const mapStateToProps = state => {
     return {
         user: state.entities.users[state.session.id],
-        incomingRequests: selectIncomingRequestsFromState(state)
+        incomingRequests: selectIncomingRequestsFromState(state),
+        users: state.entities.users,
+        currentUser: state.session.id
     }
 }
 
@@ -20,7 +24,9 @@ const mapDispatchToProps = dispatch => {
         toggleFriendsDropdown: () => dispatch(toggleFriendsDropdown()),
         fetchUsers: (search) => dispatch(fetchUsers(search)),
         getAllFriends: () => dispatch(getAllFriends()),
-        receiveUserById: id => dispatch(receiveUserById(id))
+        receiveUserById: id => dispatch(receiveUserById(id)),
+        updateFriend: friend => dispatch(updateFriendRequest(friend)),
+        deleteFriend: friend => dispatch(deleteFriendRequest(friend)),
     }
 }
 

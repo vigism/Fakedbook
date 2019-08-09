@@ -4,13 +4,13 @@ import SettingsDropDown from './SettingsDropDown';
 import SearchBar from './SearchBar';
 import NavBarFriends from './NavBarFriends';
 import SettingsModalComponent from './SettingsModal/SettingsModalComponent';
+import FriendsModalComponent from './FriendsModal/FriendsModalComponent'
 
 class NavBar extends React.Component {
 
     constructor(props) {
         super(props);   
         this.container = React.createRef(); 
-        console.log(this.container)
         this.state = {
             friendsDrop: false,
             settingsDrop: false,
@@ -25,6 +25,7 @@ class NavBar extends React.Component {
     componentDidMount() {
         this.props.getAllFriends();
         document.addEventListener("mousedown", this.handleClickOutside);
+        
     }
 
     handleClickOutside(event) {
@@ -41,6 +42,13 @@ class NavBar extends React.Component {
 
       
     handleFriendsButtonClick() {
+        let keys = Object.keys(this.props.incomingRequests);
+        for(let i = 0;i < keys.length; i++){
+            this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_one_id)
+            this.props.receiveUserById(this.props.incomingRequests[keys[i]].user_two_id)
+        
+        
+        }
         this.setState({
             friendsDrop: !this.state.friendsDrop
         });
@@ -66,6 +74,7 @@ class NavBar extends React.Component {
     
 
     render() {
+        console.log(this.props)
         let photo;
         if(this.props.user.photoUrl) {
             photo = this.props.user.photoUrl;
@@ -77,6 +86,26 @@ class NavBar extends React.Component {
             notification = <i className="nav-friends-button-icon-notification">{Object.keys(this.props.incomingRequests).length}</i>
         } else {
             notification = <i></i>
+        }
+        let requests = []
+        let keys = Object.keys(this.props.incomingRequests);
+        if(Object.keys(this.props.users).length > 0) {
+            for(let i = 0; i < keys.length; i++){
+                if(this.props.users[this.props.incomingRequests[keys[i]].user_two_id] != undefined &&
+                    this.props.users[this.props.incomingRequests[keys[i]].user_one_id] != undefined) {
+                    requests.push(<FriendsModalComponent 
+                        key={this.props.incomingRequests[keys[i]].id}
+                        updateFriend = {this.props.updateFriend}
+                        friendId = {this.props.incomingRequests[keys[i]].id}
+                        currentUser = {this.props.currentUser}
+                        deleteFriend = {this.props.deleteFriend}
+                        sender={this.props.users[this.props.incomingRequests[keys[i]].user_one_id]}
+                        />)
+                    }
+                }
+        }
+        if(requests.length === 0) {
+            requests = [<div key={0} className="no-requests-notification">No pending requests.</div>]
         }
         return (
             <div className="main-nav-bar" >
@@ -114,6 +143,7 @@ class NavBar extends React.Component {
                             {notification}
                             
                         </button>
+                        {this.state.friendsDrop && requests}
                             <NavBarFriends receiveUserById= {this.props.receiveUserById} toggleFriendsDropdown = {this.props.toggleFriendsDropdown} incomingRequests={this.props.incomingRequests} getAllFriends={this.props.getAllFriends}/>
                             <button className="nav-message-button" >
                                 <i className="nav-message-button-icon"></i>
