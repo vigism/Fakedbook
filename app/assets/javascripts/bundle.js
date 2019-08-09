@@ -808,6 +808,8 @@ function (_React$Component) {
     _classCallCheck(this, NavBar);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
+    _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    console.log(_this.container);
     _this.state = {
       friendsDrop: false,
       settingsDrop: false
@@ -816,6 +818,7 @@ function (_React$Component) {
     _this.clickName = _this.clickName.bind(_assertThisInitialized(_this));
     _this.handleFriendsButtonClick = _this.handleFriendsButtonClick.bind(_assertThisInitialized(_this));
     _this.handleSettingsButtonClick = _this.handleSettingsButtonClick.bind(_assertThisInitialized(_this));
+    _this.handleClickOutside = _this.handleClickOutside.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -823,6 +826,22 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getAllFriends();
+      document.addEventListener("mousedown", this.handleClickOutside);
+    }
+  }, {
+    key: "handleClickOutside",
+    value: function handleClickOutside(event) {
+      if (this.container.current && !this.container.current.contains(event.target)) {
+        this.setState({
+          friendsDrop: false,
+          settingsDrop: false
+        });
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      document.removeEventListener("mousedown", this.handleClickOutside);
     }
   }, {
     key: "handleFriendsButtonClick",
@@ -948,6 +967,7 @@ function (_React$Component) {
         className: "nav-drop-down-button-icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "settings-modal-container",
+        ref: this.container,
         onClick: function onClick() {
           return _this2.props.toggleDropDown();
         }

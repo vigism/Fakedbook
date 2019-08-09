@@ -8,7 +8,9 @@ import SettingsModalComponent from './SettingsModal/SettingsModalComponent';
 class NavBar extends React.Component {
 
     constructor(props) {
-        super(props);    
+        super(props);   
+        this.container = React.createRef(); 
+        console.log(this.container)
         this.state = {
             friendsDrop: false,
             settingsDrop: false,
@@ -17,12 +19,27 @@ class NavBar extends React.Component {
         this.clickName = this.clickName.bind(this);
         this.handleFriendsButtonClick = this.handleFriendsButtonClick.bind(this);
         this.handleSettingsButtonClick = this.handleSettingsButtonClick.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
     }
 
     componentDidMount() {
         this.props.getAllFriends();
+        document.addEventListener("mousedown", this.handleClickOutside);
     }
 
+    handleClickOutside(event) {
+        if (this.container.current && !this.container.current.contains(event.target)) {
+          this.setState({
+            friendsDrop: false,
+            settingsDrop: false,
+          });
+        }
+      };
+      componentWillUnmount () {
+        document.removeEventListener("mousedown", this.handleClickOutside); 
+    }
+
+      
     handleFriendsButtonClick() {
         this.setState({
             friendsDrop: !this.state.friendsDrop
@@ -62,7 +79,7 @@ class NavBar extends React.Component {
             notification = <i></i>
         }
         return (
-            <div className="main-nav-bar">
+            <div className="main-nav-bar" >
                 <div className="main-nav-bar-content">
                     <div className="main-nav-bar-content-left">
                         <div className="logo-button" onClick = {() => {window.location.hash='/newsfeed'}}></div>
@@ -89,7 +106,7 @@ class NavBar extends React.Component {
                     </ul>
                 </div>}
 
-                        <div className="main-nav-bar-icons">
+                        <div className="main-nav-bar-icons" >
                         <button className="nav-friends-button" onClick={this.handleFriendsButtonClick}  >
                             
                             <i className="nav-friends-button-icon"></i>
@@ -110,9 +127,11 @@ class NavBar extends React.Component {
                             <button id="nav-modal-button" className="nav-drop-down-button" onClick={this.handleSettingsButtonClick}>
                                 <i className="nav-drop-down-button-icon"></i>
                             </button>
-                            <div  className="settings-modal-container" onClick={() => this.props.toggleDropDown()}>
+                            <div  className="settings-modal-container"
+                            ref = {this.container}
+                               onClick={() => this.props.toggleDropDown()}>
                             {this.state.settingsDrop && 
-                                <div className="settings-modal">
+                                <div className="settings-modal" >
                                     <ul className="settings-modal-list">
                                     <SettingsModalComponent action={this.props.logout}/>
                                     </ul>
