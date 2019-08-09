@@ -163,9 +163,11 @@ class NavBar extends React.Component {
                             <button className="nav-help-button" >
                                 <i className="nav-help-button-icon"></i>
                             </button>
+                            
                             <button id="nav-modal-button" ref={this.container2}    className="nav-drop-down-button" onClick={this.handleSettingsButtonClick}>
                                 <i className="nav-drop-down-button-icon"></i>
                             </button>
+                            
                             <div  className="settings-modal-container"
                           
                                onClick={() => this.props.toggleDropDown()}>
