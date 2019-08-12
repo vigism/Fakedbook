@@ -31,7 +31,6 @@ class NavBar extends React.Component {
 
     handleClickOutside(event) {
 
-        console.log(this.refLogout.current)
         if (this.refLogout.current && this.refLogout.current.contains(event.target)) {
             this.props.logout();
             let path = '/';

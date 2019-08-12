@@ -824,8 +824,6 @@ function (_React$Component) {
   }, {
     key: "handleClickOutside",
     value: function handleClickOutside(event) {
-      console.log(this.refLogout.current);
-
       if (this.refLogout.current && this.refLogout.current.contains(event.target)) {
         this.props.logout();
         var path = '/';
