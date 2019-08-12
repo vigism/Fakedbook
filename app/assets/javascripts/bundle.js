@@ -511,10 +511,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar_NavBarContainer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBar/NavBarContainer */ "./frontend/components/NavBar/NavBarContainer.js");
 /* harmony import */ var _NewsFeed_NewsFeedContainer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NewsFeed/NewsFeedContainer */ "./frontend/components/NewsFeed/NewsFeedContainer.js");
 /* harmony import */ var _NavBar_SearchResultsContainer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./NavBar/SearchResultsContainer */ "./frontend/components/NavBar/SearchResultsContainer.js");
-/* harmony import */ var _NavBar_SettingsModal_SettingsModalContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NavBar/SettingsModal/SettingsModalContainer */ "./frontend/components/NavBar/SettingsModal/SettingsModalContainer.js");
-/* harmony import */ var _NavBar_FriendsModal_FriendsModalContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./NavBar/FriendsModal/FriendsModalContainer */ "./frontend/components/NavBar/FriendsModal/FriendsModalContainer.js");
-/* harmony import */ var _Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Profile/ProfileContainer */ "./frontend/components/Profile/ProfileContainer.js");
-
+/* harmony import */ var _NavBar_FriendsModal_FriendsModalContainer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./NavBar/FriendsModal/FriendsModalContainer */ "./frontend/components/NavBar/FriendsModal/FriendsModalContainer.js");
+/* harmony import */ var _Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Profile/ProfileContainer */ "./frontend/components/Profile/ProfileContainer.js");
 
 
 
@@ -530,19 +528,13 @@ var App = function App() {
     className: "app-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/",
-    component: _NavBar_SettingsModal_SettingsModalContainer__WEBPACK_IMPORTED_MODULE_7__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
-    path: "/",
-    component: _NavBar_FriendsModal_FriendsModalContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
-    path: "/",
     component: _NavBar_NavBarContainer__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/searchResults",
     component: _NavBar_SearchResultsContainer__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/:id/profile",
-    component: _Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_9__["default"]
+    component: _Profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_3__["ProtectedRoute"], {
     path: "/newsfeed",
     component: _NewsFeed_NewsFeedContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -771,8 +763,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SettingsDropDown__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsDropDown */ "./frontend/components/NavBar/SettingsDropDown.jsx");
 /* harmony import */ var _SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SearchBar */ "./frontend/components/NavBar/SearchBar.jsx");
 /* harmony import */ var _NavBarFriends__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NavBarFriends */ "./frontend/components/NavBar/NavBarFriends.jsx");
-/* harmony import */ var _SettingsModal_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SettingsModal/SettingsModalComponent */ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx");
-/* harmony import */ var _FriendsModal_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./FriendsModal/FriendsModalComponent */ "./frontend/components/NavBar/FriendsModal/FriendsModalComponent.jsx");
+/* harmony import */ var _FriendsModal_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./FriendsModal/FriendsModalComponent */ "./frontend/components/NavBar/FriendsModal/FriendsModalComponent.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -790,7 +781,6 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 
 
 
@@ -911,7 +901,7 @@ function (_React$Component) {
       if (Object.keys(this.props.users).length > 0) {
         for (var i = 0; i < keys.length; i++) {
           if (this.props.users[this.props.incomingRequests[keys[i]].user_two_id] != undefined && this.props.users[this.props.incomingRequests[keys[i]].user_one_id] != undefined) {
-            requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModal_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_6__["default"], {
+            requests.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FriendsModal_FriendsModalComponent__WEBPACK_IMPORTED_MODULE_5__["default"], {
               key: this.props.incomingRequests[keys[i]].id,
               updateFriend: this.props.updateFriend,
               friendId: this.props.incomingRequests[keys[i]].id,
@@ -1646,136 +1636,6 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (SettingsDropDown);
-
-/***/ }),
-
-/***/ "./frontend/components/NavBar/SettingsModal/SettingsModal.jsx":
-/*!********************************************************************!*\
-  !*** ./frontend/components/NavBar/SettingsModal/SettingsModal.jsx ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _SettingsModalComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SettingsModalComponent */ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-var SettingsModal =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(SettingsModal, _React$Component);
-
-  function SettingsModal(props) {
-    _classCallCheck(this, SettingsModal);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(SettingsModal).call(this, props));
-  }
-
-  _createClass(SettingsModal, [{
-    key: "render",
-    value: function render() {
-      var _this = this;
-
-      var JSX = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "settings-modal-container",
-        onClick: function onClick() {
-          return _this.props.toggleDropDown();
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "settings-modal"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "settings-modal-list"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SettingsModalComponent__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        action: this.props.logout
-      }))));
-
-      if (!this.props.dropDown) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", null);
-      } else {
-        return react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.createPortal(JSX, document.querySelector("#modal"));
-      }
-    }
-  }]);
-
-  return SettingsModal;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["default"] = (SettingsModal);
-
-/***/ }),
-
-/***/ "./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx":
-/*!*****************************************************************************!*\
-  !*** ./frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx ***!
-  \*****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/home/rushil/Documents/FakedBook/Fakedbook/FakedBook/frontend/components/NavBar/SettingsModal/SettingsModalComponent.jsx'");
-
-/***/ }),
-
-/***/ "./frontend/components/NavBar/SettingsModal/SettingsModalContainer.js":
-/*!****************************************************************************!*\
-  !*** ./frontend/components/NavBar/SettingsModal/SettingsModalContainer.js ***!
-  \****************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _SettingsModal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SettingsModal */ "./frontend/components/NavBar/SettingsModal/SettingsModal.jsx");
-/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../actions/session_actions */ "./frontend/actions/session_actions.js");
-/* harmony import */ var _actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../actions/ui_actions */ "./frontend/actions/ui_actions.js");
-
-
-
-
-
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    dropDown: state.ui.dropdown
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    logout: function logout() {
-      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
-    },
-    toggleDropDown: function toggleDropDown() {
-      return dispatch(Object(_actions_ui_actions__WEBPACK_IMPORTED_MODULE_3__["toggleDropDown"])());
-    }
-  };
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_SettingsModal__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 

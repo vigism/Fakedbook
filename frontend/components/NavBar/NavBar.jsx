@@ -3,7 +3,6 @@ import {withRouter} from 'react-router-dom'
 import SettingsDropDown from './SettingsDropDown';
 import SearchBar from './SearchBar';
 import NavBarFriends from './NavBarFriends';
-import SettingsModalComponent from './SettingsModal/SettingsModalComponent';
 import FriendsModalComponent from './FriendsModal/FriendsModalComponent'
 
 class NavBar extends React.Component {

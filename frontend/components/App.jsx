@@ -5,14 +5,11 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import NavBarContainer from './NavBar/NavBarContainer';
 import NewsFeedContainer from './NewsFeed/NewsFeedContainer'
 import SearchResultsContainer from './NavBar/SearchResultsContainer';
-import SettingsModalContainer from './NavBar/SettingsModal/SettingsModalContainer';
 import FriendsModalContainer from './NavBar/FriendsModal/FriendsModalContainer';
 import ProfileContainer from './Profile/ProfileContainer';
 
 const App = () => (
     <div className="app-container">
-        <ProtectedRoute path='/'component={SettingsModalContainer} />
-        <ProtectedRoute path='/' component={FriendsModalContainer}/>
         <ProtectedRoute path='/' component={NavBarContainer} />
         <ProtectedRoute path='/searchResults' component={SearchResultsContainer} />
         <ProtectedRoute path='/:id/profile' component={ProfileContainer} />
