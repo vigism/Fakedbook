@@ -11,6 +11,7 @@ class NavBar extends React.Component {
         super(props);   
         this.container = React.createRef(); 
         this.container2 = React.createRef();
+        this.refLogout = React.createRef();
         this.state = {
             friendsDrop: false,
             settingsDrop: false,
@@ -29,6 +30,14 @@ class NavBar extends React.Component {
     }
 
     handleClickOutside(event) {
+
+        console.log(this.refLogout.current)
+        if (this.refLogout.current && this.refLogout.current.contains(event.target)) {
+            this.props.logout();
+            let path = '/';
+            this.props.history.push(path);
+            
+          }
         if (this.container.current && !this.container.current.contains(event.target)) {
           this.setState({
             friendsDrop: false,
@@ -39,6 +48,7 @@ class NavBar extends React.Component {
               settingsDrop: false,
             });
           }
+         
       }
 
     componentWillUnmount () {
@@ -172,9 +182,9 @@ class NavBar extends React.Component {
                                onClick={() => this.props.toggleDropDown()}>
                             {this.state.settingsDrop && 
                                 <div className="settings-modal" >
-                                    <ul className="settings-modal-list">
-                                    <div className="settings-modal-component" onClick={this.handleLogout} > 
-                                        <li >Log out</li>
+                                    <ul className="settings-modal-list"ref={this.refLogout} onClick={() => this.handleLogout()}>
+                                    <div className="settings-modal-component"   > 
+                                        <li onClick={() => this.handleLogout()} >Log out</li>
                                     </div>
                                     </ul>
                                
