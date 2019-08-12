@@ -113,9 +113,9 @@ class Profile extends React.Component {
                     } else if(friend.user_one_id ===  this.props.profileUserId && friend.user_two_id === this.props.currentUser.id){
                         button = [
                         
-                            <button onClick= {() => this.handleUpdateFriend(friend.id)}
+                            <button key={0} onClick= {() => this.handleUpdateFriend(friend.id)}
                             className="profile-add-friend-button-request"><i className="add-friend-icon"></i>Accept Request</button>,
-                        <button onClick= {() => this.handleDeleteFriend(friend.id)}
+                        <button key={1} onClick= {() => this.handleDeleteFriend(friend.id)}
                             className="profile-add-friend-button-request"><i className="add-friend-icon"></i>Deny Request</button>];
                     }
                 }

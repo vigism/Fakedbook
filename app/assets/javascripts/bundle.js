@@ -3190,6 +3190,7 @@ function (_React$Component) {
               }), "Cancel Request");
             } else if (friend.user_one_id === this.props.profileUserId && friend.user_two_id === this.props.currentUser.id) {
               button = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                key: 0,
                 onClick: function onClick() {
                   return _this2.handleUpdateFriend(friend.id);
                 },
@@ -3197,6 +3198,7 @@ function (_React$Component) {
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
                 className: "add-friend-icon"
               }), "Accept Request"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+                key: 1,
                 onClick: function onClick() {
                   return _this2.handleDeleteFriend(friend.id);
                 },
