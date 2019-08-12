@@ -11,7 +11,6 @@ class NavBar extends React.Component {
         super(props);   
         this.container = React.createRef(); 
         this.container2 = React.createRef();
-        this.refLogout = React.createRef();
         this.state = {
             friendsDrop: false,
             settingsDrop: false,
@@ -25,18 +24,12 @@ class NavBar extends React.Component {
 
     componentDidMount() {
         this.props.getAllFriends();
-        document.addEventListener("mousedown", this.handleClickOutside);
+        document.addEventListener("click", this.handleClickOutside);
         
     }
 
     handleClickOutside(event) {
-
-        if (this.refLogout.current && this.refLogout.current.contains(event.target)) {
-            this.props.logout();
-            let path = '/';
-            this.props.history.push(path);
-            
-          }
+       
         if (this.container.current && !this.container.current.contains(event.target)) {
           this.setState({
             friendsDrop: false,
@@ -47,7 +40,7 @@ class NavBar extends React.Component {
               settingsDrop: false,
             });
           }
-         
+      
       }
 
     componentWillUnmount () {
@@ -77,6 +70,7 @@ class NavBar extends React.Component {
 
 
     handleLogout(){
+        console.log("inside click")
         this.props.logout();
         let path = '/';
         this.props.history.push(path);
@@ -181,7 +175,7 @@ class NavBar extends React.Component {
                                onClick={() => this.props.toggleDropDown()}>
                             {this.state.settingsDrop && 
                                 <div className="settings-modal" >
-                                    <ul className="settings-modal-list"ref={this.refLogout} onClick={() => this.handleLogout()}>
+                                    <ul className="settings-modal-list" onClick={() => this.handleLogout()}>
                                     <div className="settings-modal-component"   > 
                                         <li onClick={() => this.handleLogout()} >Log out</li>
                                     </div>

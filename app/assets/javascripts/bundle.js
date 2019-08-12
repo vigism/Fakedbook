@@ -802,7 +802,6 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavBar).call(this, props));
     _this.container = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.container2 = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
-    _this.refLogout = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
     _this.state = {
       friendsDrop: false,
       settingsDrop: false
@@ -819,17 +818,11 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getAllFriends();
-      document.addEventListener("mousedown", this.handleClickOutside);
+      document.addEventListener("click", this.handleClickOutside);
     }
   }, {
     key: "handleClickOutside",
     value: function handleClickOutside(event) {
-      if (this.refLogout.current && this.refLogout.current.contains(event.target)) {
-        this.props.logout();
-        var path = '/';
-        this.props.history.push(path);
-      }
-
       if (this.container.current && !this.container.current.contains(event.target)) {
         this.setState({
           friendsDrop: false
@@ -870,6 +863,7 @@ function (_React$Component) {
   }, {
     key: "handleLogout",
     value: function handleLogout() {
+      console.log("inside click");
       this.props.logout();
       var path = '/';
       this.props.history.push(path);
@@ -1010,7 +1004,6 @@ function (_React$Component) {
         className: "settings-modal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "settings-modal-list",
-        ref: this.refLogout,
         onClick: function onClick() {
           return _this2.handleLogout();
         }
