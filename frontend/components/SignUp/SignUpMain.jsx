@@ -8,10 +8,10 @@ class SignUpMain extends React.Component {
     }
 
     render() {
-        let errors=[<li></li>];
+        let errors=[<li key={-1}></li>];
         if(this.props.errors.length>0){
             for(let i = 0; i< this.props.errors.length;i++){
-                errors.push(<li>{this.props.errors[i]}</li>)
+                errors.push(<li key={i}>{this.props.errors[i]}</li>)
             }
         }
         return (

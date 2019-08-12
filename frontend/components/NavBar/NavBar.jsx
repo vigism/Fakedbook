@@ -70,7 +70,6 @@ class NavBar extends React.Component {
 
 
     handleLogout(){
-        console.log("inside click")
         this.props.logout();
         let path = '/';
         this.props.history.push(path);

@@ -863,7 +863,6 @@ function (_React$Component) {
   }, {
     key: "handleLogout",
     value: function handleLogout() {
-      console.log("inside click");
       this.props.logout();
       var path = '/';
       this.props.history.push(path);
@@ -3697,7 +3696,7 @@ function (_React$Component) {
       }, "2002"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "2003"
       }, "2003"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Gender", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        checked: true,
+        defaultChecked: true,
         type: "radio",
         name: "gender",
         value: "male"
@@ -3772,11 +3771,15 @@ function (_React$Component) {
   _createClass(SignUpMain, [{
     key: "render",
     value: function render() {
-      var errors = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null)];
+      var errors = [react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        key: -1
+      })];
 
       if (this.props.errors.length > 0) {
         for (var i = 0; i < this.props.errors.length; i++) {
-          errors.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.props.errors[i]));
+          errors.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            key: i
+          }, this.props.errors[i]));
         }
       }
 
