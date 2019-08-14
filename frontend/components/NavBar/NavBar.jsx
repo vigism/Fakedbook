@@ -132,7 +132,6 @@ class NavBar extends React.Component {
                         <div className="main-nav-bar-links">
                             <button className="home-button">Home</button>
                             <button className="friends-button" >Find Friends</button>
-                            <button className="create-button">Create</button>
                         </div>{this.state.editDrop && <div className="post-dropdown">
                     <ul>
                     <li className="post-dropdown-li"
