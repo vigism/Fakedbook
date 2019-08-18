@@ -953,9 +953,7 @@ function (_React$Component) {
         className: "home-button"
       }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "friends-button"
-      }, "Find Friends"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "create-button"
-      }, "Create")), this.state.editDrop && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Find Friends")), this.state.editDrop && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-dropdown"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         className: "post-dropdown-li",
@@ -55185,7 +55183,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
