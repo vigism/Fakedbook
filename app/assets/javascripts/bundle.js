@@ -3589,7 +3589,9 @@ function (_React$Component) {
         value: this.state.password,
         placeholder: "Password",
         onChange: this.update('password')
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Birthday", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "signup-birthday"
+      }, "Birthday", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         name: "month",
         value: this.state.birthday,
         onChange: this.update('birthday')
@@ -3693,7 +3695,9 @@ function (_React$Component) {
         value: "2002"
       }, "2002"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "2003"
-      }, "2003"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Gender", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, "2003"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "signup-gender"
+      }, "Gender", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         defaultChecked: true,
         type: "radio",
         name: "gender",
@@ -55183,7 +55187,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
