@@ -3389,7 +3389,11 @@ function (_React$Component) {
           patchComment: this.props.patchComment,
           patchPost: this.props.patchPost,
           destroyPost: this.props.destroyPost,
-          key: i
+          key: i,
+          createLike: this.props.createLike,
+          destroyLike: this.props.destroyLike,
+          fetchPostLikes: this.props.fetchPostLikes,
+          likes: this.props.likes
         }));
       }
 
@@ -3455,6 +3459,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_friends_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/friends_actions */ "./frontend/actions/friends_actions.js");
 /* harmony import */ var _actions_posts_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/posts_actions */ "./frontend/actions/posts_actions.js");
 /* harmony import */ var _actions_comments_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../actions/comments_actions */ "./frontend/actions/comments_actions.js");
+/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+
 
 
 
@@ -3471,7 +3477,8 @@ var mapStateToProps = function mapStateToProps(state, _ref) {
     users: state.entities.user,
     friends: state.entities.friends,
     posts: state.entities.posts,
-    comments: state.entities.comments
+    comments: state.entities.comments,
+    likes: state.entities.likes
   };
 };
 
@@ -3518,6 +3525,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     destroyPost: function destroyPost(id) {
       return dispatch(Object(_actions_posts_actions__WEBPACK_IMPORTED_MODULE_4__["destroyPost"])(id));
+    },
+    createLike: function createLike(like) {
+      return dispatch(Object(_actions_like_actions__WEBPACK_IMPORTED_MODULE_6__["createLike"])(like));
+    },
+    destroyLike: function destroyLike(id) {
+      return dispatch(Object(_actions_like_actions__WEBPACK_IMPORTED_MODULE_6__["destroyLike"])(id));
+    },
+    fetchPostLikes: function fetchPostLikes(id) {
+      return dispatch(Object(_actions_like_actions__WEBPACK_IMPORTED_MODULE_6__["fetchPostLikes"])(id));
     }
   };
 };

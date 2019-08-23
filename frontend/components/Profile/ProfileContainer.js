@@ -10,6 +10,8 @@ import {newFriendRequest, updateFriendRequest, deleteFriendRequest} from '../../
 import {fetchPostComments, createComment, destroyComment,
 patchComment} from '../../actions/comments_actions';
 
+import {fetchPostLikes, destroyLike, createLike} from '../../actions/like_actions'
+
 
 const mapStateToProps = (state, { match }) => {
     return {
@@ -18,7 +20,8 @@ const mapStateToProps = (state, { match }) => {
         users: state.entities.user,
         friends: state.entities.friends,
         posts: state.entities.posts,
-        comments: state.entities.comments
+        comments: state.entities.comments,
+        likes: state.entities.likes
     }
 }
 
@@ -38,6 +41,9 @@ const mapDispatchToProps = dispatch => {
         patchComment: comment => dispatch(patchComment(comment)),
         patchPost: post => dispatch(patchPost(post)),
         destroyPost: id => dispatch(destroyPost(id)),
+        createLike: like => dispatch(createLike(like)),
+        destroyLike: id => dispatch(destroyLike(id)),
+        fetchPostLikes: id => dispatch(fetchPostLikes(id))
     }
 }
 

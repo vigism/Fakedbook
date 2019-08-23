@@ -144,7 +144,11 @@ class Profile extends React.Component {
                 patchComment={this.props.patchComment}
                 patchPost={this.props.patchPost}
                 destroyPost={this.props.destroyPost}
-                key={i}/>
+                key={i}
+                createLike={this.props.createLike}
+                destroyLike={this.props.destroyLike}
+                fetchPostLikes={this.props.fetchPostLikes}
+                likes={this.props.likes}/>
             )
         }
 
