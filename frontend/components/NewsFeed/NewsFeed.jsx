@@ -52,7 +52,8 @@ class NewsFeed extends React.Component {
                 key={this.props.posts[keys[i]].id}
                 createLike={this.props.createLike}
                 destroyLike={this.props.destroyLike}
-                fetchPostLikes={this.props.fetchPostLikes}/>
+                fetchPostLikes={this.props.fetchPostLikes}
+                likes={this.props.likes}/>
             )
         }
         return (

@@ -1803,7 +1803,8 @@ function (_React$Component) {
           key: this.props.posts[keys[i]].id,
           createLike: this.props.createLike,
           destroyLike: this.props.destroyLike,
-          fetchPostLikes: this.props.fetchPostLikes
+          fetchPostLikes: this.props.fetchPostLikes,
+          likes: this.props.likes
         }));
       }
 
@@ -2455,25 +2456,34 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var numLikes = 0;
+      var likesKeys = Object.keys(this.props.likes);
+
+      for (var i = 0; i < likesKeys.length; i++) {
+        if (this.props.likes[likesKeys[i]].post_id === this.props.post.id) {
+          numLikes += 1;
+        }
+      }
+
       var comments = [];
       var keys = Object.keys(this.props.comments);
 
-      for (var i = 0; i < keys.length; i++) {
-        if (this.props.comments[keys[i]].post_id === this.props.post.id) {
-          comments.push(this.props.comments[keys[i]]);
+      for (var _i = 0; _i < keys.length; _i++) {
+        if (this.props.comments[keys[_i]].post_id === this.props.post.id) {
+          comments.push(this.props.comments[keys[_i]]);
         }
       }
 
       var commentComponents = [];
 
-      for (var _i = 0; _i < comments.length; _i++) {
+      for (var _i2 = 0; _i2 < comments.length; _i2++) {
         var component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Comment__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          comment: comments[_i],
+          comment: comments[_i2],
           users: this.props.users,
           deleteComment: this.props.destroyComment,
           patchComment: this.props.patchComment,
           currentUser: this.props.currentUser,
-          key: comments[_i].id
+          key: comments[_i2].id
         });
         commentComponents.push(component);
       }
@@ -2623,9 +2633,15 @@ function (_React$Component) {
         className: "post-content"
       }, postContent, img, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post-like-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "post-like-bar-left"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "likes"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "likes-num"
+      }, numLikes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "likes-num"
+      }, "Likes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "like-button",
         onClick: this.likeButtonPress
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {

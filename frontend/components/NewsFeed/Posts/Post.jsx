@@ -103,6 +103,13 @@ class Post extends React.Component {
     }
 
     render() {
+        let numLikes = 0;
+        let likesKeys = Object.keys(this.props.likes);
+        for(let i = 0; i < likesKeys.length; i++) {
+            if(this.props.likes[likesKeys[i]].post_id === this.props.post.id) {
+                numLikes += 1;
+            }
+        }
         let comments = [];
         let keys = Object.keys(this.props.comments);
         for(let i = 0; i< keys.length; i++) {
@@ -248,9 +255,17 @@ class Post extends React.Component {
                 {postContent}
                 {img}
                 <div className="post-like-bar"> 
+                <div className="post-like-bar-left">
                 <i className="likes">
-
+                    
                 </i>
+                <i className="likes-num">
+                {numLikes} 
+                </i>
+                <i className="likes-num">
+                    Likes
+                </i>
+                </div>
                 <button className="like-button"
                 onClick={this.likeButtonPress}>
                     <i className="like-button-img">

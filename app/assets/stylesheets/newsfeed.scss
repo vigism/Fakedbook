@@ -136,6 +136,16 @@ button {
     width: 16px;
 }
 
+.post-like-bar-left{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+
+}
+.likes-num {
+    padding-left: 4px;
+}
+
 .like-button {
     background-color: #f5f6f7;
 border-color: #ccd0d5;
