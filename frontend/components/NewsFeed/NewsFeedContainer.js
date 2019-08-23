@@ -7,6 +7,7 @@ import {selectFriendPostsOnly} from '../../selectors/post_selector';
 import {fetchPostComments, createComment, destroyComment,
 patchComment} from '../../actions/comments_actions';
 import {getAllFriends} from '../../actions/friends_actions';
+import {fetchPostLikes, destroyLike, createLike} from '../../actions/like_actions'
 
 const mapStateToProps = state => {
     return {
@@ -15,7 +16,8 @@ const mapStateToProps = state => {
         posts: state.entities.posts,
         users: state.entities.user,
         friends: state.entities.friends,
-        comments: state.entities.comments
+        comments: state.entities.comments,
+        likes: state.entities.likes
     }
 }
 
@@ -32,6 +34,9 @@ const mapDispatchToProps = dispatch => {
         patchPost: post => dispatch(patchPost(post)),
         destroyPost: id => dispatch(destroyPost(id)),
         getAllFriends: () => dispatch(getAllFriends()),
+        createLike: like => dispatch(createLike(like)),
+        destroyLike: id => dispatch(destroyLike(id)),
+        fetchPostLikes: id => dispatch(fetchPostLikes(id))
     }
 }
 

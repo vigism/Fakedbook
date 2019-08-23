@@ -49,7 +49,10 @@ class NewsFeed extends React.Component {
                 patchComment={this.props.patchComment}
                 patchPost={this.props.patchPost}
                 destroyPost={this.props.destroyPost}
-                key={this.props.posts[keys[i]].id}/>
+                key={this.props.posts[keys[i]].id}
+                createLike={this.props.createLike}
+                destroyLike={this.props.destroyLike}
+                fetchPostLikes={this.props.fetchPostLikes}/>
             )
         }
         return (

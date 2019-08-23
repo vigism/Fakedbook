@@ -25,6 +25,7 @@ class Post extends React.Component {
         this.submitUpdate = this.submitUpdate.bind(this);
         this.updatePostContent = this.updatePostContent.bind(this);
         this.keyPress = this.keyPress.bind(this);
+        this.likeButtonPress = this.likeButtonPress.bind(this);
     }
 
     handleButtonClick() {  
@@ -84,6 +85,11 @@ class Post extends React.Component {
     componentDidMount() {
         this.props.fetchPostComments(this.props.post.id);
         document.addEventListener("mousedown", this.handleClickOutside);
+        this.props.fetchPostLikes(this.props.post.id)
+    }
+
+    likeButtonPress() {
+        this.props.createLike({post_id: this.props.post.id, user_id:this.props.currentUser.id})
     }
     
     componentDidUpdate(prevProps) {
@@ -245,7 +251,8 @@ class Post extends React.Component {
                 <i className="likes">
 
                 </i>
-                <button className="like-button">
+                <button className="like-button"
+                onClick={this.likeButtonPress}>
                     <i className="like-button-img">
 
                     </i>
