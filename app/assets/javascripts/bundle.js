@@ -2535,7 +2535,11 @@ function (_React$Component) {
         className: "post-like-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "likes"
-      }))), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "like-button"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "like-button-img"
+      }), "Like Post"))), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
         currentUser: this.props.currentUser,
         createComment: this.props.createComment,
         postId: this.props.post.id,

@@ -243,8 +243,14 @@ class Post extends React.Component {
                 {img}
                 <div className="post-like-bar"> 
                 <i className="likes">
-                    
+
                 </i>
+                <button className="like-button">
+                    <i className="like-button-img">
+
+                    </i>
+                    Like Post
+                </button>
                 </div>
                 </div>
                 {commentComponent}
