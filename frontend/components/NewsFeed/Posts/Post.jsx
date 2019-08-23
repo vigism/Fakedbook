@@ -26,6 +26,7 @@ class Post extends React.Component {
         this.updatePostContent = this.updatePostContent.bind(this);
         this.keyPress = this.keyPress.bind(this);
         this.likeButtonPress = this.likeButtonPress.bind(this);
+        this.unlikeButtonPress = this.unlikeButtonPress.bind(this);
     }
 
     handleButtonClick() {  
@@ -91,6 +92,23 @@ class Post extends React.Component {
     likeButtonPress() {
         this.props.createLike({post_id: this.props.post.id, user_id:this.props.currentUser.id})
     }
+
+    unlikeButtonPress() {
+
+        let likesKeys = Object.keys(this.props.likes);
+        let id  = 0;
+        for(let i = 0; i < likesKeys.length; i++) {
+            if(this.props.likes[likesKeys[i]].post_id === this.props.post.id) {
+                
+                if(this.props.likes[likesKeys[i]].user_id === this.props.currentUser.id) {
+                    id = likesKeys[i]
+                }
+            }
+            
+        }
+        this.props.destroyLike(id)
+    }
+
     
     componentDidUpdate(prevProps) {
         if(!(prevProps.post===this.props.post)) {
@@ -104,11 +122,16 @@ class Post extends React.Component {
 
     render() {
         let numLikes = 0;
+        let userLike = false;
         let likesKeys = Object.keys(this.props.likes);
         for(let i = 0; i < likesKeys.length; i++) {
             if(this.props.likes[likesKeys[i]].post_id === this.props.post.id) {
                 numLikes += 1;
+                if(this.props.likes[likesKeys[i]].user_id === this.props.currentUser.id) {
+                    userLike = true;
+                }
             }
+            
         }
         let comments = [];
         let keys = Object.keys(this.props.comments);
@@ -246,6 +269,24 @@ class Post extends React.Component {
              </textarea>
          }
 
+         let likeButton =   <button className="like-button"
+         onClick={this.likeButtonPress}>
+             <i className="like-button-img">
+
+             </i>
+             Like Post
+         </button>
+
+         if(userLike) {
+             likeButton = <button className="unlike-button"
+             onClick={this.unlikeButtonPress}>
+                 <i className="like-button-img">
+    
+                 </i>
+                 Unlike Post
+             </button>
+         }
+
         return(
             <div className="post">
                 <div className="post-header-container">
@@ -266,13 +307,7 @@ class Post extends React.Component {
                     Likes
                 </i>
                 </div>
-                <button className="like-button"
-                onClick={this.likeButtonPress}>
-                    <i className="like-button-img">
-
-                    </i>
-                    Like Post
-                </button>
+                {likeButton}
                 </div>
                 </div>
                 {commentComponent}

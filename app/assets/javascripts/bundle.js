@@ -2367,6 +2367,7 @@ function (_React$Component) {
     _this.updatePostContent = _this.updatePostContent.bind(_assertThisInitialized(_this));
     _this.keyPress = _this.keyPress.bind(_assertThisInitialized(_this));
     _this.likeButtonPress = _this.likeButtonPress.bind(_assertThisInitialized(_this));
+    _this.unlikeButtonPress = _this.unlikeButtonPress.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2442,6 +2443,22 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "unlikeButtonPress",
+    value: function unlikeButtonPress() {
+      var likesKeys = Object.keys(this.props.likes);
+      var id = 0;
+
+      for (var i = 0; i < likesKeys.length; i++) {
+        if (this.props.likes[likesKeys[i]].post_id === this.props.post.id) {
+          if (this.props.likes[likesKeys[i]].user_id === this.props.currentUser.id) {
+            id = likesKeys[i];
+          }
+        }
+      }
+
+      this.props.destroyLike(id);
+    }
+  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (!(prevProps.post === this.props.post)) {
@@ -2457,11 +2474,16 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var numLikes = 0;
+      var userLike = false;
       var likesKeys = Object.keys(this.props.likes);
 
       for (var i = 0; i < likesKeys.length; i++) {
         if (this.props.likes[likesKeys[i]].post_id === this.props.post.id) {
           numLikes += 1;
+
+          if (this.props.likes[likesKeys[i]].user_id === this.props.currentUser.id) {
+            userLike = true;
+          }
         }
       }
 
@@ -2625,6 +2647,22 @@ function (_React$Component) {
         });
       }
 
+      var likeButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "like-button",
+        onClick: this.likeButtonPress
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "like-button-img"
+      }), "Like Post");
+
+      if (userLike) {
+        likeButton = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          className: "unlike-button",
+          onClick: this.unlikeButtonPress
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+          className: "like-button-img"
+        }), "Unlike Post");
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "post"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2641,12 +2679,7 @@ function (_React$Component) {
         className: "likes-num"
       }, numLikes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
         className: "likes-num"
-      }, "Likes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        className: "like-button",
-        onClick: this.likeButtonPress
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-        className: "like-button-img"
-      }), "Like Post"))), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, "Likes")), likeButton)), commentComponent, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_CommentForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
         currentUser: this.props.currentUser,
         createComment: this.props.createComment,
         postId: this.props.post.id,
