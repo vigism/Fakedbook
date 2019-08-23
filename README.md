@@ -18,6 +18,7 @@ Users have the ability to friend other users, which allows them to see each othe
 
 Users can create an account and use that to login and persist data across sessions. The authentication is based on the user's email and password combination. There's also the option to log in as a demo user to use the website without having to go through the account creation process. 
 
+Secure Authentication with password encryption
 ![password_code](https://user-images.githubusercontent.com/32758132/63617607-bc875080-c59e-11e9-9a25-6b369e8d516e.png)
 ## Profile Page
 
