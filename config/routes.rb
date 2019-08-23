@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'post/all/:id', to: 'post#allUserPosts'
     resources :post, only: [:create, :show, :update, :destroy] do
       resources :comment, only: [:create, :show, :index]
+      resources :like, only: [:create,  :index]
     end
     get 'post/userAll/:id', to: 'post#allPosts'
     resource :session, only: [:create, :destroy, :show]
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     resources :friends, only: [:create,:update, :destroy, :index]
     get 'friends/:id', to: 'friends#indexById'
     resources :comment, only: [:destroy, :update]
+    resources :like, only: [:destroy]
   end
   
   root "static_pages#root"
