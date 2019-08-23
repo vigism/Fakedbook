@@ -241,6 +241,11 @@ class Post extends React.Component {
                 <div className="post-content">
                 {postContent}
                 {img}
+                <div className="post-like-bar"> 
+                <i className="likes">
+                    
+                </i>
+                </div>
                 </div>
                 {commentComponent}
                 <CommentForm currentUser={this.props.currentUser}
