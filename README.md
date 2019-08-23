@@ -11,6 +11,9 @@ This project was built using Ruby on Rails with postgresql for the backend and R
 Users have the ability to friend other users, which allows them to see each other's posts and comment on them as well. A user can send any user a friend request, after which the receiving user has the option to accept the request or decline the request.
 
 ![Friends](https://user-images.githubusercontent.com/32758132/61148123-effc9880-a492-11e9-9fee-17cc3a6c9170.png)
+
+![friends_screenshot](https://user-images.githubusercontent.com/32758132/63617389-30752900-c59e-11e9-9178-1730f815f340.png)
+
 ## User Authentication
 
 Users can create an account and use that to login and persist data across sessions. The authentication is based on the user's email and password combination. There's also the option to log in as a demo user to use the website without having to go through the account creation process. 
