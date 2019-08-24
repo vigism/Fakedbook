@@ -2037,12 +2037,10 @@ function (_React$Component) {
           onKeyDown: this.keyPress
         });
       } else {
-        contentDisp = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        contentDisp = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           type: "text",
-          className: "comment-text",
-          value: this.props.comment.content,
-          readOnly: true
-        });
+          className: "comment-text"
+        }, this.props.comment.content);
       }
 
       var updateButton = null;

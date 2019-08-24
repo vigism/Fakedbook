@@ -393,6 +393,7 @@ border-radius: 5px 5px 0 0;
     min-height: 25px;
     margin-left: 10px;
     padding: 5px;
+    font-size: 16px;
 }
 
 .comments-container {
@@ -437,8 +438,10 @@ border-radius: 5px 5px 0 0;
 .comment-text {
     padding-left:10px;
     background: transparent;
+    display: inline-block;
     border: none;
     cursor: default;
+    min-width: 100px;
 }
 
 .comment-text-edit {

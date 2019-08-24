@@ -67,8 +67,9 @@ class Comment extends React.Component {
             onChange={this.updateCommentContent}
             onKeyDown={this.keyPress} />
         } else {
-            contentDisp = <input type="text" className="comment-text"
-            value={this.props.comment.content} readOnly/>
+            contentDisp = <span type="text" className="comment-text"
+            >{this.props.comment.content}
+                </span>
         }
         let updateButton=null;
         let deleteButton= null;
