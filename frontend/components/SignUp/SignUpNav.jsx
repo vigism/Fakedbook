@@ -27,13 +27,13 @@ class SignUpNav extends React.Component {
                 <div className="signup-nav-bar-content"> 
                 <div className="signup-main-logo"></div>
                 <div className="login-form">
-                    <form onSubmit={this.submitLogin}>
-                        <label>Email or phone
+                    <form onSubmit={this.submitLogin} className="signin-form">
+                        <label className="signin-form-label">Email or phone
                             <input type="text"
                             value={this.state.email}
                             onChange={this.update('email')} />
                         </label>
-                        <label>Password
+                        <label className="signin-form-label">Password
                                 <input type="password" 
                                 value={this.state.password}
                                 onChange={this.update('password')}/>

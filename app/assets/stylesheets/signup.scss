@@ -109,3 +109,14 @@
    .signup-gender {
     display: inline-block;
 }
+
+    .signin-form > * {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    .signin-form-label > * { 
+        padding-left:3px;
+        padding-right:3px;
+        margin-left: 6px;
+    }
